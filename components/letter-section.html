@@ -1,0 +1,29 @@
+<!-- LETTER SECTION -->
+<section class="mt-8">
+  <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-white text-center shadow-sm">
+    <h3 class="text-lg font-moul text-sky-600 mb-4">សំបុត្រផ្ញើជូនខ្លួនឯង 💌</h3>
+    
+    <div onclick="toggleLetterBox()" class="cursor-pointer inline-block bg-sky-50 border-2 border-dashed border-sky-300 p-6 rounded-2xl max-w-md w-full transition-all hover:bg-sky-100">
+      <div id="letterClosed">
+        <span class="text-5xl block animate-bounce mb-2">✉️</span>
+        <p class="text-xs md:text-sm font-semibold text-sky-700">ចុចដើម្បីបើកមើលសារជូនពរខ្លួនឯង (A Letter to Me)</p>
+      </div>
+
+      <div id="letterOpen" class="hidden text-left bg-white p-5 rounded-xl border border-sky-100 shadow-inner space-y-2">
+        <p class="font-bold text-sky-600 text-sm">Dear Me (សុត ម៉ួយឆេង), 💙</p>
+        <p class="text-xs text-slate-600 leading-relaxed">
+          អរគុណខ្លួនឯងដែលបានខិតខំប្រឹងប្រែង និងតស៊ូជម្នះរាល់ឧបសគ្គកន្លងមកយ៉ាងល្អ! 🌟<br><br>
+          សូមឱ្យវ័យថ្មី និងទំព័រជីវិតថ្មីនេះ ពោរពេញដោយស្នាមញញឹម សុខភាពល្អបរិបូរណ៍ ភាពជោគជ័យក្នុងការសិក្សា និងការងារ ហើយសម្រេចបានគ្រប់គោលដៅទាំងអស់! ✨
+        </p>
+        <p class="text-right text-xs font-bold text-pink-500 pt-2">— From Me with Love ❤️</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function toggleLetterBox() {
+    document.getElementById('letterClosed').classList.toggle('hidden');
+    document.getElementById('letterOpen').classList.toggle('hidden');
+  }
+</script>

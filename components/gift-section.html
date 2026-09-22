@@ -1,0 +1,39 @@
+<!-- GIFT & CELEBRATION SECTION -->
+<section class="mt-8 space-y-8">
+  <!-- Gift Surprise -->
+  <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-white text-center shadow-sm">
+    <h3 class="text-lg font-moul text-sky-600 mb-2">កាដូសម្ងាត់សម្រាប់ខ្លួនឯង 🎁</h3>
+    <p class="text-xs text-slate-500 mb-4">ចុចលើប្រអប់កាដូ ដើម្បីបើកមើលការភ្ញាក់ផ្អើល!</p>
+
+    <div onclick="openGiftBox()" class="cursor-pointer inline-block transform hover:scale-110 active:scale-95 transition-all">
+      <span id="giftIconEmoji" class="text-6xl block animate-bounce">🎁</span>
+    </div>
+
+    <div id="giftSecretContent" class="hidden mt-4 p-4 bg-white rounded-2xl border border-pink-200 shadow-sm max-w-md mx-auto">
+      <span class="text-2xl">🎉✨👑</span>
+      <h4 class="font-bold text-sky-600 text-xs mt-1">A Little Surprise For You!</h4>
+      <p class="text-xs text-slate-600 mt-1">"អ្នកគឺជាមនុស្សម្នាក់ដែលមានសមត្ថភាព និងអស្ចារ្យបំផុត! ចាំថាត្រូវញញឹមឱ្យបានច្រើនជារៀងរាល់ថ្ងៃ! 🌸"</p>
+    </div>
+  </div>
+
+  <!-- Grand Finale Button -->
+  <div class="text-center space-y-3 pt-4">
+    <div class="text-3xl animate-bounce">🎈</div>
+    <h3 class="text-xl font-moul text-sky-600">Cheers to Another Beautiful Year! 🎈</h3>
+    <button onclick="runFinaleConfetti()" class="px-8 py-3 bg-gradient-to-r from-pink-400 via-purple-400 to-sky-400 text-white font-bold text-xs rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all">
+      🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)
+    </button>
+  </div>
+</section>
+
+<script>
+  function openGiftBox() {
+    document.getElementById('giftIconEmoji').textContent = '🔓';
+    document.getElementById('giftSecretContent').classList.remove('hidden');
+    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
+  }
+
+  function runFinaleConfetti() {
+    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+  }
+</script>

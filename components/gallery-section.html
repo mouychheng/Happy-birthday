@@ -1,0 +1,68 @@
+<!-- MEMORY WALL GALLERY SECTION -->
+<style>
+  .polaroid-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    transition: all 0.3s ease;
+  }
+</style>
+
+<section class="mt-8">
+  <div class="text-center mb-6">
+    <h3 class="text-xl font-moul text-sky-600">រូបភាពចងចាំ 💙 (Memory Wall)</h3>
+    <p class="text-xs text-slate-500 mt-1">ចុចលើរូបដើម្បីមើលធំ Fullscreen ឬជ្រើសរើសរូបថតផ្ទាល់ខ្លួនរបស់អ្នក</p>
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+    <!-- Card 1 (ប្រើរូបពី assets/img1.jpg) -->
+    <div class="polaroid-card p-3 rounded-2xl transform -rotate-2 hover:rotate-0 hover:scale-105 shadow-md">
+      <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100">
+        <img id="gImg1" src="assets/img1.jpg" alt="Memory 1" class="w-full h-full object-cover">
+      </div>
+      <div class="p-2 text-center">
+        <p class="text-xs font-bold text-slate-700">✨ "A beautiful moment"</p>
+        <label class="mt-1 inline-block text-[11px] text-sky-600 cursor-pointer hover:underline">
+          📁 ប្ដូររូបទី១ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg1')">
+        </label>
+      </div>
+    </div>
+
+    <!-- Card 2 (បើមានរូបបន្ថែម ដាក់ img2.jpg ក្នុង assets/ ដូចគ្នា) -->
+    <div class="polaroid-card p-3 rounded-2xl transform rotate-3 hover:rotate-0 hover:scale-105 shadow-md">
+      <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100">
+        <img id="gImg2" src="assets/img2.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 2" class="w-full h-full object-cover">
+      </div>
+      <div class="p-2 text-center">
+        <p class="text-xs font-bold text-slate-700">🌸 "Good memories"</p>
+        <label class="mt-1 inline-block text-[11px] text-sky-600 cursor-pointer hover:underline">
+          📁 ប្ដូររូបទី២ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg2')">
+        </label>
+      </div>
+    </div>
+
+    <!-- Card 3 (បើមានរូបបន្ថែម ដាក់ img3.jpg ក្នុង assets/ ដូចគ្នា) -->
+    <div class="polaroid-card p-3 rounded-2xl transform -rotate-1 hover:rotate-0 hover:scale-105 shadow-md">
+      <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100">
+        <img id="gImg3" src="assets/img3.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 3" class="w-full h-full object-cover">
+      </div>
+      <div class="p-2 text-center">
+        <p class="text-xs font-bold text-slate-700">💙 "One of my favorite days"</p>
+        <label class="mt-1 inline-block text-[11px] text-sky-600 cursor-pointer hover:underline">
+          📁 ប្ដូររូបទី៣ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg3')">
+        </label>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  function changeGalleryImg(event, targetId) {
+    const file = event.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onload = e => document.getElementById(targetId).src = e.target.result;
+      reader.readAsDataURL(file);
+    }
+  }
+</script>
