@@ -12,32 +12,152 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
+  <!-- html2pdf.js Library សម្រាប់បំប្លែង HTML ទៅជា PDF -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+
   <style>
+    /* ចលនាផ្ទៃមេឃផ្លាស់ប្តូរពណ៌ Gradient ស្រទន់ៗ */
+    @keyframes skyGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
     body {
       font-family: 'Kantumruy Pro', sans-serif;
-      background: linear-gradient(180deg, #bae6fd 0%, #e0f2fe 40%, #f0f9ff 100%);
+      /* ពណ៌ Gradient ផ្ទៃមេឃ លាយផ្កាឈូកស្រទន់ */
+      background: linear-gradient(-45deg, #bae6fd, #e0f2fe, #fce7f3, #f3e8ff, #7dd3fc);
+      background-size: 300% 300%;
+      animation: skyGradient 10s ease infinite;
       min-height: 100vh;
+      margin: 0;
+      padding: 0;
     }
+
     .font-moul { font-family: 'Moul', serif; }
     .font-fredoka { font-family: 'Fredoka', sans-serif; }
+
+    /* កន្លែងផ្ទុក Emoji ឱ្យគ្របដណ្តប់ពេញអេក្រង់ជានិច្ច */
+    .floating-container {
+      position: fixed;
+      inset: 0;
+      width: 100vw;
+      height: 100vh;
+      pointer-events: none;
+      overflow: hidden;
+      z-index: 1;
+    }
+
+    /* ចលនា Emoji ធ្លាក់ចុះក្រោម */
+    @keyframes fallDown {
+      0% {
+        transform: translateY(-15vh) rotate(0deg);
+        opacity: 0;
+      }
+      10% {
+        opacity: 0.85;
+      }
+      90% {
+        opacity: 0.85;
+      }
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
+    }
+
+    .falling-emoji {
+      position: absolute;
+      will-change: transform;
+      animation: fallDown linear infinite;
+      user-select: none;
+    }
   </style>
 </head>
-<body class="text-slate-800 pb-20 selection:bg-sky-200 relative overflow-x-hidden">
+<body class="text-slate-800 pb-20 selection:bg-pink-200 selection:text-pink-900 relative overflow-x-hidden">
 
-  <!-- Main Container -->
-  <main class="max-w-4xl mx-auto px-4 space-y-12">
+  <!-- Floating Emoji Container ពេញអេក្រង់ -->
+  <div class="floating-container" id="emojiContainer"></div>
+
+  <!-- Main Content -->
+  <main class="max-w-4xl mx-auto px-4 space-y-6 relative z-10">
     <!-- 1. Hero & Cake Section -->
     <div data-include="components/hero-section.html"></div>
 
-    <!-- 2. Memory Wall / Photo Gallery Section -->
+    <!-- 2. Calendar Section (តុលា ២០២៦) -->
+    <div data-include="components/calendar-section.html"></div>
+
+    <!-- 3. Memory Wall / Photo Gallery Section -->
     <div data-include="components/gallery-section.html"></div>
 
-    <!-- 3. Letter Section -->
+    <!-- 4. Letter Section -->
     <div data-include="components/letter-section.html"></div>
 
-    <!-- 4. Gift & Wishes Section -->
+    <!-- 5. Gift Section (កាដូសម្ងាត់) -->
     <div data-include="components/gift-section.html"></div>
+
+    <!-- 6. Wish Section (សរសេរពាក្យជូនពរ) -->
+    <div data-include="components/wish-section.html"></div>
+
+    <!-- 7. Grand Celebration Header & Button (នៅខាងក្រោមគេបង្អស់!) -->
+    <div class="text-center pt-8 pb-4 space-y-4">
+      <div class="text-4xl animate-bounce">🎈</div>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold text-sky-600 tracking-wide">
+        Cheers to Another Beautiful Year! 🎈
+      </h2>
+      <button onclick="triggerGrandCelebration()" 
+        class="bg-gradient-to-r from-pink-400 via-sky-400 to-indigo-400 hover:opacity-90 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 active:scale-95 transition-all duration-300 text-sm sm:text-base">
+        🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)
+      </button>
+    </div>
   </main>
+
+  <!-- Script បង្កើត Emoji ធ្លាក់ចុះក្រោមពេញអេក្រង់ -->
+  <script>
+    const emojis = ['🎀', '🌸', '🌼', '🎈', '🎂', '✨', '🎁', '💖', '☁️', '🧸'];
+    const container = document.getElementById('emojiContainer');
+    const totalEmojis = 25;
+
+    for (let i = 0; i < totalEmojis; i++) {
+      const emojiEl = document.createElement('div');
+      emojiEl.classList.add('falling-emoji');
+      
+      emojiEl.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+
+      const randomLeft = Math.random() * 100;
+      const randomSize = Math.random() * 14 + 18;
+      const randomDuration = Math.random() * 8 + 8;
+      const randomDelay = -(Math.random() * 16);
+
+      emojiEl.style.left = `${randomLeft}%`;
+      emojiEl.style.fontSize = `${randomSize}px`;
+      emojiEl.style.animationDuration = `${randomDuration}s`;
+      emojiEl.style.animationDelay = `${randomDelay}s`;
+
+      container.appendChild(emojiEl);
+    }
+
+    // Function សម្រាប់បាញ់ Confetti អបអរសាទរធំ (Grand Celebration)
+    function triggerGrandCelebration() {
+      if (typeof confetti === 'function') {
+        const duration = 3 * 1000;
+        const animationEnd = Date.now() + duration;
+
+        const interval = setInterval(function() {
+          const timeLeft = animationEnd - Date.now();
+          if (timeLeft <= 0) {
+            return clearInterval(interval);
+          }
+          confetti({
+            particleCount: 50,
+            startVelocity: 30,
+            spread: 360,
+            origin: { x: Math.random(), y: Math.random() - 0.2 }
+          });
+        }, 250);
+      }
+    }
+  </script>
 
   <!-- Script Loader for Component Files -->
   <script src="js/component-loader.js"></script>

@@ -1,39 +1,93 @@
-<!-- GIFT & CELEBRATION SECTION -->
-<section class="mt-8 space-y-8">
-  <!-- Gift Surprise -->
-  <div class="bg-white/70 backdrop-blur-md p-6 rounded-3xl border border-white text-center shadow-sm">
-    <h3 class="text-lg font-moul text-sky-600 mb-2">កាដូសម្ងាត់សម្រាប់ខ្លួនឯង 🎁</h3>
-    <p class="text-xs text-slate-500 mb-4">ចុចលើប្រអប់កាដូ ដើម្បីបើកមើលការភ្ញាក់ផ្អើល!</p>
+<!-- GIFT & SURPRISE SECTION -->
+<section class="max-w-4xl mx-auto my-6 px-4 text-center">
+  <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-xl border border-white/50 relative overflow-hidden">
+    
+    <!-- Title Header -->
+    <h2 class="text-2xl sm:text-3xl md:text-4xl font-moul text-sky-600 mb-2">
+      កាដូសម្ងាត់សម្រាប់ខ្លួនឯង 🎁
+    </h2>
+    <p class="text-xs sm:text-sm text-slate-500 font-semibold mb-6">
+      ចុចលើប្រអប់កាដូ ដើម្បីបើកមើលការភ្ញាក់ផ្អើល!
+    </p>
 
-    <div onclick="openGiftBox()" class="cursor-pointer inline-block transform hover:scale-110 active:scale-95 transition-all">
-      <span id="giftIconEmoji" class="text-6xl block animate-bounce">🎁</span>
+    <!-- Interactive Inner Box with Dashed Border -->
+    <div onclick="toggleGiftSurprise()" class="border-2 border-dashed border-sky-300 bg-sky-50/50 hover:bg-sky-100/50 rounded-2xl p-8 sm:p-12 cursor-pointer transition-all duration-300 group">
+      
+      <!-- Gift Icon Container -->
+      <div id="giftIcon" class="text-5xl sm:text-6xl transform group-hover:scale-110 transition-transform duration-300 inline-block mb-3">
+        🎁
+      </div>
+
+      <p id="giftHint" class="text-sm sm:text-base font-bold text-sky-700">
+        ចុចដើម្បីបើកមើលកាដូ (Open Birthday Gift)
+      </p>
     </div>
 
-    <div id="giftSecretContent" class="hidden mt-4 p-4 bg-white rounded-2xl border border-pink-200 shadow-sm max-w-md mx-auto">
-      <span class="text-2xl">🎉✨👑</span>
-      <h4 class="font-bold text-sky-600 text-xs mt-1">A Little Surprise For You!</h4>
-      <p class="text-xs text-slate-600 mt-1">"អ្នកគឺជាមនុស្សម្នាក់ដែលមានសមត្ថភាព និងអស្ចារ្យបំផុត! ចាំថាត្រូវញញឹមឱ្យបានច្រើនជារៀងរាល់ថ្ងៃ! 🌸"</p>
-    </div>
+    <!-- Hidden Surprise Content -->
+    <div id="surpriseCard" class="hidden mt-6 p-6 sm:p-8 bg-gradient-to-br from-sky-50 to-pink-50 rounded-2xl border-2 border-dashed border-pink-300 shadow-inner transition-all duration-500">
+      
+      <!-- Fun Emoji Header -->
+      <div class="text-3xl mb-3">
+        🎉 ✨ 👑 🥹
+      </div>
+
+      <!-- Funny Wish / Request Text -->
+      <p class="text-sky-600 font-bold text-lg sm:text-xl mb-2">
+        A Little Surprise For You!
+      </p>
+      
+      <p class="text-slate-700 text-sm sm:text-base leading-relaxed font-semibold max-w-md mx-auto mb-4">
+        "មើលអីអត់មានកាដូរទេ 🥹🤣 អោយកាដូញុមផង បើអត់មានកាដូរអោយទេ​ បាញ់លុយចូលកុងក៏បានដែរ ៥០០៛ក្តី ១០០០៛ក្តី​ តាមសទ្ធាជ្រះថ្លា! 💸✨"
+      </p>
+
+      <!-- QR Code Container -->
+<div class="mt-6 bg-white p-4 rounded-xl shadow-md border border-sky-100 max-w-xs mx-auto">
+  <p class="text-xs font-bold text-slate-600 mb-3">
+    👇 Scan ដើម្បីផ្ញើកាដូ (AC / KHQR) 👇
+  </p>
+
+  <!-- រូបភាព QR Code -->
+  <div class="w-48 h-48 sm:w-52 sm:h-52 mx-auto bg-slate-100 rounded-xl overflow-hidden border border-slate-200 flex items-center justify-center p-2 relative shadow-inner">
+    <img 
+      src="assets/img4.jpg" 
+      alt="Bakong / AC / KHQR Code" 
+      class="w-full h-full object-contain rounded-lg" 
+      onerror="this.onerror=null; this.src='https://api.qrserver.com/v1/create-qr-code/?size=250x250&data=Sot%20Mouychheng%20Birthday%20Gift';" 
+    />
   </div>
 
-  <!-- Grand Finale Button -->
-  <div class="text-center space-y-3 pt-4">
-    <div class="text-3xl animate-bounce">🎈</div>
-    <h3 class="text-xl font-moul text-sky-600">Cheers to Another Beautiful Year! 🎈</h3>
-    <button onclick="runFinaleConfetti()" class="px-8 py-3 bg-gradient-to-r from-pink-400 via-purple-400 to-sky-400 text-white font-bold text-xs rounded-full shadow-lg hover:scale-105 active:scale-95 transition-all">
-      🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)
-    </button>
+  <p class="text-xs text-pink-500 font-bold mt-3 animate-pulse">
+    💖 អរគុណទុកជាមុនសម្រាប់កាដូ និងទឹកចិត្ត! 💖
+  </p>
+</div>
+
+    </div>
+
   </div>
 </section>
 
 <script>
-  function openGiftBox() {
-    document.getElementById('giftIconEmoji').textContent = '🔓';
-    document.getElementById('giftSecretContent').classList.remove('hidden');
-    confetti({ particleCount: 50, spread: 60, origin: { y: 0.7 } });
-  }
+  function toggleGiftSurprise() {
+    const surpriseCard = document.getElementById('surpriseCard');
+    const giftIcon = document.getElementById('giftIcon');
+    const giftHint = document.getElementById('giftHint');
 
-  function runFinaleConfetti() {
-    confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
+    if (surpriseCard.classList.contains('hidden')) {
+      surpriseCard.classList.remove('hidden');
+      giftIcon.innerText = '🔓';
+      giftHint.innerText = 'ចុចម្ដងទៀតដើម្បីបិទវិញ';
+      
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 60,
+          spread: 70,
+          origin: { y: 0.8 }
+        });
+      }
+    } else {
+      surpriseCard.classList.add('hidden');
+      giftIcon.innerText = '🎁';
+      giftHint.innerText = 'ចុចដើម្បីបើកមើលកាដូ (Open Birthday Gift)';
+    }
   }
 </script>
