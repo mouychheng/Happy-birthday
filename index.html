@@ -79,37 +79,40 @@
   <!-- Floating Emoji Container ពេញអេក្រង់ -->
   <div class="floating-container" id="emojiContainer"></div>
 
+  <!-- 1. Banner Hero Section (បង្ហាញលើគេបង្អស់!) -->
+  <div data-include="components/banner-section.html"></div>
+
   <!-- Main Content -->
   <main class="max-w-4xl mx-auto px-4 space-y-6 relative z-10">
-    <!-- 1. Hero & Cake Section -->
+    <!-- 2. Hero & Cake Section (អូសមកក្រោមទើបឃើញនំ) -->
     <div data-include="components/hero-section.html"></div>
 
-    <!-- 2. Calendar Section (តុលា ២០២៦) -->
+    <!-- 3. Calendar Section (តុលា ២០២៦) -->
     <div data-include="components/calendar-section.html"></div>
 
-    <!-- 3. Memory Wall / Photo Gallery Section -->
+    <!-- 4. Memory Wall / Photo Gallery Section -->
     <div data-include="components/gallery-section.html"></div>
 
-    <!-- 4. Letter Section -->
+    <!-- 5. Letter Section -->
     <div data-include="components/letter-section.html"></div>
 
-    <!-- 5. Gift Section (កាដូសម្ងាត់) -->
+    <!-- 6. ហ្គេមទាយចំណង់ចំណូលចិត្ត (Quiz Game) -->
+    <div data-include="components/quiz-section.html"></div>
+
+    <!-- 7. Gift Section (កាដូសម្ងាត់) -->
     <div data-include="components/gift-section.html"></div>
 
-    <!-- 6. Wish Section (សរសេរពាក្យជូនពរ) -->
+    <!-- 8. Wish Section (សរសេរពាក្យជូនពរ) -->
     <div data-include="components/wish-section.html"></div>
 
-    <!-- 7. ហ្គេមទាយចំណង់ចំណូលចិត្ត (Quiz Game) -->
-<div data-include="components/quiz-section.html"></div>
-
-    <!-- 7. Grand Celebration Header & Button (នៅខាងក្រោមគេបង្អស់!) -->
+    <!-- 9. Grand Celebration Header & Button (នៅខាងក្រោមគេបង្អស់!) -->
     <div class="text-center pt-8 pb-4 space-y-4">
       <div class="text-4xl animate-bounce">🎈</div>
       <h2 class="text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold text-sky-600 tracking-wide">
         Cheers to Another Beautiful Year! 🎈
       </h2>
       <button onclick="triggerGrandCelebration()" 
-        class="bg-gradient-to-r from-pink-400 via-sky-400 to-indigo-400 hover:opacity-90 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 active:scale-95 transition-all duration-300 text-sm sm:text-base">
+        class="bg-gradient-to-r from-pink-400 via-sky-400 to-indigo-400 hover:opacity-90 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 active:scale-95 transition-all duration-300 text-sm sm:text-base cursor-pointer">
         🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)
       </button>
     </div>
