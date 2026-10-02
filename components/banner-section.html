@@ -1,114 +1,164 @@
 <!-- BANNER HERO SECTION (components/banner-section.html) -->
 <style>
   @keyframes bannerFloatSlow {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-12px) rotate(3deg); }
-  }
-  @keyframes bannerFloatRev {
-    0%, 100% { transform: translateY(0px) rotate(0deg); }
-    50% { transform: translateY(-10px) rotate(-3deg); }
-  }
-  @keyframes flameFlicker {
-    0%, 100% { transform: scale(1) rotate(-1deg); opacity: 0.95; }
-    50% { transform: scale(1.15, 1.2) rotate(2deg); opacity: 1; }
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-12px) rotate(3deg);
+    }
   }
 
-  .animate-banner-float-1 { animation: bannerFloatSlow 4.5s ease-in-out infinite; }
-  .animate-banner-float-2 { animation: bannerFloatRev 5s ease-in-out infinite; }
-  .animate-banner-flame { animation: flameFlicker 0.6s ease-in-out infinite; transform-origin: bottom center; }
+  @keyframes bannerFloatRev {
+
+    0%,
+    100% {
+      transform: translateY(0px) rotate(0deg);
+    }
+
+    50% {
+      transform: translateY(-10px) rotate(-3deg);
+    }
+  }
+
+  @keyframes flameFlicker {
+
+    0%,
+    100% {
+      transform: scale(1) rotate(-1deg);
+      opacity: 0.95;
+    }
+
+    50% {
+      transform: scale(1.15, 1.2) rotate(2deg);
+      opacity: 1;
+    }
+  }
+
+  .animate-banner-float-1 {
+    animation: bannerFloatSlow 4.5s ease-in-out infinite;
+  }
+
+  .animate-banner-float-2 {
+    animation: bannerFloatRev 5s ease-in-out infinite;
+  }
+
+  .animate-banner-flame {
+    animation: flameFlicker 0.6s ease-in-out infinite;
+    transform-origin: bottom center;
+  }
 </style>
 
 <!-- គ្មានផ្ទៃ Card / គ្មាន Box Shadow (អណ្តែតលើ Background ដើម ១០០%) -->
-<div class="relative w-full max-w-4xl mx-auto px-2 sm:px-4 min-h-[460px] sm:min-h-[500px] flex flex-col justify-between select-none my-6">
+<div
+  class="relative w-full max-w-4xl mx-auto px-2 sm:px-4 min-h-[460px] sm:min-h-[500px] flex flex-col justify-between select-none my-6">
 
   <!-- 🎈 Floating Balloons (Left & Right) 🎈 -->
   <div class="absolute top-4 left-2 sm:left-6 z-10 animate-banner-float-1 pointer-events-none">
     <svg width="90" height="130" viewBox="0 0 130 180" fill="none">
-      <path d="M42 95 Q 40 130, 60 160 T 55 180" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+      <path d="M42 95 Q 40 130, 60 160 T 55 180" stroke="#94a3b8" stroke-width="1.5" fill="none" />
       <g>
-        <ellipse cx="42" cy="55" rx="28" ry="36" fill="#7dd3fc" stroke="#0284c7" stroke-width="1.5"/>
-        <ellipse cx="32" cy="38" rx="6" ry="12" fill="white" transform="rotate(-25 32 38)" opacity="0.6"/>
+        <ellipse cx="42" cy="55" rx="28" ry="36" fill="#7dd3fc" stroke="#0284c7" stroke-width="1.5" />
+        <ellipse cx="32" cy="38" rx="6" ry="12" fill="white" transform="rotate(-25 32 38)" opacity="0.6" />
       </g>
-      <path d="M80 80 Q 75 115, 55 145 T 60 180" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+      <path d="M80 80 Q 75 115, 55 145 T 60 180" stroke="#94a3b8" stroke-width="1.5" fill="none" />
       <g>
-        <ellipse cx="80" cy="42" rx="27" ry="34" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-        <ellipse cx="70" cy="26" rx="5" ry="10" fill="white" transform="rotate(-25 70 26)" opacity="0.7"/>
+        <ellipse cx="80" cy="42" rx="27" ry="34" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5" />
+        <ellipse cx="70" cy="26" rx="5" ry="10" fill="white" transform="rotate(-25 70 26)" opacity="0.7" />
       </g>
     </svg>
   </div>
 
   <div class="absolute top-4 right-2 sm:right-6 z-10 animate-banner-float-2 pointer-events-none">
     <svg width="90" height="130" viewBox="0 0 140 190" fill="none">
-      <path d="M100 100 Q 105 135, 80 165 T 82 190" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+      <path d="M100 100 Q 105 135, 80 165 T 82 190" stroke="#94a3b8" stroke-width="1.5" fill="none" />
       <g>
-        <ellipse cx="100" cy="60" rx="26" ry="34" fill="#fde047" stroke="#ca8a04" stroke-width="1.5"/>
-        <ellipse cx="91" cy="45" rx="5" ry="10" fill="white" transform="rotate(-25 91 45)" opacity="0.7"/>
+        <ellipse cx="100" cy="60" rx="26" ry="34" fill="#fde047" stroke="#ca8a04" stroke-width="1.5" />
+        <ellipse cx="91" cy="45" rx="5" ry="10" fill="white" transform="rotate(-25 91 45)" opacity="0.7" />
       </g>
-      <path d="M52 82 Q 48 118, 78 152 T 82 190" stroke="#94a3b8" stroke-width="1.5" fill="none"/>
+      <path d="M52 82 Q 48 118, 78 152 T 82 190" stroke="#94a3b8" stroke-width="1.5" fill="none" />
       <g>
-        <ellipse cx="52" cy="42" rx="28" ry="36" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
-        <ellipse cx="42" cy="26" rx="6" ry="11" fill="white" transform="rotate(-25 42 26)" opacity="0.7"/>
+        <ellipse cx="52" cy="42" rx="28" ry="36" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5" />
+        <ellipse cx="42" cy="26" rx="6" ry="11" fill="white" transform="rotate(-25 42 26)" opacity="0.7" />
       </g>
     </svg>
   </div>
 
   <!-- Center Content (អក្សរ & ប៊ូតុង) -->
   <div class="relative z-20 text-center px-2 pt-8 max-w-lg mx-auto flex flex-col items-center my-auto">
-    <span class="inline-block px-4 py-1 rounded-full bg-white/70 backdrop-blur-sm text-pink-600 text-xs sm:text-sm font-semibold tracking-wider mb-3 border border-white/80 shadow-sm">
+    <span
+      class="inline-block px-4 py-1 rounded-full bg-white/70 backdrop-blur-sm text-pink-600 text-xs sm:text-sm font-semibold tracking-wider mb-3 border border-white/80 shadow-sm">
       ✨ SPECIAL DAY CELEBRATION ✨
     </span>
 
-    <h1 class="font-fredoka font-bold text-4xl sm:text-5xl md:text-6xl text-slate-800 leading-tight mb-2 tracking-wide drop-shadow-sm">
+    <h1
+      class="font-fredoka font-bold text-4xl sm:text-5xl md:text-6xl text-slate-800 dark-text-white leading-tight mb-2 tracking-wide drop-shadow-sm">
       Happy Birthday<br>
-      <span class="bg-gradient-to-r from-sky-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent inline-block mt-1">
+      <span
+        class="bg-gradient-to-r from-sky-500 via-pink-500 to-indigo-500 bg-clip-text text-transparent inline-block mt-1">
         Sot Mouychheng! 🎉
       </span>
     </h1>
 
+    <style>
+      /* កំណត់ឱ្យអក្សរ Happy Birthday ប្រែជាពណ៌ស តែពេលនៅលើ Dark Mode ប៉ុណ្ណោះ */
+      body.dark-mode .dark-text-white {
+        color: #ffffff !important;
+      }
+    </style>
+
     <p class="text-slate-700 text-sm sm:text-base font-medium mb-6 max-w-xs sm:max-w-md drop-shadow-sm">
       សូមជូនពរឱ្យឆ្នាំថ្មីនេះពេញដោយស្នាមញញឹម ក្តីសុខ និងរឿងល្អៗជាច្រើន! 🌸✨
     </p>
-    
+
     <!-- Celebrate Button -->
-    <button onclick="bannerCelebrate()" class="px-8 py-3 rounded-full bg-gradient-to-r from-sky-400 via-pink-400 to-indigo-400 hover:opacity-95 text-white font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2">
+    <button onclick="bannerCelebrate()"
+      class="px-8 py-3 rounded-full bg-gradient-to-r from-sky-400 via-pink-400 to-indigo-400 hover:opacity-95 text-white font-semibold text-sm sm:text-base shadow-md hover:shadow-lg transition-all duration-300 transform hover:scale-105 active:scale-95 cursor-pointer flex items-center gap-2">
       <span>Celebrate Now</span> <span>🐰✨</span>
     </button>
   </div>
 
   <!-- 🎂 Bottom Elements (Cake & Gift Items) 🎂 -->
   <div class="relative w-full z-20 flex justify-between items-end px-2 sm:px-6 pb-2 pointer-events-none">
-    
+
     <!-- Gift Boxes (ឆ្វេង) -->
     <div class="flex items-end gap-1 sm:gap-2">
       <svg width="42" height="52" viewBox="0 0 50 60" fill="none" class="-rotate-6">
-        <rect x="5" y="20" width="40" height="35" rx="3" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
-        <rect x="3" y="14" width="44" height="8" rx="2" fill="#f472b6" stroke="#be123c" stroke-width="1.5"/>
-        <rect x="21" y="14" width="8" height="41" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
+        <rect x="5" y="20" width="40" height="35" rx="3" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5" />
+        <rect x="3" y="14" width="44" height="8" rx="2" fill="#f472b6" stroke="#be123c" stroke-width="1.5" />
+        <rect x="21" y="14" width="8" height="41" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5" />
       </svg>
       <svg width="48" height="58" viewBox="0 0 60 70" fill="none" class="rotate-3">
-        <rect x="6" y="24" width="48" height="42" rx="3" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-        <rect x="4" y="16" width="52" height="10" rx="2" fill="#38bdf8" stroke="#0369a1" stroke-width="1.5"/>
-        <rect x="25" y="16" width="10" height="50" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5"/>
+        <rect x="6" y="24" width="48" height="42" rx="3" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5" />
+        <rect x="4" y="16" width="52" height="10" rx="2" fill="#38bdf8" stroke="#0369a1" stroke-width="1.5" />
+        <rect x="25" y="16" width="10" height="50" fill="#fef08a" stroke="#ca8a04" stroke-width="1.5" />
       </svg>
     </div>
 
     <!-- Birthday Cake (ស្តាំ) -->
     <div class="flex flex-col items-center">
       <svg width="120" height="110" viewBox="0 0 170 150" fill="none">
-        <ellipse cx="85" cy="138" rx="75" ry="10" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5"/>
-        <rect x="35" y="90" width="100" height="42" rx="4" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5"/>
-        <path d="M35 90 Q 42 102, 50 90 Q 58 102, 66 90 Q 74 102, 82 90 Q 90 102, 98 90 Q 106 102, 114 90 Q 122 102, 135 90 L 135 98 Z" fill="#fbcfe8" stroke="#db2777" stroke-width="1"/>
-        <rect x="50" y="52" width="70" height="38" rx="4" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5"/>
-        
+        <ellipse cx="85" cy="138" rx="75" ry="10" fill="#e2e8f0" stroke="#cbd5e1" stroke-width="1.5" />
+        <rect x="35" y="90" width="100" height="42" rx="4" fill="#bae6fd" stroke="#0284c7" stroke-width="1.5" />
+        <path
+          d="M35 90 Q 42 102, 50 90 Q 58 102, 66 90 Q 74 102, 82 90 Q 90 102, 98 90 Q 106 102, 114 90 Q 122 102, 135 90 L 135 98 Z"
+          fill="#fbcfe8" stroke="#db2777" stroke-width="1" />
+        <rect x="50" y="52" width="70" height="38" rx="4" fill="#fbcfe8" stroke="#db2777" stroke-width="1.5" />
+
         <!-- Candles with Flame -->
-        <rect x="62" y="32" width="5" height="20" rx="1.5" fill="#7dd3fc" stroke="#0284c7" stroke-width="1"/>
-        <path class="animate-banner-flame" d="M64.5 20 C61 24, 63 28, 64.5 28 C66 28, 68 24, 64.5 20 Z" fill="#fbbf24"/>
-        
-        <rect x="82.5" y="28" width="5" height="24" rx="1.5" fill="#7dd3fc" stroke="#0284c7" stroke-width="1"/>
-        <path class="animate-banner-flame" d="M85 16 C81.5 20, 83.5 24, 85 24 C86.5 24, 88.5 20, 85 16 Z" fill="#fbbf24"/>
-        
-        <rect x="103" y="32" width="5" height="20" rx="1.5" fill="#7dd3fc" stroke="#0284c7" stroke-width="1"/>
-        <path class="animate-banner-flame" d="M105.5 20 C102 24, 104 28, 105.5 20 Z" fill="#fbbf24"/>
+        <rect x="62" y="32" width="5" height="20" rx="1.5" fill="#7dd3fc" stroke="#0284c7" stroke-width="1" />
+        <path class="animate-banner-flame" d="M64.5 20 C61 24, 63 28, 64.5 28 C66 28, 68 24, 64.5 20 Z"
+          fill="#fbbf24" />
+
+        <rect x="82.5" y="28" width="5" height="24" rx="1.5" fill="#7dd3fc" stroke="#0284c7" stroke-width="1" />
+        <path class="animate-banner-flame" d="M85 16 C81.5 20, 83.5 24, 85 24 C86.5 24, 88.5 20, 85 16 Z"
+          fill="#fbbf24" />
+
+        <rect x="103" y="32" width="5" height="20" rx="1.5" fill="#7dd3fc" stroke="#0284c7" stroke-width="1" />
+        <path class="animate-banner-flame" d="M105.5 20 C102 24, 104 28, 105.5 20 Z" fill="#fbbf24" />
       </svg>
     </div>
 
