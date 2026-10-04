@@ -102,12 +102,12 @@
 <body class="text-slate-800 pb-20 selection:bg-pink-200 selection:text-pink-900 relative">
 
   <!-- Floating Theme Toggle Buttons (ប៊ូតុងដូរ Mode: ម៉ូតដើម និង ម៉ូតយប់) -->
-  <div class="fixed top-4 right-4 z-50 flex items-center bg-white/80 dark:bg-slate-800/80 backdrop-blur-md p-1.5 rounded-full shadow-lg border border-pink-200">
-    <button id="themeToggleBtn" onclick="toggleTheme()" class="flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-bold transition-all bg-pink-100 text-pink-600 hover:bg-pink-200 cursor-pointer">
-      <span id="themeIcon">☀️</span>
-      <span id="themeText">ម៉ូតដើម</span>
-    </button>
-  </div>
+<div class="fixed top-4 right-4 z-50 flex items-center bg-white/90 dark:bg-slate-800/90 backdrop-blur-md p-2 rounded-full shadow-xl border-2 border-pink-300">
+  <button id="themeToggleBtn" onclick="toggleTheme()" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-bold transition-all duration-300 bg-pink-100 text-pink-600 hover:bg-pink-200 hover:scale-105 active:scale-95 cursor-pointer shadow-sm">
+    <span id="themeIcon" class="text-lg">☀️</span>
+    <span id="themeText">ថ្ងៃ</span>
+  </button>
+</div>
 
   <!-- Floating Emoji Container -->
   <div class="floating-container" id="emojiContainer"></div>
@@ -132,11 +132,11 @@
     <!-- 6. Gift Section (កាដូសង្ងាត់សម្រាប់ខ្លួនឯង - នៅលើហ្គេម) -->
     <div data-include="components/gift-section.html"></div>
 
-    <!-- 7. Fun & Interactive Games Section (ហ្គេមកម្សាន្ត - នៅខាងក្រោមកាដូ) -->
-    <div data-include="components/games-section.html"></div>
-
-    <!-- 8. Wish Section -->
+    <!-- 7. Wish Section -->
     <div data-include="components/wish-section.html"></div>
+
+    <!-- 8. Fun & Interactive Games Section (ហ្គេមកម្សាន្ត - នៅខាងក្រោមកាដូ) -->
+    <div data-include="components/games-section.html"></div>
 
     <!-- 9. BUCKET LIST SECTION -->
     <section class="py-8 px-2 sm:px-4 w-full">
@@ -530,12 +530,12 @@
 
       if (isDark) {
         icon.innerText = '🌙';
-        text.innerText = 'ម៉ូតយប់';
+        text.innerText = 'យប់';
         btn.classList.remove('bg-pink-100', 'text-pink-600');
         btn.classList.add('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
       } else {
         icon.innerText = '☀️';
-        text.innerText = 'ម៉ូតដើម';
+        text.innerText = 'ថ្ងៃ';
         btn.classList.remove('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
         btn.classList.add('bg-pink-100', 'text-pink-600');
       }
