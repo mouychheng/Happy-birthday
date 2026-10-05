@@ -5,19 +5,15 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fun & Interactive Birthday Games</title>
-  <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Canvas Confetti CDN -->
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
 <body class="bg-slate-50 min-h-screen font-sans">
 
-  <!-- Interactive & Fun Games Hub Section -->
   <section class="py-8 px-3 sm:px-4 w-full select-none">
     <div class="text-center mb-6 space-y-2">
-      <span
-        class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-600 text-xs sm:text-sm font-semibold border border-pink-200">
+      <span class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-600 text-xs sm:text-sm font-semibold border border-pink-200">
         🎮 FUN & INTERACTIVE GAMES
       </span>
       <h2 class="text-xl sm:text-3xl font-bold text-slate-800">
@@ -28,99 +24,73 @@
       </p>
     </div>
 
-    <!-- Cards Grid (កាតហ្គេមទាំង ៥) -->
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
 
       <!-- Game Card 1 -->
-      <div onclick="openGameModal('quizGame')"
-        class="bg-white rounded-2xl p-4 sm:p-5 border border-pink-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('quizGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-pink-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
         <div>
-          <div
-            class="w-12 h-12 sm:w-14 sm:h-14 bg-pink-100 text-pink-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">
-            🎮</div>
-          <span class="inline-block text-[10px] font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md mb-2">១០
-            សំណួរ</span>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-pink-100 text-pink-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎮</div>
+          <span class="inline-block text-[10px] font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md mb-2">១០ សំណួរ</span>
           <h3 class="font-bold text-base text-slate-800 mb-1">ហ្គេមទាយចំណង់ចំណូលចិត្ត</h3>
           <p class="text-xs text-slate-500">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
         </div>
-        <div
-          class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-pink-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-pink-500">
           <span>ចុចចូលលេង</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 2 -->
-      <div onclick="openGameModal('luckyCardGame')"
-        class="bg-white rounded-2xl p-4 sm:p-5 border border-purple-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('luckyCardGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-purple-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
         <div>
-          <div
-            class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 text-purple-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">
-            🎁</div>
-          <span
-            class="inline-block text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-md mb-2">ចាប់កាដូ</span>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 text-purple-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎁</div>
+          <span class="inline-block text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-md mb-2">ចាប់កាដូ</span>
           <h3 class="font-bold text-base text-slate-800 mb-1">កាតផ្សងសំណាងកាដូ</h3>
           <p class="text-xs text-slate-500">ចាប់យកកាតមួយ ដើម្បីមើលថាអ្នកត្រូវបានកាដូអ្វី?</p>
         </div>
-        <div
-          class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-purple-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-purple-500">
           <span>ចាប់កាតកាដូ</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 3 -->
-      <div onclick="openGameModal('wheelGame')"
-        class="bg-white rounded-2xl p-4 sm:p-5 border border-amber-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('wheelGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-amber-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
         <div>
-          <div
-            class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-100 text-amber-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">
-            🎡</div>
-          <span
-            class="inline-block text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md mb-2">ទាយចរិត</span>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-100 text-amber-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎡</div>
+          <span class="inline-block text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md mb-2">ទាយចរិត</span>
           <h3 class="font-bold text-base text-slate-800 mb-1">កងបង្វិលទាយទម្លាប់អាថ៌កំបាំង</h3>
           <p class="text-xs text-slate-500">បង្វិលមើលថា តើទម្លាប់ប្លែកៗ ឬ ចរិតពិតមួយណាដែលត្រូវចំខ្លួនអ្នក!</p>
         </div>
-        <div
-          class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-amber-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-amber-500">
           <span>ចុចបង្វិលមើលចរិត</span>
           <span>➔</span>
         </div>
       </div>
 
-      <!-- Game Card 4 (NEW: ហ្គេមសារអាថ៌កំបាំង Secret Message) -->
-      <div onclick="openGameModal('quoteGame')"
-        class="bg-white rounded-2xl p-4 sm:p-5 border border-sky-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <!-- Game Card 4 -->
+      <div onclick="openGameModal('quoteGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-sky-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
         <div>
-          <div
-            class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-100 text-sky-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">
-            🕵️‍♂️</div>
-          <span
-            class="inline-block text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-md mb-2">សារអាថ៌កំបាំង</span>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-100 text-sky-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🕵️‍♂️</div>
+          <span class="inline-block text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-md mb-2">សារអាថ៌កំបាំង</span>
           <h3 class="font-bold text-base text-slate-800 mb-1">ហ្គេមឆ្លើយសំណួរ</h3>
           <p class="text-xs text-slate-500">ចុចចាប់យកសារ ឬ សំណួរអាថ៌កំបាំងដើម្បីឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
         </div>
-        <div
-          class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-sky-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-sky-500">
           <span>ចាប់យកសារ</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 5 -->
-      <div onclick="openGameModal('mysteryBoxGame')"
-        class="bg-white rounded-2xl p-4 sm:p-5 border border-rose-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+      <div onclick="openGameModal('mysteryBoxGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-rose-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between sm:col-span-2 lg:col-span-1">
         <div>
-          <div
-            class="w-12 h-12 sm:w-14 sm:h-14 bg-rose-100 text-rose-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">
-            🔥</div>
-          <span class="inline-block text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md mb-2">Truth or
-            Dare</span>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-rose-100 text-rose-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🔥</div>
+          <span class="inline-block text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md mb-2">Truth or Dare</span>
           <h3 class="font-bold text-base text-slate-800 mb-1">ប្រអប់ Challenge</h3>
           <p class="text-xs text-slate-500">ជ្រើសរើសប្រអប់មួយ ដើម្បីធ្វើ Challenge ឬឆ្លើយសំណួរចុចចង៉ើច!</p>
         </div>
-        <div
-          class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-rose-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-rose-500">
           <span>បើក Challenge</span>
           <span>➔</span>
         </div>
@@ -130,22 +100,16 @@
   </section>
 
   <!-- Modal Pop-up Container -->
-  <div id="gameModal"
-    class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
-    <div
-      class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-pink-100 p-4 sm:p-6 relative my-auto">
-      <!-- Close Button -->
-      <button onclick="closeGameModal()"
-        class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-100 hover:bg-pink-100 text-slate-500 hover:text-pink-600 flex items-center justify-center font-bold text-base z-20 cursor-pointer active:scale-90 transition-transform">
+  <div id="gameModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-pink-100 p-4 sm:p-6 relative my-auto">
+      <button onclick="closeGameModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-100 hover:bg-pink-100 text-slate-500 hover:text-pink-600 flex items-center justify-center font-bold text-base z-20 cursor-pointer active:scale-90 transition-transform">
         ✕
       </button>
-      <!-- Modal Dynamic Content -->
       <div id="gameModalContent"></div>
     </div>
   </div>
 
   <script>
-    // Add CSS for instant 3D Flip & Animations
     if (!document.getElementById('responsive-card-styles')) {
       const style = document.createElement('style');
       style.id = 'responsive-card-styles';
@@ -179,7 +143,6 @@
       document.head.appendChild(style);
     }
 
-    // Game 1 Data (Quiz)
     const quizData = [
       {
         question: "១. តើពណ៌ណាជាពណ៌ដែលខ្ញុំចូលចិត្តជាងគេ? 🎨",
@@ -306,7 +269,6 @@
       document.getElementById('gameModal').classList.add('hidden');
     }
 
-    // --- GAME 1: QUIZ GAME ---
     function renderQuizQuestion() {
       const content = document.getElementById('gameModalContent');
 
@@ -339,7 +301,7 @@
 
       const currentQuiz = quizData[currentQuestionIndex];
       let optionsHtml = currentQuiz.options.map((opt) => `
-      <button onclick="handleQuizAnswer(this, ${opt.correct})" class="quiz-opt-btn w-full text-left p-2.5 sm:p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 transition-all font-semibold text-slate-700 text-xs sm:text-sm flex justify-between items-center shadow-sm cursor-pointer active:scale-98">
+      <button onclick="handleQuizAnswer(this, ${opt.correct})" class="quiz-opt-btn w-full text-left p-2.5 sm:p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 transition-all font-semibold text-slate-700 text-xs sm:text-sm flex justify-between items-center shadow-sm cursor-pointer active:scale-95">
         <span>${opt.text}</span>
       </button>
     `).join('');
@@ -385,7 +347,6 @@
       }, 800);
     }
 
-    // --- GAME 2: LUCKY CARDS ---
     function renderLuckyCards() {
       const giftChallenges = [
         { icon: "🧋", text: "ប៉ាវតែដោះគោម្ចាស់ខួប 1 កែវ! 😋" },
@@ -439,11 +400,10 @@
       }
 
       const resultBox = document.getElementById('cardResult');
-      resultBox.className = "min-h-[48px] flex items-center justify-center p-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs sm:text-sm font-semibold shadow-md transform scale-102 transition-all duration-200";
+      resultBox.className = "min-h-[48px] flex items-center justify-center p-2.5 rounded-xl bg-gradient-to-r from-pink-500 to-purple-600 text-white text-xs sm:text-sm font-semibold shadow-md transform transition-all duration-200";
       resultBox.innerHTML = `<div><span class="text-lg mr-1">${icon}</span> ${text}</div>`;
     }
 
-    // --- GAME 3: LUCKY WHEEL (ទាយទម្លាប់/ចរិត) ---
     function renderLuckyWheel() {
       const content = document.getElementById('gameModalContent');
       content.innerHTML = `
@@ -468,7 +428,7 @@
         </div>
 
         <button id="spinBtn" onclick="spinWheelAction()" class="bg-gradient-to-r from-amber-500 to-pink-500 active:scale-95 text-white text-xs sm:text-sm font-bold py-2.5 px-6 rounded-full shadow-md transition-all cursor-pointer">
-          ចុចបង្វិលទាយចរិត តើទម្លាប់ប្លែកៗមួយណាត្រូវចំអ្នក! 🔄
+          ចុចបង្វិលទាយចរិត 🔄
         </button>
 
         <div id="wheelResult" class="min-h-[45px] flex items-center justify-center p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs sm:text-sm font-semibold text-amber-800 transition-all shadow-sm">
@@ -506,7 +466,6 @@
         "🎬 ជាមនុស្សប្រាប់គេថាមើលតែ 1 ភាគទៀតទេ តែមើលរហូតដល់ភ្លឺ!",
         "🗣️ ជាមនុស្សនិយាយម្នាក់ឯងក្នុងចិត្តរហូត ដូចមាន 2 នាក់នៅក្នុងខ្លួន!",
         "📝 ជាមនុស្សផែនការច្រើនណាស់ តែធ្វើបានតែ 10% ក៏ឈប់!",
-        "🧹 ជាមនុស្សពេលគ្រូរៀនអត់ចង់រៀន តែពេលគ្រូអត់រៀនតែចង់រៀនវិញ!",
         "🔋 ជាមនុស្សទុកទូរស័ព្ទសល់ 1% ទើបម្នីម្នារត់ទៅរកឆ្នាំងសាក!",
         "🧠 ជាមនុស្សចូលចិត្តភ្លេចថាខ្លួនឯងកំពុងដើរមកយកអី!"
       ];
@@ -531,14 +490,13 @@
       }, 3000);
     }
 
-    // --- GAME 4: SECRET MESSAGE / Q&A GAME (ថ្មី) ---
     function renderQuoteGenerator() {
       const secrets = [
-        "💌 សារអាថ៌កំបាំង៖ តើតាំងពីស្គាល់គ្នា ខ្ញុំធ្លាប់ធ្វើអ្វីឱ្យអ្នកសើចខ្លាំងជាងគេ?",
-        "💌 សារអាថ៌កំបាំង៖ ប្រាប់ចំណុចល្អ 3 យ៉ាងដែលអ្នកចូលចិត្តលើរូបខ្ញុំ!",
-        "💌 សារអាថ៌កំបាំង៖ តើអនុស្សាវរីយ៍ដំបូងគេបង្អស់រវាងយើងទាំងពីរជាអ្វី?",
-        "💌 សារអាថ៌កំបាំង៖ ប្រាប់ពាក្យ 1 ម៉ាត់ដែលពិពណ៌នាពីមិត្តភាព/ទំនាក់ទំនងយើង!",
-        "💌 សារអាថ៌កំបាំង៖ តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?"
+        "តើតាំងពីស្គាល់គ្នា ខ្ញុំធ្លាប់ធ្វើអ្វីឱ្យអ្នកសើចខ្លាំងជាងគេ?",
+        "ប្រាប់ចំណុចល្អ 3 យ៉ាងដែលអ្នកចូលចិត្តលើរូបខ្ញុំ!",
+        "តើអនុស្សាវរីយ៍ដំបូងគេបង្អស់រវាងយើងទាំងពីរជាអ្វី?",
+        "ប្រាប់ពាក្យ 1 ម៉ាត់ដែលពិពណ៌នាពីមិត្តភាព/ទំនាក់ទំនងយើង!",
+        "តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?"
       ];
 
       const randomSecret = secrets[Math.floor(Math.random() * secrets.length)];
@@ -547,7 +505,7 @@
       content.innerHTML = `
       <div class="text-center space-y-3 py-1">
         <div>
-          <h3 class="font-bold text-lg sm:text-xl text-sky-600">🕵️‍♂️ ហ្គេមសារសម្ងាត់</h3>
+          <h3 class="font-bold text-lg sm:text-xl text-sky-600">🕵️‍♂️ ហ្គេមឆ្លើយសំណួរ </h3>
           <p class="text-xs text-slate-500 mt-0.5">ចាប់យកសារ/សំណួរអាថ៌កំបាំងដើម្បីប្រាប់ ឬឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
         </div>
 
@@ -566,12 +524,12 @@
 
     function generateNewQuote() {
       const secrets = [
-        "💌 សារអាថ៌កំបាំង៖ តើតាំងពីស្គាល់គ្នា ខ្ញុំធ្លាប់ធ្វើអ្វីឱ្យអ្នកសើចខ្លាំងជាងគេ?",
-        "💌 សារអាថ៌កំបាំង៖ ប្រាប់ចំណុចល្អ 3 យ៉ាងដែលអ្នកចូលចិត្តលើរូបខ្ញុំ!",
-        "💌 សារអាថ៌កំបាំង៖ តើអនុស្សាវរីយ៍ដំបូងគេបង្អស់រវាងយើងទាំងពីរជាអ្វី?",
-        "💌 សារអាថ៌កំបាំង៖ ប្រាប់ពាក្យ 1 ម៉ាត់ដែលពិពណ៌នាពីមិត្តភាព/ទំនាក់ទំនងយើង!",
-        "💌 សារអាថ៌កំបាំង៖ តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?",
-        "💌 សារអាថ៌កំបាំង៖ តើម្ហូប ឬ ភេសជ្ជៈអ្វី?ដែលឃើញភ្លាម នឹកឃើញខ្ញុំភ្លែត?"
+        "តើតាំងពីស្គាល់គ្នា ខ្ញុំធ្លាប់ធ្វើអ្វីឱ្យអ្នកសើចខ្លាំងជាងគេ?",
+        "ប្រាប់ចំណុចល្អ 3 យ៉ាងដែលអ្នកចូលចិត្តលើរូបខ្ញុំ!",
+        "តើអនុស្សាវរីយ៍ដំបូងគេបង្អស់រវាងយើងទាំងពីរជាអ្វី?",
+        "ប្រាប់ពាក្យ 1 ម៉ាត់ដែលពិពណ៌នាពីមិត្តភាព/ទំនាក់ទំនងយើង!",
+        "តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?",
+        "តើម្ហូប ឬ ភេសជ្ជៈអ្វី?ដែលអ្នកឃើញភ្លាម នឹកឃើញខ្ញុំភ្លែត?"
       ];
 
       const quoteBox = document.getElementById('quoteBox');
@@ -584,7 +542,6 @@
       }, 150);
     }
 
-    // --- GAME 5: TRUTH OR DARE ---
     function renderMysteryBox() {
       const truthOrDare = [
         { name: "🔥 DARE: ថតរូប Selfie បែប Funny / កំប្លែង 1 ប៉ុស្តិ៍ផ្ញើឱ្យម្ចាស់ខួប!", icon: "📸" },
@@ -593,18 +550,16 @@
         { name: "💬 TRUTH: ប្រាប់ពីចំណុច 1 ដែលអ្នកចូលចិត្តបំផុត និងចំណុច 1 ដែលខ្នាញ់បំផុតលើម្ចាស់ខួប!", icon: "👀" },
         { name: "🔥 DARE: បាញ់ Sticker ឬ GIF កំប្លែងៗចំនួន 5 បន្តបន្ទាប់គ្នាទៅឱ្យម្ចាស់ខួប!", icon: "😜" },
         { name: "💬 TRUTH: តើការឃើញលើកដំបូងរបស់អ្នកចំពោះម្ចាស់ខួបយ៉ាងម៉េចដែរ?", icon: "💭" },
-        { name: "🎵 DARE: រ៉េប ឬ និយាយពាក្យជូនពរឱ្យលឿនបំផុតតាមតែអាចធ្វើទៅបាន 1 ឃ្លា ឬ លើសនិង!", icon: "⚡" },
+        { name: "🎵 DARE: រ៉េប ឬ និយាយពាក្យជូនពរឱ្យលឿនបំផុតតាមតែអាចធ្វើទៅបាន 1 ឃ្លា!", icon: "⚡" },
         { name: "💬 TRUTH: ប្រាប់ពីកាដូដែលអ្នកចង់ទិញឱ្យម្ចាស់ខួបបំផុត បើអ្នកមានលុយច្រើន!", icon: "🎁" },
-        { name: "🔥 DARE: ថតរូបធ្វើមុខ Cute បែបញិកញ៉ក់ 1 សន្លឹកផ្ញើចូល Chat ម្ចាស់ខួប!", icon: "😽" },
-        { name: "💬 TRUTH: បើអាចប្តូរឈ្មោះហៅក្រៅឱ្យម្ចាស់ខួបបាន 1 តើអ្នកឱ្យឈ្មោះអី?", icon: "🏷️" },
-        { name: "🔥 DARE: ផ្ញើសារសំឡេងនិយាយពាក្យ 'ស្រឡាញ់ម្ចាស់ខួប បែប Cuteៗ ឬ ប្លែកៗ!", icon: "🎙️" }
+        { name: "🔥 DARE: ថតរូបធ្វើមុខ Cute បែបញិកញ៉ក់ 1 សន្លឹកផ្ញើចូល Chat ម្ចាស់ខួប!", icon: "😽" }
       ];
 
       const content = document.getElementById('gameModalContent');
       content.innerHTML = `
       <div class="text-center space-y-3 py-1">
         <div>
-          <h3 class="font-bold text-lg sm:text-xl text-rose-600">🔥 ប្រអប់សន្យា / ធ្វើ</h3>
+          <h3 class="font-bold text-lg sm:text-xl text-rose-600">🔥 ប្រអប់ Challenge </h3>
           <p class="text-xs text-slate-500 mt-0.5">ជ្រើសរើសប្រអប់មួយដើម្បីទទួល Challenge ឬសំណួរ!</p>
         </div>
 
