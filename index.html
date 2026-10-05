@@ -23,13 +23,14 @@
   <link rel="stylesheet" href="css/dark-mode.css">
 
   <style>
-    /* ចលនាផ្ទៃមេឃផ្លាស់ប្តូរពណ៌ Gradient (Light Mode / ម៉ូតថ្ងៃ) */
+    /* ចលនាផ្ទៃមេឃផ្លាស់ប្តូរពណ៌ Gradient (Light Mode / ម៉ូតថ្ងៃដើម) */
     @keyframes skyGradient {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
 
+    /* Styling ដើមសម្រាប់ Light Mode */
     body {
       font-family: 'Kantumruy Pro', sans-serif;
       background: linear-gradient(-45deg, #bae6fd, #e0f2fe, #fce7f3, #f3e8ff, #7dd3fc);
@@ -39,6 +40,12 @@
       margin: 0;
       padding: 0;
       transition: background 0.5s ease, color 0.5s ease;
+    }
+
+    /* ពេលបើក Dark Mode - បិទចលនា Gradient ដើម ហើយជំនួសដោយពណ៌ងងឹត */
+    body.dark-mode {
+      background: #0b0f19 !important;
+      animation: none !important;
     }
 
     .font-moul { font-family: 'Moul', serif; }
@@ -68,9 +75,9 @@
       user-select: none;
     }
 
-    /* Custom CSS សម្រាប់ Bucket List */
+    /* Custom CSS សម្រាប់ Bucket List Cards */
     .bucket-card-item {
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
+      transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
     }
     .bucket-card-item:hover {
       transform: translateY(-3px);
@@ -300,7 +307,7 @@
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-md mb-1 border border-amber-200">✈️ Travel</span>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-md mb-1 border border-amber-200">✈ Travel</span>
             <h3 class="font-bold text-xs sm:text-sm text-slate-800">ដើរលេងកន្លែងក្នុងក្តីស្រមៃ</h3>
 
             <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
@@ -507,7 +514,6 @@
 
   <!-- Script បង្កើត Emoji ធ្លាក់, ផ្លាស់ប្តូរ ២ ម៉ូត (ថ្ងៃ/យប់) និង បញ្ជា Progress Bar -->
   <script>
-    // ពិនិត្យមើល និងកំណត់ Theme ពេលទំព័រដើម Load ឡើងវិញ
     document.addEventListener("DOMContentLoaded", () => {
       const savedTheme = localStorage.getItem("theme");
       if (savedTheme === "dark") {

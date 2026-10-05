@@ -1,32 +1,82 @@
 <!-- 5. Letter Section (សំបុត្រផ្ញើជូនខ្លួនឯង) -->
-<section class="bg-white/100 backdrop-blur-md rounded-3xl p-12 sm:p-15 shadow-xl border-2 border-pink-100/50 text-center space-y-4">
+<style>
+  /* Base Style សម្រាប់ Light Mode (Mode ថ្ងៃ) */
+  .letter-card {
+    background-color: #ffffff;
+    border: 2px solid rgba(fbcfe8, 0.5); /* border-pink-100/50 */
+  }
+
+  .letter-box {
+    border: 2px dashed #7dd3fc; /* border-sky-300 */
+    background-color: rgba(240, 249, 255, 0.5); /* bg-sky-50/50 */
+  }
+  .letter-box:hover {
+    background-color: rgba(224, 242, 254, 0.5); /* hover:bg-sky-100/50 */
+  }
+
+  .letter-title { color: #0284c7; } /* text-sky-600 */
+  .letter-sub { color: #64748b; } /* text-slate-500 */
+  .letter-btn-text { color: #0369a1; } /* text-sky-700 */
+  
+  .letter-open-box {
+    background-color: #ffffff;
+    border: 1px solid #e0f2fe; /* border-sky-100 */
+  }
+  .letter-open-text { color: #475569; } /* text-slate-600 */
+
+  /* ពេលបើក Dark Mode ( Mode យប់ ) ដោយសារ body មាន class "dark-mode" */
+  body.dark-mode .letter-card {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    border-color: #1e293b !important;
+  }
+
+  body.dark-mode .letter-box {
+    border-color: #075985 !important;
+    background-color: rgba(8, 47, 73, 0.3) !important;
+  }
+  body.dark-mode .letter-box:hover {
+    background-color: rgba(12, 74, 110, 0.4) !important;
+  }
+
+  body.dark-mode .letter-title { color: #38bdf8 !important; }
+  body.dark-mode .letter-sub { color: #94a3b8 !important; }
+  body.dark-mode .letter-btn-text { color: #7dd3fc !important; }
+
+  body.dark-mode .letter-open-box {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+  }
+  body.dark-mode .letter-open-text { color: #e2e8f0 !important; }
+</style>
+
+<section class="letter-card backdrop-blur-md rounded-3xl p-8 sm:p-12 shadow-xl text-center space-y-4 transition-colors duration-300">
   <div>
-    <h2 class="text-2xl sm:text-3xl font-bold text-sky-600 mb-1 flex items-center justify-center gap-2">
+    <h2 class="letter-title text-2xl sm:text-3xl font-bold mb-1 flex items-center justify-center gap-2">
       សំបុត្រផ្ញើជូនខ្លួនឯង <span class="text-2xl">💌</span>
     </h2>
-    <p class="text-xs sm:text-sm text-slate-500 font-medium">
+    <p class="letter-sub text-xs sm:text-sm font-medium">
       ចុចលើរូបសំបុត្រ ដើម្បីបើកមើលសាររំលឹក និងពាក្យលើកទឹកចិត្ត!
     </p>
   </div>
 
   <!-- Box ចុចបើក/បិទសំបុត្រ -->
   <div onclick="toggleLetterBox()" 
-       class="border-2 border-dashed border-sky-300 rounded-2xl p-6 sm:p-8 bg-sky-50/50 hover:bg-sky-100/50 cursor-pointer transition-all duration-300 transform hover:scale-[1.01] active:scale-95 group">
+       class="letter-box rounded-2xl p-6 sm:p-8 cursor-pointer transition-all duration-300 transform hover:scale-[1.01] active:scale-95 group">
     
     <!-- ពេលបិទសំបុត្រ -->
     <div id="letterClosed">
       <div class="text-5xl sm:text-6xl mb-3 transform group-hover:scale-110 transition-transform duration-300">
-        ✉️
+        ✉️️
       </div>
-      <p class="font-bold text-sky-700 text-sm sm:text-base group-hover:text-sky-800">
+      <p class="letter-btn-text font-bold text-sm sm:text-base">
         ចុចដើម្បីបើកមើលសារជូនពរខ្លួនឯង (A Letter to Me)
       </p>
     </div>
 
     <!-- ពេលបើកសំបុត្រ -->
-    <div id="letterOpen" class="hidden text-left bg-white p-5 sm:p-6 rounded-xl border border-sky-100 shadow-inner space-y-3">
-      <p class="font-bold text-sky-600 text-sm sm:text-base">Dear Me (Mouy Chheng), 💙</p>
-      <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">
+    <div id="letterOpen" class="letter-open-box hidden text-left p-5 sm:p-6 rounded-xl shadow-inner space-y-3">
+      <p class="letter-title font-bold text-sm sm:text-base">Dear Me (Mouy Chheng), 💙</p>
+      <p class="letter-open-text text-xs sm:text-sm leading-relaxed">
         អរគុណខ្លួនឯងដែលបានខិតខំប្រឹងប្រែង និងតស៊ូជម្នះរាល់ឧបសគ្គកន្លងមកយ៉ាងល្អ! 🌟💙<br><br>
         សូមឱ្យវ័យថ្មី និងទំព័រជីវិតថ្មីនេះ ពោរពេញដោយស្នាមញញឹម សុខភាពល្អ មានអ្នកស្រលាញ់ចូលចិត្តច្រើន មានលុយចាយ ភាពជោគជ័យក្នុងការសិក្សា និងការងារ ហើយសម្រេចបានគ្រប់គោលដៅទាំងអស់! ✨
       </p>

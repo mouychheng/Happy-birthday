@@ -1,15 +1,16 @@
 /* =========================================================
-   PERFECT DARK MODE - FULL COMPONENTS OVERRIDE
+   CLEAN & ACCURATE DARK MODE OVERRIDE
    ========================================================= */
 
-/* 1. Background និង Text រួម */
+/* 1. Root & Body background ពេល Dark Mode */
+html.dark-mode,
 body.dark-mode {
-  background: #0b0f19 !important;
-  animation: none !important;
+  background-color: #0b0f19 !important;
   color: #f1f5f9 !important;
+  color-scheme: dark;
 }
 
-/* 2. Override ពណ៌អក្សរក្នុង Components ទាំងអស់ */
+/* 2. Text Heading & Colors ពេល Dark Mode */
 body.dark-mode h1,
 body.dark-mode h2,
 body.dark-mode h3,
@@ -19,10 +20,8 @@ body.dark-mode h6,
 body.dark-mode .text-slate-800,
 body.dark-mode .text-slate-900,
 body.dark-mode .text-gray-800,
-body.dark-mode .text-gray-900,
-body.dark-mode .text-sky-600,
-body.dark-mode .text-pink-600 {
-  color: #ffffff !important;
+body.dark-mode .text-gray-900 {
+  color: #f8fafc !important;
 }
 
 body.dark-mode p,
@@ -31,34 +30,43 @@ body.dark-mode li,
 body.dark-mode .text-slate-700,
 body.dark-mode .text-slate-600,
 body.dark-mode .text-gray-700,
-body.dark-mode .text-gray-600,
-body.dark-mode .text-gray-500 {
+body.dark-mode .text-gray-600 {
   color: #cbd5e1 !important;
 }
 
-/* 3. Override ប្រអប់ Cards, Modals, និង Sections ទាំងអស់ */
+/* 3. Global Main Cards, Modals & Containers ពេល Dark Mode */
 body.dark-mode .bg-white,
 body.dark-mode .bg-white\/80,
 body.dark-mode .bg-white\/90,
 body.dark-mode .bg-white\/95,
-body.dark-mode .bg-pink-50,
-body.dark-mode .bg-pink-100\/50,
-body.dark-mode .bg-sky-50,
-body.dark-mode .bucket-card-item,
-body.dark-mode [class*="card"],
-body.dark-mode [class*="modal-content"],
-body.dark-mode section > div {
+body.dark-mode .bucket-card-item {
   background-color: #1e293b !important;
   border-color: #334155 !important;
   color: #f8fafc !important;
 }
 
-/* 4. Background ផ្នែកខាងក្នុង ( Inner Elements & Form Inputs ) */
-body.dark-mode .bg-slate-50,
-body.dark-mode .bg-slate-100,
-body.dark-mode .bg-slate-200,
-body.dark-mode .bg-gray-50,
-body.dark-mode .bg-gray-100,
+/* 4. Calendar Section Outer Card ពេល Dark Mode */
+body.dark-mode .calendar-outer-card {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+}
+
+/* 5. Calendar Section Inner Card (October Box) ពេល Dark Mode */
+body.dark-mode .calendar-inner-card {
+  background: #1e293b !important;
+  border-color: #334155 !important;
+}
+
+body.dark-mode .calendar-inner-card * {
+  color: #f1f5f9 !important;
+}
+
+body.dark-mode .calendar-inner-card .text-sky-500,
+body.dark-mode .calendar-inner-card .text-sky-600 {
+  color: #38bdf8 !important;
+}
+
+/* 6. Form Inputs & Textarea ពេល Dark Mode */
 body.dark-mode input,
 body.dark-mode textarea,
 body.dark-mode select {
@@ -67,13 +75,11 @@ body.dark-mode select {
   border-color: #334155 !important;
 }
 
-/* 5. កែសម្រួល Border និង Shadow */
+/* 7. General Borders & Shadows ពេល Dark Mode */
 body.dark-mode .border,
-body.dark-mode .border-t,
-body.dark-mode .border-b,
-body.dark-mode .border-pink-100,
-body.dark-mode .border-pink-200,
-body.dark-mode .border-sky-100 {
+body.dark-mode .border-sky-100,
+body.dark-mode .border-sky-200,
+body.dark-mode .border-pink-100 {
   border-color: #334155 !important;
 }
 
@@ -81,20 +87,32 @@ body.dark-mode .shadow-sm,
 body.dark-mode .shadow-md,
 body.dark-mode .shadow-lg,
 body.dark-mode .shadow-xl {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4) !important;
 }
 
-/* 6. រៀបចំ Badges / Tags ឱ្យមើលឃើញច្បាស់ក្នុង Dark Mode */
-body.dark-mode .bg-pink-100 { background-color: #831843 !important; color: #fbcfe8 !important; }
-body.dark-mode .bg-sky-100 { background-color: #0c4a6e !important; color: #bae6fd !important; }
-body.dark-mode .bg-purple-100 { background-color: #581c87 !important; color: #e9d5ff !important; }
-body.dark-mode .bg-indigo-100 { background-color: #312e81 !important; color: #c7d2fe !important; }
-body.dark-mode .bg-amber-100 { background-color: #78350f !important; color: #fef3c7 !important; }
-body.dark-mode .bg-emerald-100 { background-color: #064e3b !important; color: #a7f3d0 !important; }
+/* 8. Banners Protection */
+body.dark-mode .banner-bottom-section,
+body.dark-mode .banner-bottom-section * {
+  background-color: transparent !important;
+}
 
-/* 7. Floating Bar & Buttons */
-body.dark-mode #themeToggleBtn {
-  background-color: #1e1b4b !important;
-  color: #a5b4fc !important;
-  border: 1px solid #4338ca !important;
+/* 9. ការពារ Cake និង Banner កុំឱ្យខ្មៅ/ស្រអាប់ពេល Dark Mode */
+body.dark-mode .banner-bottom-section,
+body.dark-mode .banner-bottom-section * {
+  background-color: transparent !important;
+  border-color: transparent !important;
+}
+
+body.dark-mode .banner-bottom-section svg text {
+  fill: #854d0e !important; /* រក្សាពណ៌អក្សរ Happy Birthday លើនំ */
+}
+
+/* បង្ខំឱ្យអក្សរ Happy Birthday ចេញពណ៌ខ្មៅ/ប្រផេះដិតលើ Light Mode */
+.hero-title-text {
+  color: #1e293b !important;
+}
+
+/* ពេលបើក Dark Mode ទើបឱ្យវាចេញពណ៌ស */
+body.dark-mode .hero-title-text {
+  color: #ffffff !important;
 }

@@ -1,48 +1,116 @@
 <!-- WISH & TELEGRAM PDF SECTION -->
+<style>
+  /* Base Style សម្រាប់ Light Mode (Mode ថ្ងៃ) */
+  .wish-card-bg {
+    background-color: rgba(255, 255, 255, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+  }
+
+  .wish-title { color: #0284c7; } /* text-sky-600 */
+  .wish-sub { color: #64748b; } /* text-slate-500 */
+
+  .wish-form-box {
+    background-color: rgba(240, 249, 255, 0.5); /* bg-sky-50/50 */
+    border: 2px dashed #7dd3fc; /* border-sky-300 */
+  }
+
+  .wish-label { color: #075985; } /* text-sky-800 */
+  
+  .wish-input {
+    background-color: #ffffff;
+    border: 1px solid #bae6fd; /* border-sky-200 */
+    color: #334155;
+  }
+
+  .wish-preview-card {
+    background: linear-gradient(to bottom right, #e0f2fe, #fce7f3, #f0f9ff);
+    color: #1e293b;
+    border: 4px solid #bae6fd; /* border-sky-200 */
+  }
+
+  .wish-preview-inner {
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid #e0f2fe;
+  }
+
+  /* Styling សម្រាប់ Dark Mode ( Mode យប់ ) ដើរតាម body.dark-mode */
+  body.dark-mode .wish-card-bg {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    border-color: #1e293b !important;
+  }
+
+  body.dark-mode .wish-title { color: #38bdf8 !important; }
+  body.dark-mode .wish-sub { color: #94a3b8 !important; }
+
+  body.dark-mode .wish-form-box {
+    background-color: rgba(8, 47, 73, 0.3) !important;
+    border-color: #075985 !important;
+  }
+
+  body.dark-mode .wish-label { color: #7dd3fc !important; }
+
+  body.dark-mode .wish-input {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #e2e8f0 !important;
+  }
+
+  body.dark-mode .wish-preview-card {
+    background: linear-gradient(to bottom right, #1e293b, #0f172a) !important;
+    color: #f1f5f9 !important;
+    border-color: #075985 !important;
+  }
+
+  body.dark-mode .wish-preview-inner {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: #334155 !important;
+  }
+</style>
+
 <section id="wish-section" class="max-w-4xl mx-auto my-6 px-4 text-center">
-  <div class="bg-white/80 backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-xl border border-white/50 relative overflow-hidden">
+  <div class="wish-card-bg backdrop-blur-md rounded-3xl p-6 sm:p-10 shadow-xl relative overflow-hidden transition-colors duration-300">
     
     <!-- Title Header -->
-    <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-sky-600 mb-2">
-      សរសេរពាក្យជូនពរ ✍️💌
+    <h2 class="wish-title text-2xl sm:text-3xl md:text-4xl font-bold mb-2">
+      សរសេរពាក្យជូនពរ ✍️️💌
     </h2>
-    <p class="text-xs sm:text-sm text-slate-500 font-semibold mb-6">
+    <p class="wish-sub text-xs sm:text-sm font-semibold mb-6">
       សរសេរសារជូនពរ មើលសំបុត្រ រួចទាញយកជា PDF ឬផ្ញើតាម Telegram បានណា!
     </p>
 
     <!-- Form Container -->
-    <div class="space-y-4 max-w-xl mx-auto text-left bg-sky-50/50 p-6 sm:p-8 rounded-2xl border-2 border-dashed border-sky-300">
+    <div class="wish-form-box space-y-4 max-w-xl mx-auto text-left p-6 sm:p-8 rounded-2xl">
       
       <!-- Sender Name Input -->
       <div>
-        <label class="block text-xs sm:text-sm font-bold text-sky-800 mb-1">
+        <label class="wish-label block text-xs sm:text-sm font-bold mb-1">
           ឈ្មោះរបស់អ្នក (Your Name) ៖
         </label>
         <input type="text" id="senderName" placeholder="ឧទាហរណ៍៖ ching" 
-          class="w-full px-4 py-2.5 rounded-xl border border-sky-200 focus:ring-2 focus:ring-sky-400 focus:outline-none text-slate-700 font-semibold text-sm">
+          class="wish-input w-full px-4 py-2.5 rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none font-semibold text-sm">
       </div>
 
       <!-- Wish Message Input -->
       <div>
-        <label class="block text-xs sm:text-sm font-bold text-sky-800 mb-1">
+        <label class="wish-label block text-xs sm:text-sm font-bold mb-1">
           សារជូនពរ (Wish Message) ៖
         </label>
         <textarea id="wishMessage" rows="4" placeholder="សរសេរពាក្យជូនពររបស់អ្នកនៅទីនេះ..." 
-          class="w-full px-4 py-2.5 rounded-xl border border-sky-200 focus:ring-2 focus:ring-sky-400 focus:outline-none text-slate-700 font-semibold text-sm leading-relaxed"></textarea>
+          class="wish-input w-full px-4 py-2.5 rounded-xl focus:ring-2 focus:ring-sky-400 focus:outline-none font-semibold text-sm leading-relaxed"></textarea>
       </div>
 
       <!-- Form Action Buttons -->
       <div class="pt-2 flex flex-col sm:flex-row gap-3">
         <!-- Preview Button -->
         <button onclick="previewWishCard()" 
-          class="flex-1 bg-gradient-to-r from-pink-300 via-rose-300 to-sky-300 hover:from-pink-400 hover:to-sky-400 text-pink-900 font-bold py-3.5 px-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 border border-white/60 text-sm sm:text-base">
+          class="flex-1 bg-gradient-to-r from-pink-300 via-rose-300 to-sky-300 hover:from-pink-400 hover:to-sky-400 text-pink-950 font-bold py-3.5 px-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 border border-white/60 text-sm sm:text-base cursor-pointer">
           <span class="text-lg animate-bounce">🎀</span>
           <span>មើលសំបុត្រសិន ✨</span>
         </button>
 
         <!-- Dynamic Smart Telegram Button (ខាងលើ) -->
         <button onclick="openSmartTelegram()" 
-          class="flex-1 bg-gradient-to-r from-sky-300 via-teal-200 to-emerald-200 hover:from-sky-400 hover:to-teal-300 text-teal-900 font-bold py-3.5 px-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 border border-white/60 text-sm sm:text-base">
+          class="flex-1 bg-gradient-to-r from-sky-300 via-teal-200 to-emerald-200 hover:from-sky-400 hover:to-teal-300 text-teal-950 font-bold py-3.5 px-4 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 border border-white/60 text-sm sm:text-base cursor-pointer">
           <span class="text-lg">💌</span>
           <span>Telegram ម្ចាស់ខួប ✈️</span>
         </button>
@@ -52,24 +120,24 @@
 
     <!-- Preview & Canvas Container -->
     <div id="previewContainer" class="hidden mt-8 max-w-xl mx-auto space-y-4">
-      <p class="text-sm font-bold text-sky-700">👇 នេះជាសំបុត្រជូនពររបស់អ្នក 👇</p>
+      <p class="wish-title text-sm font-bold">👇 នេះជាសំបុត្រជូនពររបស់អ្នក 👇</p>
 
       <!-- Dynamic HTML Preview Card -->
-      <div id="htmlCardDisplay" class="p-6 sm:p-8 bg-gradient-to-br from-sky-100 via-pink-50 to-sky-50 text-slate-800 rounded-3xl border-4 border-sky-200 shadow-xl text-left">
+      <div id="htmlCardDisplay" class="wish-preview-card p-6 sm:p-8 rounded-3xl shadow-xl text-left">
         <div class="text-center mb-6">
-          <h1 class="text-xl sm:text-2xl font-bold text-sky-700 mb-1">🎂 Happy Birthday For CHHENG 🎂</h1>
-          <p class="text-xs text-sky-500 font-semibold">Special Wish Card for chheng</p>
+          <h1 class="wish-title text-xl sm:text-2xl font-bold mb-1">🎂 Happy Birthday For CHHENG 🎂</h1>
+          <p class="wish-title text-xs font-semibold">Special Wish Card for chheng</p>
         </div>
 
-        <div class="bg-white/90 p-5 rounded-2xl border border-sky-100 shadow-sm space-y-4 mb-6">
+        <div class="wish-preview-inner p-5 rounded-2xl shadow-sm space-y-4 mb-6">
           <div>
-            <p class="text-xs font-bold text-sky-600 uppercase tracking-wider">From (ពី៖)</p>
-            <p id="previewSender" class="text-base sm:text-lg font-bold text-slate-800 pt-1">មិត្តភក្តិ</p>
+            <p class="wish-title text-xs font-bold uppercase tracking-wider">From (ពី៖)</p>
+            <p id="previewSender" class="text-base sm:text-lg font-bold pt-1">មិត្តភក្តិ</p>
           </div>
           <hr class="border-sky-100" />
           <div>
-            <p class="text-xs font-bold text-sky-600 uppercase tracking-wider">Message (សារជូនពរ)</p>
-            <p id="previewMessage" class="text-sm sm:text-base font-medium text-slate-700 leading-relaxed whitespace-pre-line pt-1">
+            <p class="wish-title text-xs font-bold uppercase tracking-wider">Message (សារជូនពរ)</p>
+            <p id="previewMessage" class="text-sm sm:text-base font-medium leading-relaxed whitespace-pre-line pt-1">
               សូមជូនពរឱ្យមានសុខភាពល្អ និងសេចក្តីសុខច្រើនៗ!
             </p>
           </div>
@@ -87,14 +155,14 @@
       <div class="flex flex-col sm:flex-row gap-3 pt-2">
         <!-- Download PDF Button -->
         <button onclick="downloadAsPDF()" 
-          class="flex-1 bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base">
+          class="flex-1 bg-sky-600 hover:bg-sky-700 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base cursor-pointer">
           <span>📥</span>
           <span>ទាញយកសំបុត្រជា PDF</span>
         </button>
 
         <!-- Send via Telegram Button (ខាងក្រោម) -->
         <button onclick="sendToTelegram()" 
-          class="flex-1 bg-sky-400 hover:bg-sky-500 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base">
+          class="flex-1 bg-sky-400 hover:bg-sky-500 text-white font-bold py-3.5 px-4 rounded-xl shadow-lg transition-all duration-300 flex items-center justify-center gap-2 active:scale-95 text-sm sm:text-base cursor-pointer">
           <span>✈️</span>
           <span>Telegram ម្ចាស់ខួប</span>
         </button>
@@ -134,17 +202,17 @@
   }
 
   // 1. Function សម្រាប់ប៊ូតុង Telegram ខាងលើ (Smart Button)
-function openSmartTelegram() {
-  const sender = document.getElementById('senderName').value.trim();
-  const message = document.getElementById('wishMessage').value.trim();
+  function openSmartTelegram() {
+    const sender = document.getElementById('senderName').value.trim();
+    const message = document.getElementById('wishMessage').value.trim();
 
-  let telegramUrl = `https://t.me/${TELEGRAM_USERNAME}`;
+    let telegramUrl = `https://t.me/${TELEGRAM_USERNAME}`;
 
-  if (sender || message) {
-    const senderText = sender || 'មិត្តភក្តិ';
-    const messageText = message || 'សូមជូនពរឱ្យមានសុខភាពល្អ និងសេចក្តីសុខច្រើនៗ! 🎈';
+    if (sender || message) {
+      const senderText = sender || 'មិត្តភក្តិ';
+      const messageText = message || 'សូមជូនពរឱ្យមានសុខភាពល្អ និងសេចក្តីសុខច្រើនៗ! 🎈';
 
-    const formattedText = 
+      const formattedText = 
 `🎉 ══════════════════ 🎉
   🎂 HAPPY BIRTHDAY CHHENG 🎂
 🎉 ══════════════════ 🎉
@@ -157,23 +225,23 @@ ${messageText}
 
 ✨ ផ្ញើចេញពី Happy Birthday Web App ✨`;
 
-    telegramUrl += `?text=${encodeURIComponent(formattedText)}`;
+      telegramUrl += `?text=${encodeURIComponent(formattedText)}`;
+    }
+
+    window.open(telegramUrl, '_blank');
   }
 
-  window.open(telegramUrl, '_blank');
-}
+  // 2. Function សម្រាប់ប៊ូតុង Telegram ខាងក្រោម
+  function sendToTelegram() {
+    const sender = document.getElementById('senderName').value.trim() || 'មិត្តភក្តិ';
+    const message = document.getElementById('wishMessage').value.trim();
 
-// 2. Function សម្រាប់ប៊ូតុង Telegram ខាងក្រោម
-function sendToTelegram() {
-  const sender = document.getElementById('senderName').value.trim() || 'មិត្តភក្តិ';
-  const message = document.getElementById('wishMessage').value.trim();
+    if (!message) {
+      alert('សូមសរសេរសារជូនពរជាមុនសិន!');
+      return;
+    }
 
-  if (!message) {
-    alert('សូមសរសេរសារជូនពរជាមុនសិន!');
-    return;
-  }
-
-  const formattedText = 
+    const formattedText = 
 `🎉 ══════════════════ 🎉
   🎂 HAPPY BIRTHDAY CHHENG 🎂
 🎉 ══════════════════ 🎉
@@ -186,29 +254,11 @@ ${message}
 
 ✨ ផ្ញើចេញពី Happy Birthday Web App ✨`;
 
-  const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(formattedText)}`;
-  window.open(telegramUrl, '_blank');
-}
-
-  // 2. Function សម្រាប់ប៊ូតុង Telegram ខាងក្រោម
-  function sendToTelegram() {
-    const sender = document.getElementById('senderName').value.trim() || 'មិត្តភក្តិ';
-    const message = document.getElementById('wishMessage').value.trim();
-
-    if (!message) {
-      alert('សូមសរសេរសារជូនពរជាមុនសិន!');
-      return;
-    }
-
-    const formattedText = `🎂 *HAPPY BIRTHDAY CHHENG* 🎂\n\n` +
-                          `👤 *ពី៖* ${sender}\n` +
-                          `💬 *សារជូនពរ៖*\n${message}\n\n` +
-                          `✨ _ផ្ញើចេញពី Happy Birthday Web App_`;
-
     const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(formattedText)}`;
     window.open(telegramUrl, '_blank');
   }
 
+  // 3. Function ទាញយកសំបុត្រជា PDF
   function downloadAsPDF() {
     const sender = document.getElementById('senderName').value.trim() || 'Friend';
     const message = document.getElementById('wishMessage').value.trim();

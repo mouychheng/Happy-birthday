@@ -1,0 +1,39 @@
+/* =========================================================
+   GENERAL & CUSTOM STYLES (style.css)
+   ========================================================= */
+
+/* 1. Global Transitions (ធ្វើឱ្យការផ្លាស់ប្តូរ Theme មានភាពរលូន) */
+* {
+  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
+}
+
+/* 2. Custom Scrollbar (របារ Scroll ស្អាត) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+body.dark-mode ::-webkit-scrollbar-track {
+  background: #0f172a;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #f472b6;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #ec4899;
+}
+
+/* 3. Helper Classes ផ្សេងៗ */
+.img-hover-zoom {
+  transition: transform 0.3s ease;
+}
+
+.img-hover-zoom:hover {
+  transform: scale(1.03);
+}

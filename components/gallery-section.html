@@ -1,59 +1,110 @@
 <!-- MEMORY WALL GALLERY SECTION -->
 <style>
+  /* Styling ដើមសម្រាប់ Light Mode (Mode ថ្ងៃ) */
   .polaroid-card {
     transition: all 0.3s ease;
+    background-color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.9);
+    color: #334155;
+  }
+
+  .polaroid-title {
+    color: #334155;
+  }
+
+  /* ពេលបើក Dark Mode (Mode យប់) ដើរតាម body.dark-mode */
+  body.dark-mode .polaroid-card {
+    background-color: rgba(15, 23, 42, 0.9) !important;
+    border-color: #1e293b !important;
+  }
+
+  body.dark-mode .polaroid-title {
+    color: #e2e8f0 !important;
   }
 </style>
 
-<section class="mt-8">
+<section class="mt-8 px-2">
   <div class="text-center mb-6">
-    <!-- Title: បន្ថែម Drop Shadow និងកែសម្រួលពណ៌ឱ្យច្បាស់ទាំងយប់ទាំងថ្ងៃ -->
-    <h3 class="text-xl sm:text-2xl font-moul text-sky-600 dark:text-sky-400 drop-shadow-sm">
+    <!-- Title -->
+    <h3 class="text-xl sm:text-2xl font-moul text-sky-600 drop-shadow-sm">
       ʃ♡ƪ . រូបភាពចងចាំ Happy Birthday . ʃ♡ƪ 💙
     </h3>
-    <!-- Subtitle: ប្តូរមកប្រើ text-slate-600 (ថ្ងៃ) និង text-slate-300 (យប់) ដើម្បីឱ្យច្បាស់ត្រជាក់ភ្នែក -->
-    <p class="text-xs sm:text-sm font-semibold text-slate-600 dark:text-slate-300 mt-1.5">
+    <!-- Subtitle -->
+    <p class="text-xs sm:text-sm font-semibold text-slate-600 mt-1.5">
       ចុចលើរូបដើម្បីមើលធំ Fullscreen ឬជ្រើសរើសរូបថតផ្ទាល់ខ្លួនរបស់អ្នក
     </p>
   </div>
 
-  <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
     <!-- Card 1 -->
-    <div class="polaroid-card p-3 rounded-2xl transform -rotate-2 hover:rotate-0 hover:scale-105 shadow-md bg-white/90 dark:bg-slate-800/80 backdrop-blur-md border border-white/90 dark:border-slate-700">
-      <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 dark:bg-slate-700">
-        <img id="gImg1" src="assets/img1.jpg" alt="Memory 1" class="w-full h-full object-cover">
+    <div class="polaroid-card p-3 rounded-2xl transform -rotate-2 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
+      <div>
+        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer" onclick="openGalleryModal('gImg1', '✨ &quot;A beautiful moment&quot;')">
+          <img id="gImg1" src="assets/img1.jpg" alt="Memory 1" class="w-full h-full object-cover">
+        </div>
+        <div class="p-2 text-center">
+          <p class="polaroid-title text-xs font-bold cursor-pointer" onclick="openGalleryModal('gImg1', '✨ &quot;A beautiful moment&quot;')">✨ "A beautiful moment"</p>
+        </div>
       </div>
-      <div class="p-2 text-center">
-        <p class="text-xs font-bold text-slate-700 dark:text-slate-200">✨ "A beautiful moment"</p>
-        <label class="mt-1 inline-block text-[11px] text-sky-600 dark:text-sky-400 cursor-pointer hover:underline font-semibold">
+      <div class="text-center pb-1">
+        <label class="inline-block text-[11px] text-sky-600 cursor-pointer hover:underline font-semibold">
           📁 ប្ដូររូបទី១ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg1')">
         </label>
       </div>
     </div>
 
     <!-- Card 2 -->
-    <div class="polaroid-card p-3 rounded-2xl transform rotate-3 hover:rotate-0 hover:scale-105 shadow-md bg-white/90 dark:bg-slate-800/80 backdrop-blur-md border border-white/90 dark:border-slate-700">
-      <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 dark:bg-slate-700">
-        <img id="gImg2" src="assets/img2.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 2" class="w-full h-full object-cover">
+    <div class="polaroid-card p-3 rounded-2xl transform rotate-3 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
+      <div>
+        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer" onclick="openGalleryModal('gImg2', '🌸 &quot;Good memories&quot;')">
+          <img id="gImg2" src="assets/img2.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 2" class="w-full h-full object-cover">
+        </div>
+        <div class="p-2 text-center">
+          <p class="polaroid-title text-xs font-bold cursor-pointer" onclick="openGalleryModal('gImg2', '🌸 &quot;Good memories&quot;')">🌸 "Good memories"</p>
+        </div>
       </div>
-      <div class="p-2 text-center">
-        <p class="text-xs font-bold text-slate-700 dark:text-slate-200">🌸 "Good memories"</p>
-        <label class="mt-1 inline-block text-[11px] text-sky-600 dark:text-sky-400 cursor-pointer hover:underline font-semibold">
+      <div class="text-center pb-1">
+        <label class="inline-block text-[11px] text-sky-600 cursor-pointer hover:underline font-semibold">
           📁 ប្ដូររូបទី២ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg2')">
         </label>
       </div>
     </div>
 
     <!-- Card 3 -->
-    <div class="polaroid-card p-3 rounded-2xl transform -rotate-1 hover:rotate-0 hover:scale-105 shadow-md bg-white/90 dark:bg-slate-800/80 backdrop-blur-md border border-white/90 dark:border-slate-700">
-      <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 dark:bg-slate-700">
-        <img id="gImg3" src="assets/img3.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 3" class="w-full h-full object-cover">
+    <div class="polaroid-card p-3 rounded-2xl transform -rotate-1 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
+      <div>
+        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer" onclick="openGalleryModal('gImg3', '💙 &quot;One of my favorite days&quot;')">
+          <img id="gImg3" src="assets/img3.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 3" class="w-full h-full object-cover">
+        </div>
+        <div class="p-2 text-center">
+          <p class="polaroid-title text-xs font-bold cursor-pointer" onclick="openGalleryModal('gImg3', '💙 &quot;One of my favorite days&quot;')">💙 "One of my favorite days"</p>
+        </div>
       </div>
-      <div class="p-2 text-center">
-        <p class="text-xs font-bold text-slate-700 dark:text-slate-200">💙 "One of my favorite days"</p>
-        <label class="mt-1 inline-block text-[11px] text-sky-600 dark:text-sky-400 cursor-pointer hover:underline font-semibold">
+      <div class="text-center pb-1">
+        <label class="inline-block text-[11px] text-sky-600 cursor-pointer hover:underline font-semibold">
           📁 ប្ដូររូបទី៣ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg3')">
         </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- LIGHTBOX / FULLSCREEN MODAL -->
+  <div id="galleryModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeGalleryModal()">
+    <div class="relative max-w-3xl w-full bg-white rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20" onclick="event.stopPropagation()">
+      
+      <!-- Close Button -->
+      <button onclick="closeGalleryModal()" class="absolute -top-3 -right-3 sm:top-3 sm:right-3 bg-white text-slate-700 hover:text-pink-500 rounded-full p-2 shadow-lg w-9 h-9 flex items-center justify-center font-bold text-lg transition-transform hover:scale-110 border border-slate-200">
+        ✕
+      </button>
+
+      <!-- Full Image Container -->
+      <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-100">
+        <img id="modalImg" src="" alt="Full View" class="max-w-full max-h-[75vh] object-contain rounded-lg">
+      </div>
+
+      <!-- Caption Text -->
+      <div class="mt-3 text-center">
+        <p id="modalCaption" class="text-sm sm:text-base font-bold text-slate-800"></p>
       </div>
     </div>
   </div>
@@ -67,5 +118,21 @@
       reader.onload = e => document.getElementById(targetId).src = e.target.result;
       reader.readAsDataURL(file);
     }
+  }
+
+  function openGalleryModal(imgId, caption) {
+    const imgSrc = document.getElementById(imgId).src;
+    document.getElementById('modalImg').src = imgSrc;
+    document.getElementById('modalCaption').innerText = caption;
+    
+    const modal = document.getElementById('galleryModal');
+    modal.classList.remove('hidden');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeGalleryModal() {
+    const modal = document.getElementById('galleryModal');
+    modal.classList.add('hidden');
+    document.body.style.overflow = '';
   }
 </script>
