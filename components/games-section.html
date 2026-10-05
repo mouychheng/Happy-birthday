@@ -6,20 +6,25 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Fun & Interactive Birthday Games</title>
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 </head>
 
-<body class="bg-slate-50 min-h-screen font-sans">
+<body class="bg-slate-50 dark:bg-slate-900 min-h-screen font-sans transition-colors duration-300">
 
   <section class="py-8 px-3 sm:px-4 w-full select-none">
     <div class="text-center mb-6 space-y-2">
-      <span class="inline-block px-3 py-1 rounded-full bg-pink-100 text-pink-600 text-xs sm:text-sm font-semibold border border-pink-200">
+      <span class="inline-block px-3 py-1 rounded-full bg-pink-100 dark:bg-pink-950/60 text-pink-600 dark:text-pink-300 text-xs sm:text-sm font-semibold border border-pink-200 dark:border-pink-800/50">
         🎮 FUN & INTERACTIVE GAMES
       </span>
-      <h2 class="text-xl sm:text-3xl font-bold text-slate-800">
+      <h2 class="text-xl sm:text-3xl font-bold text-slate-800 dark:text-white">
         ជ្រើសរើសហ្គេមដើម្បីលេងកម្សាន្ត ✨
       </h2>
-      <p class="text-xs sm:text-sm text-slate-500 font-medium max-w-md mx-auto">
+      <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 font-medium max-w-md mx-auto">
         ចុចលើកាតហ្គេមណាមួយខាងក្រោម ដើម្បីចាប់ផ្តើមលេង និងបង្កើតស្នាមញញឹម!
       </p>
     </div>
@@ -27,70 +32,70 @@
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto">
 
       <!-- Game Card 1 -->
-      <div onclick="openGameModal('quizGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-pink-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('quizGame')" class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-pink-200 dark:border-pink-900/40 shadow-sm active:scale-95 transition-all cursor-pointer flex flex-col justify-between">
         <div>
-          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-pink-100 text-pink-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎮</div>
-          <span class="inline-block text-[10px] font-bold text-pink-600 bg-pink-50 px-2 py-0.5 rounded-md mb-2">១០ សំណួរ</span>
-          <h3 class="font-bold text-base text-slate-800 mb-1">ហ្គេមទាយចំណង់ចំណូលចិត្ត</h3>
-          <p class="text-xs text-slate-500">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-pink-100 dark:bg-pink-950/60 text-pink-500 dark:text-pink-400 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎮</div>
+          <span class="inline-block text-[10px] font-bold text-pink-600 dark:text-pink-300 bg-pink-50 dark:bg-pink-950/40 px-2 py-0.5 rounded-md mb-2">១០ សំណួរ</span>
+          <h3 class="font-bold text-base text-slate-800 dark:text-slate-100 mb-1">ហ្គេមទាយចំណង់ចំណូលចិត្ត</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
         </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-pink-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex justify-between items-center text-xs font-semibold text-pink-500 dark:text-pink-400">
           <span>ចុចចូលលេង</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 2 -->
-      <div onclick="openGameModal('luckyCardGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-purple-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('luckyCardGame')" class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-purple-200 dark:border-purple-900/40 shadow-sm active:scale-95 transition-all cursor-pointer flex flex-col justify-between">
         <div>
-          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 text-purple-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎁</div>
-          <span class="inline-block text-[10px] font-bold text-purple-600 bg-purple-50 px-2 py-0.5 rounded-md mb-2">ចាប់កាដូ</span>
-          <h3 class="font-bold text-base text-slate-800 mb-1">កាតផ្សងសំណាងកាដូ</h3>
-          <p class="text-xs text-slate-500">ចាប់យកកាតមួយ ដើម្បីមើលថាអ្នកត្រូវបានកាដូអ្វី?</p>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-purple-100 dark:bg-purple-950/60 text-purple-500 dark:text-purple-400 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎁</div>
+          <span class="inline-block text-[10px] font-bold text-purple-600 dark:text-purple-300 bg-purple-50 dark:bg-purple-950/40 px-2 py-0.5 rounded-md mb-2">ចាប់កាដូ</span>
+          <h3 class="font-bold text-base text-slate-800 dark:text-slate-100 mb-1">កាតផ្សងសំណាងកាដូ</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">ចាប់យកកាតមួយ ដើម្បីមើលថាអ្នកត្រូវបានកាដូអ្វី?</p>
         </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-purple-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex justify-between items-center text-xs font-semibold text-purple-500 dark:text-purple-400">
           <span>ចាប់កាតកាដូ</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 3 -->
-      <div onclick="openGameModal('wheelGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-amber-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('wheelGame')" class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-amber-200 dark:border-amber-900/40 shadow-sm active:scale-95 transition-all cursor-pointer flex flex-col justify-between">
         <div>
-          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-100 text-amber-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎡</div>
-          <span class="inline-block text-[10px] font-bold text-amber-600 bg-amber-50 px-2 py-0.5 rounded-md mb-2">ទាយចរិត</span>
-          <h3 class="font-bold text-base text-slate-800 mb-1">កងបង្វិលទាយទម្លាប់អាថ៌កំបាំង</h3>
-          <p class="text-xs text-slate-500">បង្វិលមើលថា តើទម្លាប់ប្លែកៗ ឬ ចរិតពិតមួយណាដែលត្រូវចំខ្លួនអ្នក!</p>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-amber-100 dark:bg-amber-950/60 text-amber-500 dark:text-amber-400 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🎡</div>
+          <span class="inline-block text-[10px] font-bold text-amber-600 dark:text-amber-300 bg-amber-50 dark:bg-amber-950/40 px-2 py-0.5 rounded-md mb-2">ទាយចរិត</span>
+          <h3 class="font-bold text-base text-slate-800 dark:text-slate-100 mb-1">កងបង្វិលទាយទម្លាប់អាថ៌កំបាំង</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">បង្វិលមើលថា តើទម្លាប់ប្លែកៗ ឬ ចរិតពិតមួយណាដែលត្រូវចំខ្លួនអ្នក!</p>
         </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-amber-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex justify-between items-center text-xs font-semibold text-amber-500 dark:text-amber-400">
           <span>ចុចបង្វិលមើលចរិត</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 4 -->
-      <div onclick="openGameModal('quoteGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-sky-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between">
+      <div onclick="openGameModal('quoteGame')" class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-sky-200 dark:border-sky-900/40 shadow-sm active:scale-95 transition-all cursor-pointer flex flex-col justify-between">
         <div>
-          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-100 text-sky-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🕵️‍♂️</div>
-          <span class="inline-block text-[10px] font-bold text-sky-600 bg-sky-50 px-2 py-0.5 rounded-md mb-2">សារអាថ៌កំបាំង</span>
-          <h3 class="font-bold text-base text-slate-800 mb-1">ហ្គេមឆ្លើយសំណួរ</h3>
-          <p class="text-xs text-slate-500">ចុចចាប់យកសារ ឬ សំណួរអាថ៌កំបាំងដើម្បីឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-sky-100 dark:bg-sky-950/60 text-sky-500 dark:text-sky-400 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🕵️‍♂️</div>
+          <span class="inline-block text-[10px] font-bold text-sky-600 dark:text-sky-300 bg-sky-50 dark:bg-sky-950/40 px-2 py-0.5 rounded-md mb-2">សារអាថ៌កំបាំង</span>
+          <h3 class="font-bold text-base text-slate-800 dark:text-slate-100 mb-1">ហ្គេមឆ្លើយសំណួរ</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">ចុចចាប់យកសារ ឬ សំណួរអាថ៌កំបាំងដើម្បីឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
         </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-sky-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex justify-between items-center text-xs font-semibold text-sky-500 dark:text-sky-400">
           <span>ចាប់យកសារ</span>
           <span>➔</span>
         </div>
       </div>
 
       <!-- Game Card 5 -->
-      <div onclick="openGameModal('mysteryBoxGame')" class="bg-white rounded-2xl p-4 sm:p-5 border border-rose-200 shadow-sm active:scale-95 transition-transform cursor-pointer flex flex-col justify-between sm:col-span-2 lg:col-span-1">
+      <div onclick="openGameModal('mysteryBoxGame')" class="bg-white dark:bg-slate-800/90 rounded-2xl p-4 sm:p-5 border border-rose-200 dark:border-rose-900/40 shadow-sm active:scale-95 transition-all cursor-pointer flex flex-col justify-between sm:col-span-2 lg:col-span-1">
         <div>
-          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-rose-100 text-rose-500 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🔥</div>
-          <span class="inline-block text-[10px] font-bold text-rose-600 bg-rose-50 px-2 py-0.5 rounded-md mb-2">Truth or Dare</span>
-          <h3 class="font-bold text-base text-slate-800 mb-1">ប្រអប់ Challenge</h3>
-          <p class="text-xs text-slate-500">ជ្រើសរើសប្រអប់មួយ ដើម្បីធ្វើ Challenge ឬឆ្លើយសំណួរចុចចង៉ើច!</p>
+          <div class="w-12 h-12 sm:w-14 sm:h-14 bg-rose-100 dark:bg-rose-950/60 text-rose-500 dark:text-rose-400 rounded-2xl flex items-center justify-center text-2xl sm:text-3xl mb-3">🔥</div>
+          <span class="inline-block text-[10px] font-bold text-rose-600 dark:text-rose-300 bg-rose-50 dark:bg-rose-950/40 px-2 py-0.5 rounded-md mb-2">Truth or Dare</span>
+          <h3 class="font-bold text-base text-slate-800 dark:text-slate-100 mb-1">ប្រអប់ Challenge</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400">ជ្រើសរើសប្រអប់មួយ ដើម្បីធ្វើ Challenge ឬឆ្លើយសំណួរចុចចង៉ើច!</p>
         </div>
-        <div class="mt-4 pt-3 border-t border-slate-100 flex justify-between items-center text-xs font-semibold text-rose-500">
+        <div class="mt-4 pt-3 border-t border-slate-100 dark:border-slate-700/60 flex justify-between items-center text-xs font-semibold text-rose-500 dark:text-rose-400">
           <span>បើក Challenge</span>
           <span>➔</span>
         </div>
@@ -100,9 +105,9 @@
   </section>
 
   <!-- Modal Pop-up Container -->
-  <div id="gameModal" class="fixed inset-0 bg-slate-900/60 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
-    <div class="bg-white rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-pink-100 p-4 sm:p-6 relative my-auto">
-      <button onclick="closeGameModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-100 hover:bg-pink-100 text-slate-500 hover:text-pink-600 flex items-center justify-center font-bold text-base z-20 cursor-pointer active:scale-90 transition-transform">
+  <div id="gameModal" class="fixed inset-0 bg-slate-900/60 dark:bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl border border-pink-100 dark:border-slate-700 p-4 sm:p-6 relative my-auto transition-colors">
+      <button onclick="closeGameModal()" class="absolute top-3 right-3 w-8 h-8 rounded-full bg-slate-100 dark:bg-slate-700 hover:bg-pink-100 dark:hover:bg-pink-900/50 text-slate-500 dark:text-slate-300 hover:text-pink-600 dark:hover:text-pink-300 flex items-center justify-center font-bold text-base z-20 cursor-pointer active:scale-90 transition-transform">
         ✕
       </button>
       <div id="gameModalContent"></div>
@@ -180,7 +185,7 @@
       {
         question: "៤. តើរដូវកាលណាដែលខ្ញុំចូលចិត្តជាងគេ? ❄️",
         options: [
-          { text: "រដូវក្តៅខ្លាំង ☀️", correct: false },
+          { text: "រដូវក្តៅខ្លាំង ☀️️", correct: false },
           { text: "រដូវត្រជាក់ / ធ្លាក់ខ្យល់ 🌬️", correct: true },
           { text: "រដូវភ្លៀងធ្លាក់រាល់ថ្ងៃ 🌧️", correct: false },
           { text: "មិនចូលចិត្តទេ 😌", correct: false }
@@ -287,9 +292,9 @@
         content.innerHTML = `
         <div class="text-center py-4 space-y-3">
           <div class="text-4xl sm:text-5xl animate-bounce">🎉 🏆 🎉</div>
-          <h3 class="text-lg sm:text-xl font-bold text-sky-700">អបអរសាទរ! អ្នកបានឆ្លើយរួចរាល់ហើយ!</h3>
-          <p class="text-base sm:text-lg font-bold text-pink-600">អ្នកឆ្លើយត្រូវ ${quizScore} / ${quizData.length} សំណួរ!</p>
-          <p class="text-xs sm:text-sm text-slate-600 font-semibold max-w-md mx-auto leading-relaxed">${feedbackText}</p>
+          <h3 class="text-lg sm:text-xl font-bold text-sky-700 dark:text-sky-300">អបអរសាទរ! អ្នកបានឆ្លើយរួចរាល់ហើយ!</h3>
+          <p class="text-base sm:text-lg font-bold text-pink-600 dark:text-pink-400">អ្នកឆ្លើយត្រូវ ${quizScore} / ${quizData.length} សំណួរ!</p>
+          <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 font-semibold max-w-md mx-auto leading-relaxed">${feedbackText}</p>
           <button onclick="openGameModal('quizGame')" class="mt-2 bg-gradient-to-r from-sky-400 to-pink-400 hover:opacity-90 active:scale-95 text-white text-xs sm:text-sm font-bold py-2.5 px-6 rounded-full shadow-md transition-all cursor-pointer">
             🔄 លេងម្តងទៀត
           </button>
@@ -301,7 +306,7 @@
 
       const currentQuiz = quizData[currentQuestionIndex];
       let optionsHtml = currentQuiz.options.map((opt) => `
-      <button onclick="handleQuizAnswer(this, ${opt.correct})" class="quiz-opt-btn w-full text-left p-2.5 sm:p-3 rounded-xl bg-white hover:bg-sky-50 border border-sky-200 transition-all font-semibold text-slate-700 text-xs sm:text-sm flex justify-between items-center shadow-sm cursor-pointer active:scale-95">
+      <button onclick="handleQuizAnswer(this, ${opt.correct})" class="quiz-opt-btn w-full text-left p-2.5 sm:p-3 rounded-xl bg-white dark:bg-slate-700 hover:bg-sky-50 dark:hover:bg-slate-600 border border-sky-200 dark:border-slate-600 transition-all font-semibold text-slate-700 dark:text-slate-100 text-xs sm:text-sm flex justify-between items-center shadow-sm cursor-pointer active:scale-95">
         <span>${opt.text}</span>
       </button>
     `).join('');
@@ -309,16 +314,16 @@
       content.innerHTML = `
       <div class="space-y-3">
         <div class="text-center">
-          <h2 class="text-lg sm:text-xl font-bold text-sky-600">ហ្គេមទាយចំណង់ចំណូលចិត្ត 🎮✨</h2>
-          <p class="text-[11px] sm:text-xs text-slate-400">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
+          <h2 class="text-lg sm:text-xl font-bold text-sky-600 dark:text-sky-400">ហ្គេមទាយចំណង់ចំណូលចិត្ត 🎮✨</h2>
+          <p class="text-[11px] sm:text-xs text-slate-400 dark:text-slate-400">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
         </div>
 
-        <div class="p-3 sm:p-4 rounded-2xl border border-sky-200 bg-sky-50/50 space-y-2.5">
-          <div class="flex justify-between items-center text-xs font-bold text-sky-700">
+        <div class="p-3 sm:p-4 rounded-2xl border border-sky-200 dark:border-slate-700 bg-sky-50/50 dark:bg-slate-900/40 space-y-2.5">
+          <div class="flex justify-between items-center text-xs font-bold text-sky-700 dark:text-sky-300">
             <span>សំណួរទី ${currentQuestionIndex + 1} / ${quizData.length}</span>
-            <span class="bg-white px-2.5 py-0.5 rounded-full border border-sky-200">ពិន្ទុ៖ ${quizScore}</span>
+            <span class="bg-white dark:bg-slate-800 px-2.5 py-0.5 rounded-full border border-sky-200 dark:border-slate-700">ពិន្ទុ៖ ${quizScore}</span>
           </div>
-          <h3 class="font-bold text-xs sm:text-sm text-slate-800 leading-relaxed">${currentQuiz.question}</h3>
+          <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-200 leading-relaxed">${currentQuiz.question}</h3>
           <div class="space-y-2 pt-1">
             ${optionsHtml}
           </div>
@@ -333,11 +338,11 @@
 
       if (isCorrect) {
         quizScore++;
-        button.classList.add('bg-emerald-100', 'border-emerald-400', 'text-emerald-800');
+        button.classList.add('bg-emerald-100', 'dark:bg-emerald-950/80', 'border-emerald-400', 'text-emerald-800', 'dark:text-emerald-200');
         button.innerHTML += ' <span>✅</span>';
         if (typeof confetti === 'function') confetti({ particleCount: 25, spread: 40 });
       } else {
-        button.classList.add('bg-rose-100', 'border-rose-400', 'text-rose-800');
+        button.classList.add('bg-rose-100', 'dark:bg-rose-950/80', 'border-rose-400', 'text-rose-800', 'dark:text-rose-200');
         button.innerHTML += ' <span>❌</span>';
       }
 
@@ -362,8 +367,8 @@
       content.innerHTML = `
       <div class="text-center space-y-3 py-1">
         <div>
-          <h3 class="font-bold text-lg sm:text-xl text-purple-600">🃏 កាតផ្សងសំណាងកាដូ</h3>
-          <p class="text-xs text-slate-500 mt-0.5">ចុចលើកាត 1 ដើម្បីមើលថាអ្នកត្រូវជួនអ្វីដល់ម្ចាស់ខួប!</p>
+          <h3 class="font-bold text-lg sm:text-xl text-purple-600 dark:text-purple-400">🃏 កាតផ្សងសំណាងកាដូ</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">ចុចលើកាត 1 ដើម្បីមើលថាអ្នកត្រូវជួនអ្វីដល់ម្ចាស់ខួប!</p>
         </div>
 
         <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 sm:gap-3 py-2 max-w-md mx-auto">
@@ -374,16 +379,16 @@
                   <span class="text-2xl sm:text-3xl">🎁</span>
                   <span class="text-[10px] font-bold opacity-90 mt-1">CARD 0${i + 1}</span>
                 </div>
-                <div class="card-face card-back-face bg-white border-2 border-purple-400 flex flex-col items-center justify-center p-2 text-center shadow-md">
+                <div class="card-face card-back-face bg-white dark:bg-slate-700 border-2 border-purple-400 dark:border-purple-500 flex flex-col items-center justify-center p-2 text-center shadow-md">
                   <span class="card-icon text-3xl mb-1">${item.icon}</span>
-                  <span class="text-[9px] font-bold text-purple-600 uppercase tracking-wider">YOUR GIFT</span>
+                  <span class="text-[9px] font-bold text-purple-600 dark:text-purple-300 uppercase tracking-wider">YOUR GIFT</span>
                 </div>
               </div>
             </div>
           `).join('')}
         </div>
 
-        <div id="cardResult" class="min-h-[48px] flex items-center justify-center p-2.5 rounded-xl bg-purple-50 border border-purple-200 text-xs sm:text-sm font-semibold text-purple-800 transition-all shadow-sm">
+        <div id="cardResult" class="min-h-[48px] flex items-center justify-center p-2.5 rounded-xl bg-purple-50 dark:bg-purple-950/40 border border-purple-200 dark:border-purple-800/50 text-xs sm:text-sm font-semibold text-purple-800 dark:text-purple-200 transition-all shadow-sm">
           👆 សូមចុចជ្រើសរើសកាត 1 ដើម្បីបើកមើល!
         </div>
       </div>
@@ -409,8 +414,8 @@
       content.innerHTML = `
       <div class="text-center space-y-3 py-1">
         <div>
-          <h3 class="font-bold text-lg sm:text-xl text-amber-600">🎡 ទាយទម្លាប់ និងចរិតអាថ៌កំបាំង</h3>
-          <p class="text-xs text-slate-500 mt-0.5">បង្វិលកងដើម្បីមើលថា តើទម្លាប់ប្លែកៗមួយណាត្រូវចំអ្នក!</p>
+          <h3 class="font-bold text-lg sm:text-xl text-amber-600 dark:text-amber-400">🎡 ទាយទម្លាប់ និងចរិតអាថ៌កំបាំង</h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">បង្វិលកងដើម្បីមើលថា តើទម្លាប់ប្លែកៗមួយណាត្រូវចំអ្នក!</p>
         </div>
 
         <div class="relative w-40 h-40 sm:w-48 sm:h-48 mx-auto my-3 flex items-center justify-center">
@@ -420,7 +425,7 @@
               <span class="text-3xl sm:text-4xl">🕵️‍♂️</span>
             </div>
             <div class="absolute inset-0 flex items-center justify-center">
-              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white shadow-md border-2 border-amber-300 flex items-center justify-center z-10 text-lg">
+              <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white dark:bg-slate-800 shadow-md border-2 border-amber-300 flex items-center justify-center z-10 text-lg">
                 🔍
               </div>
             </div>
@@ -431,7 +436,7 @@
           ចុចបង្វិលទាយចរិត 🔄
         </button>
 
-        <div id="wheelResult" class="min-h-[45px] flex items-center justify-center p-2.5 rounded-xl bg-amber-50 border border-amber-200 text-xs sm:text-sm font-semibold text-amber-800 transition-all shadow-sm">
+        <div id="wheelResult" class="min-h-[45px] flex items-center justify-center p-2.5 rounded-xl bg-amber-50 dark:bg-amber-950/40 border border-amber-200 dark:border-amber-800/50 text-xs sm:text-sm font-semibold text-amber-800 dark:text-amber-200 transition-all shadow-sm">
           ✨ ចុចបង្វិល ដើម្បីស្វែងរកចរិត/ទម្លាប់អាថ៌កំបាំង!
         </div>
       </div>
@@ -505,8 +510,8 @@
       content.innerHTML = `
       <div class="text-center space-y-3 py-1">
         <div>
-          <h3 class="font-bold text-lg sm:text-xl text-sky-600">🕵️‍♂️ ហ្គេមឆ្លើយសំណួរ </h3>
-          <p class="text-xs text-slate-500 mt-0.5">ចាប់យកសារ/សំណួរអាថ៌កំបាំងដើម្បីប្រាប់ ឬឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
+          <h3 class="font-bold text-lg sm:text-xl text-sky-600 dark:text-sky-400">🕵️️‍♂️ ហ្គេមឆ្លើយសំណួរ </h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">ចាប់យកសារ/សំណួរអាថ៌កំបាំងដើម្បីប្រាប់ ឬឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
         </div>
 
         <div id="quoteCard" class="p-5 sm:p-6 bg-gradient-to-br from-sky-500 via-indigo-500 to-blue-600 rounded-2xl text-white shadow-lg relative overflow-hidden transition-all duration-200">
@@ -559,20 +564,20 @@
       content.innerHTML = `
       <div class="text-center space-y-3 py-1">
         <div>
-          <h3 class="font-bold text-lg sm:text-xl text-rose-600">🔥 ប្រអប់ Challenge </h3>
-          <p class="text-xs text-slate-500 mt-0.5">ជ្រើសរើសប្រអប់មួយដើម្បីទទួល Challenge ឬសំណួរ!</p>
+          <h3 class="font-bold text-lg sm:text-xl text-rose-600 dark:text-rose-400">🔥 ប្រអប់ Challenge </h3>
+          <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">ជ្រើសរើសប្រអប់មួយដើម្បីទទួល Challenge ឬសំណួរ!</p>
         </div>
 
         <div class="grid grid-cols-3 gap-2.5 py-3 max-w-xs mx-auto">
           ${truthOrDare.map((g, idx) => `
-            <div onclick="openBox(this, '${g.name}', '${g.icon}')" class="box-item flex flex-col items-center justify-center p-3 sm:p-4 bg-rose-50 border border-rose-200 rounded-2xl cursor-pointer active:scale-95 transition-all shadow-sm">
+            <div onclick="openBox(this, '${g.name}', '${g.icon}')" class="box-item flex flex-col items-center justify-center p-3 sm:p-4 bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-900/50 rounded-2xl cursor-pointer active:scale-95 transition-all shadow-sm">
               <span class="box-icon text-3xl sm:text-4xl mb-1">📦</span>
-              <span class="text-[9px] font-bold text-rose-500">BOX 0${idx + 1}</span>
+              <span class="text-[9px] font-bold text-rose-500 dark:text-rose-300">BOX 0${idx + 1}</span>
             </div>
           `).join('')}
         </div>
 
-        <div id="boxResult" class="min-h-[45px] flex items-center justify-center p-2.5 rounded-xl bg-rose-50 border border-rose-200 text-xs sm:text-sm font-semibold text-rose-700 transition-all shadow-sm">
+        <div id="boxResult" class="min-h-[45px] flex items-center justify-center p-2.5 rounded-xl bg-rose-50 dark:bg-rose-950/40 border border-rose-200 dark:border-rose-800/50 text-xs sm:text-sm font-semibold text-rose-700 dark:text-rose-300 transition-all shadow-sm">
           🔥 ចុចលើប្រអប់ខាងលើដើម្បីបើក Challenge!
         </div>
       </div>
@@ -589,7 +594,7 @@
       setTimeout(() => {
         iconSpan.classList.remove('animate-box-shake');
         iconSpan.innerText = giftIcon;
-        element.classList.add('bg-rose-100', 'border-rose-400');
+        element.classList.add('bg-rose-100', 'dark:bg-rose-950/80', 'border-rose-400', 'dark:border-rose-600');
 
         if (typeof confetti === 'function') confetti({ particleCount: 50, spread: 60 });
 

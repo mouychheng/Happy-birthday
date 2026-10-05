@@ -1,31 +1,38 @@
-// Component Loader Script (Fixed Unwrap Issue)
+// Component Loader Script (Fixed Unwrap & Script Execution)
 document.addEventListener("DOMContentLoaded", function () {
   const includes = document.querySelectorAll("[data-include]");
-  
-  let promises = Array.from(includes).map(el => {
+
+  includes.forEach((el) => {
     const file = el.getAttribute("data-include");
-    return fetch(file)
-      .then(response => {
+
+    fetch(file)
+      .then((response) => {
         if (response.ok) return response.text();
         throw new Error(`Failed to load ${file}`);
       })
-      .then(html => {
-        // បង្កើត temporary container ដើម្បី parse HTML
+      .then((html) => {
+        // ១. បង្កើត Temp Div ដើម្បីដកស្រង់ content
         const tempDiv = document.createElement("div");
         tempDiv.innerHTML = html;
 
-        // Execute scripts បើមានក្នុង component
-        const scripts = tempDiv.querySelectorAll("script");
-        scripts.forEach(oldScript => {
-          const newScript = document.createElement("script");
-          Array.from(oldScript.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value));
-          newScript.appendChild(document.createTextNode(oldScript.innerHTML));
-          oldScript.parentNode.replaceChild(newScript, oldScript);
-        });
+        // ២. ដកយក Script Tags ទុកឡែកដើម្បី Execute ក្រោយពេល Insert ចូល DOM
+        const scripts = Array.from(tempDiv.querySelectorAll("script"));
+        scripts.forEach((s) => s.remove()); // លុប Script ចាស់ចេញពី Temp
 
-        // ជំនួស <div data-include="..."> ដោយ Child nodes ផ្ទាល់តែម្តង (Unwrap)
-        el.replaceWith(...tempDiv.childNodes);
+        // ៣. ជំនួស <div data-include="..."> ដោយ Element របស់ Component
+        const childNodes = Array.from(tempDiv.childNodes);
+        el.replaceWith(...childNodes);
+
+        // ៤. Re-inject Scripts ចូលទៅក្នុង Document វិញដើម្បីឱ្យ JavaScript ដំណើរការ
+        scripts.forEach((oldScript) => {
+          const newScript = document.createElement("script");
+          Array.from(oldScript.attributes).forEach((attr) =>
+            newScript.setAttribute(attr.name, attr.value)
+          );
+          newScript.textContent = oldScript.textContent;
+          document.body.appendChild(newScript);
+        });
       })
-      .catch(err => console.error(err));
+      .catch((err) => console.error("Component Loader Error:", err));
   });
 });

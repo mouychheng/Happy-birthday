@@ -18,6 +18,10 @@
   <!-- html2pdf.js Library -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
 
+  <!-- LINK CUSTOM CSS FILES -->
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="css/dark-mode.css">
+
   <style>
     /* ចលនាផ្ទៃមេឃផ្លាស់ប្តូរពណ៌ Gradient (Light Mode / ម៉ូតថ្ងៃ) */
     @keyframes skyGradient {
@@ -35,74 +39,6 @@
       margin: 0;
       padding: 0;
       transition: background 0.5s ease, color 0.5s ease;
-    }
-
-    /* DARK MODE (ម៉ូតយប់ - រក្សាទម្រង់ដូចថ្ងៃ ប្តូរតែពណ៌) */
-    body.dark-mode {
-      background: linear-gradient(-45deg, #0f111a, #16192b, #1d1b33, #0f1424) !important;
-      background-size: 300% 300%;
-      color: #f1f5f9 !important;
-    }
-
-    /* ១. ប្តូរពណ៌ Background កាតធំៗ និងប្រអប់ផ្សេងៗ (រក្សាទម្រង់ដើមដដែល) */
-    body.dark-mode .bg-white,
-    body.dark-mode .bg-white\/95,
-    body.dark-mode .bg-white\/90,
-    body.dark-mode .bg-white\/80,
-    body.dark-mode .bg-slate-50,
-    body.dark-mode .bg-pink-50,
-    body.dark-mode .bg-sky-50,
-    body.dark-mode .bg-blue-50,
-    body.dark-mode section,
-    body.dark-mode .bucket-card-item {
-      background-color: #1a1d2e !important; /* ពណ៌កាតងងឹតស្រទន់ */
-    }
-
-    /* ២. ប្រអប់ Calendar និងប្រអប់ពណ៌ស្រាលៗ */
-    body.dark-mode [class*="bg-sky-100"],
-    body.dark-mode [class*="bg-blue-100"],
-    body.dark-mode [class*="bg-sky-50"],
-    body.dark-mode .bg-slate-100 {
-      background-color: #252a40 !important;
-    }
-
-    /* ៣. ប្តូរពណ៌អក្សរចំណងជើង (Headings) */
-    body.dark-mode h1,
-    body.dark-mode h2,
-    body.dark-mode h3,
-    body.dark-mode h4,
-    body.dark-mode h5,
-    body.dark-mode h6 {
-      color: #38bdf8 !important; /* ពណ៌ខៀវភ្លឺស្រស់ (Cyan/Sky) */
-    }
-
-    /* ៤. ប្តូរពណ៌អក្សររៀបរាប់ទូទៅ */
-    body.dark-mode p,
-    body.dark-mode span,
-    body.dark-mode li,
-    body.dark-mode div,
-    body.dark-mode label {
-      color: #f1f5f9 !important; /* ពណ៌សភ្លឺច្បាស់ ងាយស្រួលអាន */
-    }
-
-    /* ៥. ពណ៌អក្សរតូចៗ/Subtext ឬអក្សរស្រអាប់ */
-    body.dark-mode .text-slate-400,
-    body.dark-mode .text-slate-500,
-    body.dark-mode .text-slate-600,
-    body.dark-mode .text-slate-700,
-    body.dark-mode .text-slate-800,
-    body.dark-mode .text-pink-500,
-    body.dark-mode .text-pink-600 {
-      color: #f472b6 !important; /* ពណ៌ផ្កាឈូកភ្លឺ */
-    }
-
-    /* ៦. ប្រអប់បញ្ចូលទិន្នន័យ Form Input & Textarea */
-    body.dark-mode input,
-    body.dark-mode textarea,
-    body.dark-mode select {
-      background-color: #0f172a !important;
-      color: #ffffff !important;
-      border-color: #334155 !important;
     }
 
     .font-moul { font-family: 'Moul', serif; }
@@ -571,23 +507,40 @@
 
   <!-- Script បង្កើត Emoji ធ្លាក់, ផ្លាស់ប្តូរ ២ ម៉ូត (ថ្ងៃ/យប់) និង បញ្ជា Progress Bar -->
   <script>
-    // Toggle រវាង ២ ម៉ូត៖ ម៉ូតថ្ងៃ (Light) និង ម៉ូតយប់ (Dark)
+    // ពិនិត្យមើល និងកំណត់ Theme ពេលទំព័រដើម Load ឡើងវិញ
+    document.addEventListener("DOMContentLoaded", () => {
+      const savedTheme = localStorage.getItem("theme");
+      if (savedTheme === "dark") {
+        document.body.classList.add("dark-mode");
+        updateThemeUI(true);
+      }
+    });
+
     function toggleTheme() {
       const isDark = document.body.classList.toggle('dark-mode');
+      localStorage.setItem("theme", isDark ? "dark" : "light");
+      updateThemeUI(isDark);
+    }
+
+    function updateThemeUI(isDark) {
       const icon = document.getElementById('themeIcon');
       const text = document.getElementById('themeText');
       const btn = document.getElementById('themeToggleBtn');
 
       if (isDark) {
-        icon.innerText = '🌙';
-        text.innerText = 'យប់';
-        btn.classList.remove('bg-pink-100', 'text-pink-600');
-        btn.classList.add('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
+        if (icon) icon.innerText = '🌙';
+        if (text) text.innerText = 'យប់';
+        if (btn) {
+          btn.classList.remove('bg-pink-100', 'text-pink-600');
+          btn.classList.add('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
+        }
       } else {
-        icon.innerText = '☀️';
-        text.innerText = 'ថ្ងៃ';
-        btn.classList.remove('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
-        btn.classList.add('bg-pink-100', 'text-pink-600');
+        if (icon) icon.innerText = '☀️';
+        if (text) text.innerText = 'ថ្ងៃ';
+        if (btn) {
+          btn.classList.remove('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
+          btn.classList.add('bg-pink-100', 'text-pink-600');
+        }
       }
     }
 
