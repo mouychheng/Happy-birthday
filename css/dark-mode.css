@@ -34,15 +34,33 @@ body.dark-mode .text-gray-600 {
   color: #cbd5e1 !important;
 }
 
-/* 3. Global Main Cards, Modals & Containers ពេល Dark Mode */
-body.dark-mode .bg-white,
-body.dark-mode .bg-white\/80,
-body.dark-mode .bg-white\/90,
-body.dark-mode .bg-white\/95,
+/* 3. Bucket Card Items & Containers ពេល Dark Mode តែប៉ុណ្ណោះ */
 body.dark-mode .bucket-card-item {
   background-color: #1e293b !important;
-  border-color: #334155 !important;
+  border: 1.5px solid #334155 !important; /* Border ពណ៌ប្រផេះភ្លឺជុំវិញ Card ពេលយប់ */
   color: #f8fafc !important;
+}
+
+body.dark-mode .bucket-card-item:hover {
+  border-color: #f472b6 !important;
+}
+
+body.dark-mode .bucket-card-item .img-container {
+  background-color: #0f172a !important;
+  border: none !important;
+}
+
+/* បង្ខំពណ៌អក្សរលើ Card ឱ្យចេញពណ៌សពេល Dark Mode */
+body.dark-mode .bucket-card-item h3,
+body.dark-mode .bucket-card-item h4,
+body.dark-mode .bucket-card-item .card-title {
+  color: #f8fafc !important;
+}
+
+body.dark-mode .bucket-card-item p,
+body.dark-mode .bucket-card-item span,
+body.dark-mode .bucket-card-item div {
+  color: #cbd5e1 !important;
 }
 
 /* 4. Calendar Section Outer Card ពេល Dark Mode */
@@ -94,25 +112,33 @@ body.dark-mode .shadow-xl {
 body.dark-mode .banner-bottom-section,
 body.dark-mode .banner-bottom-section * {
   background-color: transparent !important;
-}
-
-/* 9. ការពារ Cake និង Banner កុំឱ្យខ្មៅ/ស្រអាប់ពេល Dark Mode */
-body.dark-mode .banner-bottom-section,
-body.dark-mode .banner-bottom-section * {
-  background-color: transparent !important;
   border-color: transparent !important;
 }
 
 body.dark-mode .banner-bottom-section svg text {
-  fill: #854d0e !important; /* រក្សាពណ៌អក្សរ Happy Birthday លើនំ */
+  fill: #854d0e !important;
 }
 
-/* បង្ខំឱ្យអក្សរ Happy Birthday ចេញពណ៌ខ្មៅ/ប្រផេះដិតលើ Light Mode */
+/* 9. Hero Title Style per Mode */
 .hero-title-text {
   color: #1e293b !important;
 }
 
-/* ពេលបើក Dark Mode ទើបឱ្យវាចេញពណ៌ស */
 body.dark-mode .hero-title-text {
   color: #ffffff !important;
+}
+
+/* 10. Bucket List Header per Mode */
+.bucket-header-title {
+  color: #1e293b !important;
+}
+.bucket-header-sub {
+  color: #475569 !important;
+}
+
+body.dark-mode .bucket-header-title {
+  color: #ffffff !important;
+}
+body.dark-mode .bucket-header-sub {
+  color: #cbd5e1 !important;
 }

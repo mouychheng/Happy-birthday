@@ -25,9 +25,17 @@
   <style>
     /* ចលនាផ្ទៃមេឃផ្លាស់ប្តូរពណ៌ Gradient (Light Mode / ម៉ូតថ្ងៃដើម) */
     @keyframes skyGradient {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
+      0% {
+        background-position: 0% 50%;
+      }
+
+      50% {
+        background-position: 100% 50%;
+      }
+
+      100% {
+        background-position: 0% 50%;
+      }
     }
 
     /* Styling ដើមសម្រាប់ Light Mode */
@@ -48,8 +56,13 @@
       animation: none !important;
     }
 
-    .font-moul { font-family: 'Moul', serif; }
-    .font-fredoka { font-family: 'Fredoka', sans-serif; }
+    .font-moul {
+      font-family: 'Moul', serif;
+    }
+
+    .font-fredoka {
+      font-family: 'Fredoka', sans-serif;
+    }
 
     .floating-container {
       position: fixed;
@@ -62,10 +75,23 @@
     }
 
     @keyframes fallDown {
-      0% { transform: translateY(-15vh) rotate(0deg); opacity: 0; }
-      10% { opacity: 0.85; }
-      90% { opacity: 0.85; }
-      100% { transform: translateY(105vh) rotate(360deg); opacity: 0; }
+      0% {
+        transform: translateY(-15vh) rotate(0deg);
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 0.85;
+      }
+
+      90% {
+        opacity: 0.85;
+      }
+
+      100% {
+        transform: translateY(105vh) rotate(360deg);
+        opacity: 0;
+      }
     }
 
     .falling-emoji {
@@ -79,14 +105,17 @@
     .bucket-card-item {
       transition: transform 0.2s ease, box-shadow 0.2s ease, background-color 0.3s ease;
     }
+
     .bucket-card-item:hover {
       transform: translateY(-3px);
     }
-    .custom-checkbox:checked + div {
+
+    .custom-checkbox:checked+div {
       background-color: #ec4899;
       border-color: #ec4899;
     }
-    .custom-checkbox:checked + div svg {
+
+    .custom-checkbox:checked+div svg {
       opacity: 1;
     }
   </style>
@@ -95,9 +124,11 @@
 <body class="text-slate-800 pb-20 selection:bg-pink-200 selection:text-pink-900 relative">
 
   <!-- Floating Theme Toggle Buttons (ប៊ូតុងដូរ Mode ថ្ងៃ/យប់) -->
-  <div class="fixed top-4 right-4 z-50 flex items-center bg-white/90 backdrop-blur-md p-1.5 rounded-full shadow-xl border-2 border-pink-300">
-    <button id="themeToggleBtn" onclick="toggleTheme()" class="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-bold transition-all duration-300 bg-pink-100 text-pink-600 hover:bg-pink-200 hover:scale-105 active:scale-95 cursor-pointer shadow-sm">
-      <span id="themeIcon" class="text-lg">☀️</span>
+  <div
+    class="fixed top-4 right-4 z-50 flex items-center bg-white/90 backdrop-blur-md p-1.5 rounded-full shadow-xl border-2 border-pink-300">
+    <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Theme"
+      class="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-bold transition-all duration-300 bg-pink-100 text-pink-600 hover:bg-pink-200 hover:scale-105 active:scale-95 cursor-pointer shadow-sm">
+      <span id="themeIcon" class="text-lg">☀️️</span>
       <span id="themeText">ថ្ងៃ</span>
     </button>
   </div>
@@ -128,49 +159,55 @@
     <!-- 7. Wish Section -->
     <div data-include="components/wish-section.html"></div>
 
-    <!-- 8. Fun & Interactive Games Section (ហ្គេមកម្សាន្ត - នៅខាងក្រោមកាដូ) -->
+    <!-- 8. Fun & Interactive Games Section (ហ្គេមកម្សាន្ត) -->
     <div data-include="components/games-section.html"></div>
 
-    <!-- 9. BUCKET LIST SECTION -->
+    <!-- 9. Bucket List Section (ដាក់ចូល index.html ផ្ទាល់ ស្អាតស្ទាត់) -->
     <section class="py-8 px-2 sm:px-4 w-full">
-      <div class="text-center mb-6 space-y-2">
-        <span class="inline-block px-4 py-1 rounded-full bg-pink-100 text-pink-700 text-xs sm:text-sm font-bold tracking-wider border border-pink-300 shadow-xs">
-          🎯 MY NEW AGE BUCKET LIST
-        </span>
-        <h2 class="text-2xl sm:text-3xl font-fredoka font-bold text-slate-800">
-          គោលដៅ និងក្ដីស្រមៃក្នុងឆ្នាំថ្មី 🌸✨
-        </h2>
-        <p class="text-xs sm:text-sm font-semibold text-slate-700 max-w-md mx-auto">
-          របស់ដែលចង់បាន និងកន្លែងដែលចង់ទៅឱ្យបានសម្រេចក្នុងវ័យថ្មីនេះ!
-        </p>
-      </div>
+
+      
+     <!-- Header Title Section -->
+<div class="text-center mb-7 space-y-2">
+  <span
+    class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-100 dark:bg-pink-950/60 text-pink-700 dark:text-pink-300 text-xs sm:text-sm font-extrabold tracking-wider border border-pink-300 dark:border-pink-800 shadow-sm">
+    🎯 MY NEW AGE BUCKET LIST
+  </span>
+  <h2 class="bucket-header-title text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold tracking-tight">
+    គោលដៅ និងក្ដីស្រមៃក្នុងឆ្នាំថ្មី 🌸✨
+  </h2>
+  <p class="bucket-header-sub text-xs sm:text-sm font-medium max-w-md mx-auto">
+    របស់ដែលចង់បាន និងកន្លែងដែលចង់ទៅឱ្យបានសម្រេចក្នុងវ័យថ្មីនេះ!
+  </p>
+</div>
 
       <!-- Grid Cards ទាំង ១២ -->
-      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 max-w-4xl mx-auto w-full">
+      <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-5 max-w-4xl mx-auto w-full">
 
         <!-- Card 1: IT -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://nanimation.com/wp-content/uploads/2026/04/Code-on-Screen-1024x683.webp" alt="IT Skill" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://nanimation.com/wp-content/uploads/2026/04/Code-on-Screen-1024x683.webp" alt="IT Skill" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-sky-700 bg-sky-100 px-2.5 py-0.5 rounded-md mb-1 border border-sky-200">💻 Skill</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">រៀនចេះជំនាញ IT</h3>
-            
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-sky-700 dark:text-sky-300 bg-sky-100 dark:bg-sky-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-sky-200 dark:border-sky-800">💻 Skill</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">រៀនចេះជំនាញ IT</h3>
+
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">60%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">60%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 60%;"></div>
               </div>
             </div>
@@ -178,28 +215,30 @@
         </div>
 
         <!-- Card 2: ភាសាចិន -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/736x/a5/86/6e/a5866e8a0cdb544bf28cd6a85b394562.jpg" alt="Chinese Language" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/736x/a5/86/6e/a5866e8a0cdb544bf28cd6a85b394562.jpg" alt="Chinese Language" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-pink-700 bg-pink-100 px-2.5 py-0.5 rounded-md mb-1 border border-pink-200">🗣 Language</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">រៀនចេះភាសាចិន</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-pink-700 dark:text-pink-300 bg-pink-100 dark:bg-pink-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-pink-200 dark:border-pink-800">🗣 Language</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">រៀនចេះភាសាចិន</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">40%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">40%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 40%;"></div>
               </div>
             </div>
@@ -207,28 +246,30 @@
         </div>
 
         <!-- Card 3: Graduation -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/1200x/54/5f/bb/545fbbb30137ef07ea3287ecd7cf2553.jpg" alt="Education" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/1200x/54/5f/bb/545fbbb30137ef07ea3287ecd7cf2553.jpg" alt="Education" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-blue-700 bg-blue-100 px-2.5 py-0.5 rounded-md mb-1 border border-blue-200">🎓 Degree</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">បញ្ចប់ការសិក្សាថ្នាក់បរិញ្ញាបត្រ</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-blue-200 dark:border-blue-800">🎓 Degree</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">បញ្ចប់ការសិក្សាថ្នាក់បរិញ្ញាបត្រ</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>ជិតសម្រេចបាន</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">90%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">90%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 90%;"></div>
               </div>
             </div>
@@ -236,28 +277,30 @@
         </div>
 
         <!-- Card 4: Career -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/736x/aa/59/65/aa596549c54042ca65683d0466a8eaff.jpg" alt="Dream Career" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/736x/aa/59/65/aa596549c54042ca65683d0466a8eaff.jpg" alt="Dream Career" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-purple-700 bg-purple-100 px-2.5 py-0.5 rounded-md mb-1 border border-purple-200">✨ Career</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">ធ្វើការងារក្ដីស្រមៃ</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-purple-700 dark:text-purple-300 bg-purple-100 dark:bg-purple-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-purple-200 dark:border-purple-800">✨ Career</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">ធ្វើការងារក្ដីស្រមៃ</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">10%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">10%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 10%;"></div>
               </div>
             </div>
@@ -265,28 +308,30 @@
         </div>
 
         <!-- Card 5: Phone -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/736x/35/d0/05/35d0058ccbc702c988ddd60b47dd0713.jpg" alt="New Phone" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/736x/35/d0/05/35d0058ccbc702c988ddd60b47dd0713.jpg" alt="New Phone" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-indigo-700 bg-indigo-100 px-2.5 py-0.5 rounded-md mb-1 border border-indigo-200">📱 Gadget</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">ទិញទូរស័ព្ទថ្មី</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-indigo-700 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-indigo-200 dark:border-indigo-800">📱 Gadget</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">ទិញទូរស័ព្ទថ្មី</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មើមិនឃើញសោះ</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">7%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">7%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 7%;"></div>
               </div>
             </div>
@@ -294,28 +339,30 @@
         </div>
 
         <!-- Card 6: Travel -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="assets/img10.png" alt="Travel" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="assets/img10.png" alt="Travel" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-md mb-1 border border-amber-200">✈ Travel</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">ដើរលេងកន្លែងក្នុងក្តីស្រមៃ</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-amber-200 dark:border-amber-800">✈ Travel</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">ដើរលេងកន្លែងក្នុងក្តីស្រមៃ</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">40%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">40%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 40%;"></div>
               </div>
             </div>
@@ -323,28 +370,30 @@
         </div>
 
         <!-- Card 7: Motorbike -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwFAflxaZWU0yGtN2Mp7_mzx4kXEN8hMey0l5WSZR5IXwIlttqo99M2hY&s=10" alt="Motorbike" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRUwFAflxaZWU0yGtN2Mp7_mzx4kXEN8hMey0l5WSZR5IXwIlttqo99M2hY&s=10" alt="Motorbike" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-emerald-800 bg-emerald-100 px-2.5 py-0.5 rounded-md mb-1 border border-emerald-200">🛵 Vehicle</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">ទិញម៉ូតូផ្ទាល់ខ្លួន</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-emerald-800 dark:text-emerald-300 bg-emerald-100 dark:bg-emerald-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-emerald-200 dark:border-emerald-800">🛵 Vehicle</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">ទិញម៉ូតូផ្ទាល់ខ្លួន</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនហានស្រមៃ 😫</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">2%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">2%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 2%;"></div>
               </div>
             </div>
@@ -352,28 +401,30 @@
         </div>
 
         <!-- Card 8: Shopping -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/736x/af/8c/ea/af8ceae6f67e7c1e6668c0a19cce1bd7.jpg" alt="Shopping" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/736x/af/8c/ea/af8ceae6f67e7c1e6668c0a19cce1bd7.jpg" alt="Shopping" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-rose-800 bg-rose-100 px-2.5 py-0.5 rounded-md mb-1 border border-rose-200">🛍 Shopping</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">ទិញរបស់ដែលខ្លួនស្រឡាញ់</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-rose-800 dark:text-rose-300 bg-rose-100 dark:bg-rose-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-rose-200 dark:border-rose-800">🛍 Shopping</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">ទិញរបស់ដែលខ្លួនស្រឡាញ់</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>សម្រេចបាន</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">99%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">99%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 99%;"></div>
               </div>
             </div>
@@ -381,28 +432,30 @@
         </div>
 
         <!-- Card 9: Dream House -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/1200x/55/63/f0/5563f054b19f1af28bd8ab7d7b1093cf.jpg" alt="Dream House" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/1200x/55/63/f0/5563f054b19f1af28bd8ab7d7b1093cf.jpg" alt="Dream House" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-teal-800 bg-teal-100 px-2.5 py-0.5 rounded-md mb-1 border border-teal-200">🏡 Dream House</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">មានផ្ទះក្នុងក្ដីស្រមៃ</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-teal-800 dark:text-teal-300 bg-teal-100 dark:bg-teal-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-teal-200 dark:border-teal-800">🏡 Dream House</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">មានផ្ទះក្នុងក្ដីស្រមៃ</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">10%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">10%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 10%;"></div>
               </div>
             </div>
@@ -410,28 +463,30 @@
         </div>
 
         <!-- Card 10: Pet -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/1200x/ba/dd/33/badd33c948c84f85407c90180c675f07.jpg" alt="Pet" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/1200x/ba/dd/33/badd33c948c84f85407c90180c675f07.jpg" alt="Pet" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-amber-800 bg-amber-100 px-2.5 py-0.5 rounded-md mb-1 border border-amber-200">🐾 Pet & Hobby</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">ចិញ្ចឹមសត្វដែលស្រឡាញ់</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-amber-800 dark:text-amber-300 bg-amber-100 dark:bg-amber-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-amber-200 dark:border-amber-800">🐾 Pet & Hobby</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">ចិញ្ចឹមសត្វដែលស្រឡាញ់</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">80%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">80%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 80%;"></div>
               </div>
             </div>
@@ -439,28 +494,30 @@
         </div>
 
         <!-- Card 11: Sunset -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/736x/dd/1b/fa/dd1bfa747b83c958e7eb80dd8bb4c42c.jpg" alt="Sunset" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/736x/dd/1b/fa/dd1bfa747b83c958e7eb80dd8bb4c42c.jpg" alt="Sunset" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-orange-800 bg-orange-100 px-2.5 py-0.5 rounded-md mb-1 border border-orange-200">🌅 Sunset</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">មើលថ្ងៃលិចនៅសមុទ្រ/ភ្នំ</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-orange-800 dark:text-orange-300 bg-orange-100 dark:bg-orange-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-orange-200 dark:border-orange-800">🌅 Sunset</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">មើលថ្ងៃលិចនៅសមុទ្រ/ភ្នំ</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">100%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">100%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 100%;"></div>
               </div>
             </div>
@@ -468,28 +525,30 @@
         </div>
 
         <!-- Card 12: Dream Bedroom -->
-        <div class="bucket-card-item bg-white/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 shadow-sm flex flex-col justify-between">
+        <div class="bucket-card-item bg-white/95 dark:bg-slate-800/95 backdrop-blur-md rounded-2xl p-3 border border-pink-100 dark:border-slate-700 shadow-xs flex flex-col justify-between">
           <div>
-            <div class="relative w-full h-36 sm:h-44 rounded-xl overflow-hidden mb-2 bg-slate-100 flex items-center justify-center p-1">
-              <img src="https://i.pinimg.com/736x/ce/76/8e/ce768e8ea65f408a30974d0d5f7c2727.jpg" alt="Dream Bedroom" class="w-full h-full object-contain rounded-lg">
-              <div class="absolute top-2 right-2 bg-white/90 rounded-full p-1 shadow-xs z-10">
+            <div class="img-container relative w-full h-36 sm:h-48 rounded-xl overflow-hidden mb-2.5 bg-slate-100 dark:bg-slate-900 border border-slate-200/60 dark:border-slate-700/60">
+              <img src="https://i.pinimg.com/736x/ce/76/8e/ce768e8ea65f408a30974d0d5f7c2727.jpg" alt="Dream Bedroom" class="w-full h-full object-cover block">
+              <div class="absolute top-2 right-2 bg-white/80 dark:bg-slate-900/80 rounded-full p-1 shadow-xs border border-slate-200/60 dark:border-slate-700 z-10">
                 <label class="flex items-center cursor-pointer relative">
                   <input type="checkbox" class="custom-checkbox sr-only" onchange="toggleBucket(this)">
-                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white transition-all">
-                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg>
+                  <div class="w-5 h-5 rounded-full border-2 border-pink-500 flex items-center justify-center bg-white dark:bg-slate-800 transition-all">
+                    <svg class="w-3 h-3 text-white opacity-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path>
+                    </svg>
                   </div>
                 </label>
               </div>
             </div>
-            <span class="inline-block text-[11px] sm:text-xs font-bold text-indigo-700 bg-indigo-100 px-2.5 py-0.5 rounded-md mb-1 border border-indigo-200">🖨️ Bedroom</span>
-            <h3 class="font-bold text-xs sm:text-sm text-slate-800">មានបន្ទប់គេងក្នុងក្ដីស្រមៃ</h3>
+            <span class="inline-block text-[11px] sm:text-xs font-bold text-indigo-800 dark:text-indigo-300 bg-indigo-100 dark:bg-indigo-950/70 px-2.5 py-0.5 rounded-md mb-1.5 border border-indigo-200 dark:border-indigo-800">🛏️ Room</span>
+            <h3 class="font-bold text-xs sm:text-sm text-slate-800 dark:text-slate-100 leading-snug">រៀបបន្ទប់គេងក្នុងក្ដីស្រមៃ</h3>
 
-            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 transition-all duration-300">
-              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600">
+            <div class="card-progress-container hidden mt-2 pt-2 border-t border-slate-200 dark:border-slate-700 transition-all duration-300">
+              <div class="flex justify-between items-center mb-1 text-[11px] font-bold text-slate-600 dark:text-slate-300">
                 <span>មិនទាន់សម្រេច</span>
-                <span class="card-percent-text text-pink-600 font-extrabold">50%</span>
+                <span class="card-percent-text text-pink-600 dark:text-pink-400 font-extrabold">50%</span>
               </div>
-              <div class="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+              <div class="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 overflow-hidden">
                 <div class="card-progress-bar bg-gradient-to-r from-pink-400 to-indigo-500 h-full rounded-full transition-all duration-500" style="width: 50%;"></div>
               </div>
             </div>
@@ -498,19 +557,10 @@
 
       </div>
     </section>
-
-    <!-- 10. Grand Celebration Header & Button -->
-    <div class="text-center pt-8 pb-4 space-y-4">
-      <div class="text-4xl animate-bounce">🎈</div>
-      <h2 class="text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold text-sky-600 tracking-wide">
-        Cheers to Another Beautiful Year! 🎈
-      </h2>
-      <button onclick="triggerGrandCelebration()"
-        class="bg-gradient-to-r from-pink-400 via-sky-400 to-indigo-400 hover:opacity-90 text-white font-semibold py-3 px-6 rounded-full shadow-lg transform hover:scale-105 active:scale-95 transition-all duration-300 text-sm sm:text-base cursor-pointer">
-        🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)
-      </button>
-    </div>
   </main>
+
+  <!-- 10. Footer Section Placeholder -->
+  <div id="footer-section-placeholder" data-include="components/footer-section.html"></div>
 
   <!-- Script បង្កើត Emoji ធ្លាក់, ផ្លាស់ប្តូរ ២ ម៉ូត (ថ្ងៃ/យប់) និង បញ្ជា Progress Bar -->
   <script>
@@ -554,41 +604,22 @@
     const container = document.getElementById('emojiContainer');
     const totalEmojis = 25;
 
-    for (let i = 0; i < totalEmojis; i++) {
-      const emojiEl = document.createElement('div');
-      emojiEl.classList.add('falling-emoji');
-      emojiEl.innerText = emojis[Math.floor(Math.random() * emojis.length)];
+    if (container) {
+      for (let i = 0; i < totalEmojis; i++) {
+        const emojiEl = document.createElement('div');
+        emojiEl.classList.add('falling-emoji');
+        emojiEl.innerText = emojis[Math.floor(Math.random() * emojis.length)];
 
-      const randomLeft = Math.random() * 100;
-      const randomSize = Math.random() * 14 + 18;
-      const randomDuration = Math.random() * 8 + 8;
-      const randomDelay = -(Math.random() * 16);
+        const randomLeft = Math.random() * 100;
+        const randomSize = Math.random() * 14 + 18;
+        const randomDelay = -(Math.random() * 16);
 
-      emojiEl.style.left = `${randomLeft}%`;
-      emojiEl.style.fontSize = `${randomSize}px`;
-      emojiEl.style.animationDuration = `${randomDuration}s`;
-      emojiEl.style.animationDelay = `${randomDelay}s`;
+        emojiEl.style.left = `${randomLeft}%`;
+        emojiEl.style.fontSize = `${randomSize}px`;
+        emojiEl.style.animationDuration = `${Math.random() * 8 + 8}s`;
+        emojiEl.style.animationDelay = `${randomDelay}s`;
 
-      container.appendChild(emojiEl);
-    }
-
-    function triggerGrandCelebration() {
-      if (typeof confetti === 'function') {
-        const duration = 3 * 1000;
-        const animationEnd = Date.now() + duration;
-
-        const interval = setInterval(function () {
-          const timeLeft = animationEnd - Date.now();
-          if (timeLeft <= 0) {
-            return clearInterval(interval);
-          }
-          confetti({
-            particleCount: 50,
-            startVelocity: 30,
-            spread: 360,
-            origin: { x: Math.random(), y: Math.random() - 0.2 }
-          });
-        }, 250);
+        container.appendChild(emojiEl);
       }
     }
 

@@ -52,6 +52,9 @@
   }
 </style>
 
+<!-- 🎵 ថែម Tag Audio នេះចូល (ត្រង់នេះជាចំណុចខ្វះពីមុន) 🎵 -->
+<audio id="hbdAudio" src="assets/hbd-song.mp3" preload="auto" loop></audio>
+
 <!-- Banner Main Container -->
 <div
   class="relative w-full max-w-4xl mx-auto px-4 min-h-[480px] sm:min-h-[520px] flex flex-col justify-between select-none pt-12 pb-4 my-4">
@@ -91,6 +94,14 @@
 
   <!-- Center Content (អក្សរ & ប៊ូតុង) -->
   <div class="relative z-20 text-center px-2 my-auto flex flex-col items-center justify-center max-w-lg mx-auto">
+    
+    <!-- 🎵 Music Play/Pause Button 🎵 -->
+    <button id="bannerMusicToggleBtn" onclick="toggleBannerMusic()"
+      class="mb-4 px-4 py-2 rounded-full bg-pink-100 dark:bg-pink-950/60 text-pink-600 dark:text-pink-300 hover:bg-pink-200 dark:hover:bg-pink-900 border border-pink-300 dark:border-pink-800 text-xs sm:text-sm font-semibold transition-all duration-300 shadow-sm hover:scale-105 active:scale-95 flex items-center gap-2 cursor-pointer">
+      <span id="bannerMusicIcon">🎵</span>
+      <span id="bannerMusicText">ចុចស្តាប់ចម្រៀង HBD</span>
+    </button>
+
     <span
       class="inline-block px-4 py-1.5 rounded-full bg-white/80 dark:bg-slate-800/90 backdrop-blur-md text-pink-600 dark:text-pink-400 text-xs sm:text-sm font-semibold tracking-wider mb-4 border border-pink-200/80 dark:border-pink-900/50 shadow-sm">
       ✨ SPECIAL DAY CELEBRATION ✨
@@ -105,10 +116,10 @@
       </span>
     </h1>
 
-  <p
-  class="text-sky-500 dark:text-sky-300 text-sm sm:text-base font-medium mb-6 max-w-xs sm:max-w-md drop-shadow-sm leading-relaxed">
-  សូមជូនពរឱ្យឆ្នាំថ្មីនេះពេញដោយស្នាមញញឹម ក្តីសុខ និងរឿងល្អៗជាច្រើន! 🌸✨
-</p>
+    <p
+      class="text-sky-500 dark:text-sky-300 text-sm sm:text-base font-medium mb-6 max-w-xs sm:max-w-md drop-shadow-sm leading-relaxed">
+      សូមជូនពរឱ្យឆ្នាំថ្មីនេះពេញដោយស្នាមញញឹម ក្តីសុខ និងរឿងល្អៗជាច្រើន! 🌸✨
+    </p>
 
     <!-- Celebrate Button -->
     <button onclick="bannerCelebrate()"
@@ -172,7 +183,40 @@
 </div>
 
 <script>
-  function bannerCelebrate() {
+  // កូដការពារករណី function ត្រូវលោត error
+  window.toggleBannerMusic = function() {
+    const audio = document.getElementById('hbdAudio');
+    const icon = document.getElementById('bannerMusicIcon');
+    const text = document.getElementById('bannerMusicText');
+    const btn = document.getElementById('bannerMusicToggleBtn');
+
+    if (!audio) {
+      console.error("រកមិនឃើញ file ឬ Tag #hbdAudio ទេ! សូមពិនិត្យឈ្មោះ file ក្នុង assets/");
+      return;
+    }
+
+    if (audio.paused) {
+      audio.play().then(() => {
+        if (icon) icon.innerText = "⏸️";
+        if (text) text.innerText = "បិទចម្រៀង";
+        if (btn) btn.classList.add('bg-pink-200', 'dark:bg-pink-900');
+      }).catch(err => {
+        console.error("Audio playback error:", err);
+      });
+    } else {
+      audio.pause();
+      if (icon) icon.innerText = "🎵";
+      if (text) text.innerText = "ចុចស្តាប់ចម្រៀង HBD";
+      if (btn) btn.classList.remove('bg-pink-200', 'dark:bg-pink-900');
+    }
+  };
+
+  window.bannerCelebrate = function() {
+    const audio = document.getElementById('hbdAudio');
+    if (audio && audio.paused) {
+      window.toggleBannerMusic();
+    }
+
     if (typeof confetti === 'function') {
       confetti({
         particleCount: 130,
@@ -185,5 +229,5 @@
     if (mainSection) {
       mainSection.scrollIntoView({ behavior: 'smooth' });
     }
-  }
+  };
 </script>

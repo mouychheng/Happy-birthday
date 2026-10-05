@@ -1,0 +1,51 @@
+<!-- FOOTER CELEBRATION SECTION (components/footer-section.html) -->
+<div class="text-center py-8 px-4 max-w-2xl mx-auto select-none">
+  
+  <!-- អក្សរធំសរសេរអរគុណ (ពណ៌ខៀវដិតច្បាស់ពេលថ្ងៃ) -->
+  <h2 class="text-2xl sm:text-4xl font-extrabold mb-4" style="color: #0284c7;">
+    សូមអរគុណសម្រាប់ការចូលទស្សនា! 💖✨
+  </h2>
+
+  <!-- សាររៀបរាប់ (ពណ៌ខ្មៅ/ប្រផេះដិតច្បាស់ 100% ពេលថ្ងៃ) -->
+  <p class="text-base sm:text-lg font-medium leading-relaxed mb-6" style="color: #0f172a;">
+    សូមអរគុណយ៉ាងជ្រាលជ្រៅចំពោះបងប្អូន និងមិត្តភក្តិទាំងអស់ ដែលបានចំណាយពេលវេលាដ៏មានតម្លៃចូលមកទស្សនាគេហទំព័រមួយនេះ! 🌸 
+    រាល់ពាក្យជូនពរ ស្នាមញញឹម និងការស្រឡាញ់រាប់អានរបស់អ្នកទាំងអស់គ្នា គឺជាកាដូដ៏មានន័យ និងពិសេសបំផុតសម្រាប់ថ្ងៃខួបកំណើតនេះ។ 
+    សូមជូនពរឱ្យអ្នកទាំងអស់ជួបតែសេចក្តីសុខ សុភមង្គល និងជោគជ័យគ្រប់ភារកិច្ចផងដែរ! 🎂🎈✨
+  </p>
+
+  <!-- ប៊ូតុងអបអរសាទរ -->
+  <button onclick="triggerGrandCelebration()"
+    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-sky-500 via-pink-500 to-indigo-500 hover:opacity-95 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer inline-flex items-center gap-2">
+    <span>🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)</span>
+  </button>
+
+</div>
+
+<script>
+  function triggerGrandCelebration() {
+    // 1. ហៅប្រើ bannerCelebrate ប្រសិនបើមានក្នុង Window (ចេញពី banner-section.html)
+    if (typeof window.bannerCelebrate === 'function') {
+      window.bannerCelebrate();
+      return;
+    }
+
+    // 2. ករណីបម្រុងទុក ប្រសិនបើស្វែងរក bannerCelebrate មិនឃើញ
+    const audio = document.getElementById('hbdAudio');
+    if (audio && audio.paused) {
+      audio.play().catch(err => console.log("Audio play error:", err));
+    }
+
+    if (typeof confetti === 'function') {
+      confetti({
+        particleCount: 150,
+        spread: 100,
+        origin: { y: 0.6 }
+      });
+    }
+
+    const banner = document.querySelector('.hero-title-text') || document.querySelector('main');
+    if (banner) {
+      banner.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+</script>

@@ -36,3 +36,33 @@ document.addEventListener("DOMContentLoaded", function () {
       .catch((err) => console.error("Component Loader Error:", err));
   });
 });
+
+// បន្ថែម Function នេះក្នុង js/component-loader.js ឬ index.html
+function toggleBannerMusic() {
+  const audio = document.getElementById('hbdAudio');
+  const icon = document.getElementById('bannerMusicIcon');
+  const text = document.getElementById('bannerMusicText');
+  const btn = document.getElementById('bannerMusicToggleBtn');
+
+  if (!audio) {
+    console.error("រកមិនឃើញ Element #hbdAudio ទេ");
+    return;
+  }
+
+  if (audio.paused) {
+    audio.play().then(() => {
+      if (icon) icon.innerText = "⏸️";
+      if (text) text.innerText = "បិទចម្រៀង";
+      if (btn) btn.classList.add('bg-pink-200', 'dark:bg-pink-900');
+    }).catch(err => {
+      console.error("Audio playback error:", err);
+    });
+  } else {
+    audio.pause();
+    if (icon) icon.innerText = "🎵";
+    if (text) text.innerText = "ចុចស្តាប់ចម្រៀង HBD";
+    if (btn) btn.classList.remove('bg-pink-200', 'dark:bg-pink-900');
+  }
+}
+
+loadComponent('footer-section-placeholder', 'components/footer-section.html');

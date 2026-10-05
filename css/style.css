@@ -2,12 +2,12 @@
    GENERAL & CUSTOM STYLES (style.css)
    ========================================================= */
 
-/* 1. Global Transitions (ធ្វើឱ្យការផ្លាស់ប្តូរ Theme មានភាពរលូន) */
+/* 1. Global Transitions */
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
 
-/* 2. Custom Scrollbar (របារ Scroll ស្អាត) */
+/* 2. Custom Scrollbar */
 ::-webkit-scrollbar {
   width: 8px;
 }
@@ -29,11 +29,108 @@ body.dark-mode ::-webkit-scrollbar-track {
   background: #ec4899;
 }
 
-/* 3. Helper Classes ផ្សេងៗ */
+/* 3. Helper Classes */
 .img-hover-zoom {
   transition: transform 0.3s ease;
 }
 
 .img-hover-zoom:hover {
   transform: scale(1.03);
+}
+
+.music-play-btn {
+  background-color: #ff6b81;
+  color: white;
+  border: none;
+  padding: 12px 24px;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 25px;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  transition: all 0.3s ease;
+}
+
+.music-play-btn:hover {
+  background-color: #ff4757;
+  transform: scale(1.05);
+}
+
+.music-play-btn.playing {
+  background-color: #2ed573;
+}
+
+/* =========================================================
+   FIX BUCKET LIST CARDS (រៀបចំ Border & ពណ៌អក្សរច្បាស់ៗ)
+   ========================================================= */
+
+/* Card Border & Background លើ Light Mode (Mode ថ្ងៃ) */
+.bucket-card-item {
+  background-color: #ffffff !important;
+  border: 1.5px solid #cbd5e1 !important; /* Border ស្តើងច្បាស់ជុំវិញ Card ទាំងមូល */
+  border-radius: 1rem !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.bucket-card-item:hover {
+  transform: translateY(-3px);
+  border-color: #f472b6 !important; /* ពេល Hover ដូរ border ជាពណ៌ផ្កាឈូក */
+  box-shadow: 0 10px 25px -5px rgba(244, 114, 182, 0.2) !important;
+}
+
+/* លុប Border ជុំវិញប្រអប់រូបភាពចេញ */
+.bucket-card-item .img-container {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  background-color: #f8fafc !important;
+  border: none !important;
+  border-radius: 0.75rem !important;
+  overflow: hidden !important;
+}
+
+/* កំណត់ object-fit: contain ដើម្បីឱ្យឃើញរូបភាពទាំងមូលពីលើដល់ក្រោម */
+.bucket-card-item img {
+  max-width: 100% !important;
+  max-height: 100% !important;
+  width: auto !important;
+  height: 100% !important;
+  object-fit: contain !important;
+  display: block !important;
+  margin: 0 auto !important;
+  border: none !important;
+  transition: transform 0.4s ease !important;
+}
+
+.bucket-card-item:hover img {
+  transform: scale(1.04);
+}
+
+/* បង្ខំពណ៌អក្សរចំណងជើង និងអក្សរតូចៗលើ Card ឱ្យច្បាស់ ១០០% ពេល Mode ថ្ងៃ */
+.bucket-card-item h3,
+.bucket-card-item h4,
+.bucket-card-item .card-title {
+  color: #0f172a !important; /* ពណ៌ខ្មៅ/ប្រផេះដិត ច្បាស់ខ្លាំង */
+}
+
+.bucket-card-item p,
+.bucket-card-item span,
+.bucket-card-item div {
+  color: #334155 !important; /* ពណ៌អក្សរតូចៗច្បាស់ */
+}
+
+/* ចលនា Fade-in ពេលចុច Checkbox បង្ហាញ Progress */
+.card-progress-container {
+  animation: fadeInDown 0.3s ease-out;
+}
+
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
