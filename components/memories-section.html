@@ -1,0 +1,467 @@
+<!-- =========================================================
+   MEMORIES SECTION (GUESS THE MEMORY GAME COMPONENT)
+   ========================================================= -->
+<section id="memories-section" class="py-8 px-2 sm:px-4 w-full max-w-4xl mx-auto">
+  <!-- Header Title -->
+  <div class="text-center mb-6 space-y-2">
+    <span
+      class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-100 text-pink-600 dark:bg-pink-950/60 dark:text-pink-300 text-xs sm:text-sm font-extrabold tracking-wider border border-pink-300 dark:border-pink-800 shadow-sm">
+      📸 INTERACTIVE MEMORY BOX
+    </span>
+    <h2 class="hero-title-text text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold tracking-tight">
+      ទាយរូបភាពអនុស្សាវរីយ៍ 🌸✨
+    </h2>
+
+    <!-- Progress Tracker -->
+    <div class="flex items-center justify-center gap-3 mt-2 text-xs sm:text-sm font-semibold mem-progress-text">
+      <span>អនុស្សាវរីយ៍: <strong id="memCurrentRoundText" class="text-pink-600 dark:text-pink-400 font-extrabold">1 /
+          3</strong></span>
+      <div class="flex gap-2" id="memDotsTrack">
+        <div class="mem-dot w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 transition-all duration-300 active">
+        </div>
+        <div class="mem-dot w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 transition-all duration-300"></div>
+        <div class="mem-dot w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 transition-all duration-300"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Content Layout (គ្មានស៊ុមធំខាងក្រៅ) -->
+  <div class="flex flex-col md:flex-row gap-6 items-center justify-center">
+
+    <!-- 📷 Polaroid Card ( background ពណ៌ខៀវស្រទន់ ) -->
+    <div
+      class="memories-inner-card p-4 rounded-2xl border w-full max-w-sm transition-transform duration-300 hover:-translate-y-1 shadow-sm">
+      <div
+        class="photo-frame relative w-full h-64 sm:h-72 rounded-xl overflow-hidden bg-slate-900 shadow-inner border border-sky-200/50 dark:border-slate-700">
+        <img id="memoryImg" class="w-full h-full object-cover transition-all duration-700 blur-xl scale-110" src=""
+          alt="Memory Photo">
+        <div class="flash-overlay absolute inset-0 bg-white opacity-0 pointer-events-none" id="flashOverlay"></div>
+        <div
+          class="mystery-badge absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-pink-300 border border-white/20 text-xs px-3 py-1 rounded-full font-semibold flex items-center gap-1.5 shadow-sm">
+          🔒 Blurred Memory
+        </div>
+        <button
+          class="hint-btn absolute bottom-3 right-3 bg-sky-500 hover:bg-sky-600 text-white border border-sky-300/30 text-xs px-3.5 py-1.5 rounded-full backdrop-blur-md transition-all hover:scale-105 active:scale-95 cursor-pointer shadow-md font-bold"
+          onclick="toggleHint()">
+          🔍 បង្កើនភាពច្បាស់
+        </button>
+      </div>
+      <div class="polaroid-caption font-moul text-lg sm:text-xl text-center mt-3 min-h-[36px] font-bold tracking-wide"
+        id="polaroidCaption">
+        ???
+      </div>
+    </div>
+
+    <!-- 🤔 Quiz & Story Section -->
+    <div class="quiz-section w-full max-w-sm flex flex-col justify-between">
+      <div>
+        <h3
+          class="text-sm sm:text-base font-bold text-center md:text-left mb-3.5 flex items-center justify-center md:justify-start gap-2"
+          id="questionText">
+          🤔 តើអនុស្សាវរីយ៍មួយនេះកើតឡើងនៅឯណា?
+        </h3>
+
+        <!-- Dynamic Options Grid -->
+        <div class="flex flex-col gap-2.5" id="optionsGrid">
+          <!-- Options rendered dynamically -->
+        </div>
+      </div>
+
+      <!-- 📖 Memory Story Box -->
+      <div class="story-reveal-card mt-4 rounded-xl p-4 text-xs sm:text-sm hidden transition-all duration-300 shadow-sm"
+        id="storyBox">
+        <div class="font-extrabold mb-1 flex items-center gap-1" id="storyTitle">✨ អនុស្សាវរីយ៍ពិតប្រាកដ:</div>
+        <div id="storyDesc" class="leading-relaxed font-medium">...</div>
+      </div>
+
+      <!-- Next Button -->
+      <button
+        class="next-btn w-full mt-4 py-3 px-4 rounded-xl font-bold text-white bg-gradient-to-r from-sky-400 to-indigo-500 hover:from-sky-500 hover:to-indigo-600 shadow-md transition-all hover:scale-[1.02] active:scale-95 hidden cursor-pointer text-xs sm:text-sm"
+        id="nextBtn" onclick="nextMemory()">
+        អនុស្សាវរីយ៍បន្ទាប់ ➔
+      </button>
+    </div>
+
+  </div>
+</section>
+
+<!-- Component Style Rules -->
+<style>
+  /* =========================================================
+     LIGHT MODE STYLES (ស្ដង់ដារ)
+     ========================================================= */
+  #memories-section h2,
+  #memories-section h3,
+  #memories-section #questionText {
+    color: #0f172a !important;
+    /* ពណ៌អក្សរខ្មៅដិត មើលឃើញច្បាស់ ១០០% */
+    font-weight: 800 !important;
+  }
+
+  .mem-progress-text {
+    color: #334155 !important;
+  }
+
+  .memories-inner-card {
+    background-color: rgba(240, 249, 255, 0.9) !important;
+    border-color: #bae6fd !important;
+  }
+
+  .polaroid-caption {
+    color: #0284c7 !important;
+  }
+
+  /* Dot styles */
+  .mem-dot.active {
+    background-color: #38bdf8 !important;
+    box-shadow: 0 0 8px rgba(56, 189, 248, 0.6);
+  }
+
+  .mem-dot.completed {
+    background-color: #10b981 !important;
+  }
+
+  /* Flash Effect */
+  .flash-overlay.flashing {
+    animation: cameraFlash 0.6s ease-out;
+  }
+
+  @keyframes cameraFlash {
+    0% {
+      opacity: 0.9;
+    }
+
+    100% {
+      opacity: 0;
+    }
+  }
+
+  /* Option Buttons Styling */
+  .mem-opt-btn {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    background-color: #ffffff !important;
+    border: 1.5px solid #bae6fd !important;
+    padding: 11px 14px;
+    border-radius: 12px;
+    color: #0369a1 !important;
+    font-size: 13px;
+    font-weight: 700;
+    cursor: pointer;
+    text-align: left;
+    transition: all 0.2s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.03);
+  }
+
+  .mem-opt-btn:hover:not(:disabled) {
+    border-color: #38bdf8 !important;
+    background-color: #f0f9ff !important;
+    transform: translateX(4px);
+  }
+
+  .mem-opt-letter {
+    background-color: #e0f2fe !important;
+    color: #0284c7 !important;
+    width: 26px;
+    height: 26px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 800;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  /* Story Reveal Box */
+  .story-reveal-card {
+    background-color: rgba(224, 242, 254, 0.8) !important;
+    border: 1px solid #bae6fd !important;
+    color: #0369a1 !important;
+  }
+
+  #storyTitle {
+    color: #0284c7 !important;
+  }
+
+  /* Correct & Wrong States */
+  .mem-opt-btn.correct {
+    background-color: rgba(16, 185, 129, 0.15) !important;
+    border-color: #10b981 !important;
+    color: #059669 !important;
+  }
+
+  .mem-opt-btn.correct .mem-opt-letter {
+    background-color: #10b981 !important;
+    color: white !important;
+  }
+
+  .mem-opt-btn.wrong {
+    background-color: rgba(239, 68, 68, 0.15) !important;
+    border-color: #ef4444 !important;
+    color: #dc2626 !important;
+  }
+
+  .mem-opt-btn.wrong .mem-opt-letter {
+    background-color: #ef4444 !important;
+    color: white !important;
+  }
+
+  /* =========================================================
+     DARK MODE OVERRIDES (ពេលបើក MODE យប់)
+     ========================================================= */
+  body.dark-mode #memories-section h2,
+  body.dark-mode #memories-section h3,
+  body.dark-mode #memories-section #questionText {
+    color: #f8fafc !important;
+    /* ពណ៌សភ្លឺច្បាស់ */
+  }
+
+  body.dark-mode .mem-progress-text {
+    color: #cbd5e1 !important;
+  }
+
+  body.dark-mode .memories-inner-card {
+    background-color: rgba(30, 41, 59, 0.9) !important;
+    border-color: #334155 !important;
+  }
+
+  body.dark-mode .polaroid-caption {
+    color: #38bdf8 !important;
+  }
+
+  body.dark-mode .mem-opt-btn {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f8fafc !important;
+  }
+
+  body.dark-mode .mem-opt-btn:hover:not(:disabled) {
+    background-color: #334155 !important;
+    border-color: #38bdf8 !important;
+  }
+
+  body.dark-mode .mem-opt-letter {
+    background-color: #0f172a !important;
+    color: #38bdf8 !important;
+  }
+
+  body.dark-mode .story-reveal-card {
+    background-color: #1e293b !important;
+    border-color: #334155 !important;
+    color: #f1f5f9 !important;
+  }
+
+  body.dark-mode #storyTitle {
+    color: #38bdf8 !important;
+  }
+</style>
+
+<!-- Component Script Logic -->
+<script>
+  (function initMemoriesComponent() {
+    let audioCtx = null;
+
+    function getAudioCtx() {
+      if (!audioCtx) {
+        audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+      }
+      if (audioCtx.state === 'suspended') {
+        audioCtx.resume();
+      }
+      return audioCtx;
+    }
+
+    function playTone(freq, type = 'sine', duration = 0.2) {
+      try {
+        const ctx = getAudioCtx();
+        const osc = ctx.createOscillator();
+        const gain = ctx.createGain();
+        osc.type = type;
+        osc.frequency.setValueAtTime(freq, ctx.currentTime);
+        gain.gain.setValueAtTime(0.12, ctx.currentTime);
+        gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime + duration);
+        osc.connect(gain);
+        gain.connect(ctx.destination);
+        osc.start();
+        osc.stop(ctx.currentTime + duration);
+      } catch (e) {
+        console.log('Audio playback prevented');
+      }
+    }
+
+    function playCameraShutter() {
+      playTone(800, 'square', 0.05);
+      setTimeout(() => playTone(300, 'triangle', 0.08), 60);
+    }
+
+    function playCorrectChime() {
+      [523.25, 659.25, 783.99, 1046.50].forEach((f, i) => {
+        setTimeout(() => playTone(f, 'sine', 0.3), i * 90);
+      });
+    }
+
+    // Memories Data
+    const memories = [
+      {
+        question: "🤔 តើអនុស្សាវរីយ៍មួយនេះកើតឡើងនៅឯណា?",
+        image: "assets/img11.png",
+        options: [
+          { key: "A", text: "ធ្វើ 3 នាក់បងប្អូន ឆ្នាំ 2022", isCorrect: true },
+          { key: "B", text: "ធ្វើម្នាក់ឋង ឆ្នាំ 2022", isCorrect: false },
+          { key: "C", text: "អនុស្សាវរីយ៍នៅវិទ្យាល័យ", isCorrect: false }
+        ],
+        caption: "💖 3 Siblings Moment · 2022",
+        story: "រូបថតដ៏មានន័យរវាងបងប្អូន 3 នាក់កាលពីឆ្នាំ 2022! ជាពេលវេលាពេញដោយស្នាមញញឹម សេចក្តីសុខ និងក្តីស្រឡាញ់ក្នុងគ្រួសារ។"
+      },
+      {
+        question: "🤔 តើហេតុការណ៍អ្វីដែលកើតឡើងក្នុងរូបនេះ?",
+        image: "assets/img12.png",
+        options: [
+          { key: "A", text: "ចូលរួមកម្មវិធីពិធីខួបកំណើត Surprise", isCorrect: false },
+          { key: "B", text: "បង្កើត និងកាត់តរូបភាពដោយប្រើ AI", isCorrect: true },
+          { key: "C", text: "ទៅថតរូបនៅ Studio ខួបកំណើត", isCorrect: false },
+          { key: "D", text: "ចូលរួមរាប់ថយក្រោយឆ្លងឆ្នាំថ្មី", isCorrect: false }
+        ],
+        caption: "🤖 AI Generated Art",
+        story: "រូបភាពដ៏ស្រស់ស្អាតដែលបានបង្កើតឡើងដោយបច្ចេកវិទ្យា AI! ស្ទីលប្លែកអារម្មណ៍ និងពោរពេញដោយគំនិតច្នៃប្រឌិត។"
+      },
+      {
+        question: "🤔 រូបភាពមួយនេះរំលឹកដល់អ្វី?",
+        image: "assets/img13.png",
+        options: [
+          { key: "A", text: "ថ្ងៃជួបជុំសម្ភាសន៍ការងារលើកដំបូង", isCorrect: false },
+          { key: "B", text: "ថ្ងៃចូលរៀនដំបូងនៅសកលវិទ្យាល័យ", isCorrect: false },
+          { key: "C", text: "មិត្តរួមសកលវិទ្យាល័យធ្វើ Surprise ខួបកំណើត", isCorrect: true },
+          { key: "D", text: "ការជួបជុំរៀនក្រុមនៅបណ្ណាល័យ", isCorrect: false }
+        ],
+        caption: "🎉 University Friends Surprise!",
+        story: "ការ Surprise ដ៏កក់ក្តៅ និងរំភើបពីសំណាក់មិត្តភក្តិនៅសកលវិទ្យាល័យ! ជាអនុស្សាវរីយ៍ដ៏ល្អបវរដែលមិនអាចបាត់បង់បាន។"
+      }
+    ];
+
+    let currentIndex = 0;
+    let hintLevel = 0;
+
+    window.renderMemory = function (index) {
+      const data = memories[index];
+      const imgEl = document.getElementById('memoryImg');
+      const captionEl = document.getElementById('polaroidCaption');
+      const storyBox = document.getElementById('storyBox');
+      const nextBtn = document.getElementById('nextBtn');
+      const qText = document.getElementById('questionText');
+      const optionsGrid = document.getElementById('optionsGrid');
+
+      if (!imgEl || !optionsGrid) return;
+
+      // Reset State
+      imgEl.classList.remove('revealed');
+      imgEl.style.filter = "blur(22px)";
+      imgEl.src = data.image;
+      captionEl.innerText = "???";
+      storyBox.classList.add('hidden');
+      nextBtn.classList.add('hidden');
+      qText.innerText = data.question;
+      hintLevel = 0;
+
+      // Update Progress
+      const curText = document.getElementById('memCurrentRoundText');
+      if (curText) curText.innerText = `${index + 1} / ${memories.length}`;
+
+      const dots = document.querySelectorAll('.mem-dot');
+      dots.forEach((dot, idx) => {
+        dot.className = "mem-dot w-2.5 h-2.5 rounded-full bg-slate-300 dark:bg-slate-700 transition-all duration-300";
+        if (idx === index) dot.classList.add('active');
+        if (idx < index) dot.classList.add('completed');
+      });
+
+      // Render Options
+      optionsGrid.innerHTML = '';
+      data.options.forEach(opt => {
+        const btn = document.createElement('button');
+        btn.className = 'mem-opt-btn';
+        btn.innerHTML = `<span class="mem-opt-letter">${opt.key}</span> <span>${opt.text}</span>`;
+        btn.onclick = () => handleChoice(btn, opt.isCorrect, data);
+        optionsGrid.appendChild(btn);
+      });
+    };
+
+    window.toggleHint = function () {
+      const imgEl = document.getElementById('memoryImg');
+      if (!imgEl || imgEl.classList.contains('revealed')) return;
+      hintLevel = (hintLevel + 1) % 3;
+      const blurs = ["22px", "12px", "6px"];
+      imgEl.style.filter = `blur(${blurs[hintLevel]})`;
+      playTone(400 + hintLevel * 100, 'sine', 0.15);
+    };
+
+    function handleChoice(selectedBtn, isCorrect, data) {
+      const allButtons = document.querySelectorAll('.mem-opt-btn');
+      allButtons.forEach(b => b.disabled = true);
+
+      if (isCorrect) {
+        selectedBtn.classList.add('correct');
+        revealMemory(data);
+        playCorrectChime();
+        if (typeof confetti === 'function') {
+          confetti({ particleCount: 75, spread: 60, origin: { y: 0.6 } });
+        }
+      } else {
+        selectedBtn.classList.add('wrong');
+        playTone(200, 'sawtooth', 0.3);
+        allButtons.forEach(btn => {
+          if (btn.innerText.includes(data.options.find(o => o.isCorrect).text)) {
+            btn.classList.add('correct');
+          }
+        });
+        setTimeout(() => revealMemory(data), 600);
+      }
+    }
+
+    function revealMemory(data) {
+      playCameraShutter();
+      const flash = document.getElementById('flashOverlay');
+      if (flash) {
+        flash.classList.add('flashing');
+        setTimeout(() => flash.classList.remove('flashing'), 600);
+      }
+
+      const imgEl = document.getElementById('memoryImg');
+      if (imgEl) {
+        imgEl.classList.add('revealed');
+        imgEl.style.filter = "blur(0px)";
+      }
+
+      document.getElementById('polaroidCaption').innerText = data.caption;
+
+      const storyBox = document.getElementById('storyBox');
+      document.getElementById('storyTitle').innerText = `✨ ${data.caption}`;
+      document.getElementById('storyDesc').innerText = data.story;
+      storyBox.classList.remove('hidden');
+
+      const nextBtn = document.getElementById('nextBtn');
+      if (currentIndex < memories.length - 1) {
+        nextBtn.innerText = "អនុស្សាវរីយ៍បន្ទាប់ ➔";
+        nextBtn.classList.remove('hidden');
+      } else {
+        nextBtn.innerText = "🎉 បានដោះស្រាយអនុស្សាវរីយ៍ទាំងអស់ហើយ!";
+        nextBtn.classList.remove('hidden');
+      }
+    }
+
+    window.nextMemory = function () {
+      if (currentIndex < memories.length - 1) {
+        currentIndex++;
+      } else {
+        currentIndex = 0;
+      }
+      renderMemory(currentIndex);
+    };
+
+    // Initial Load
+    setTimeout(() => {
+      renderMemory(0);
+    }, 100);
+  })();
+</script>

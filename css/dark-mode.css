@@ -142,3 +142,55 @@ body.dark-mode .bucket-header-title {
 body.dark-mode .bucket-header-sub {
   color: #cbd5e1 !important;
 }
+
+/* =========================================================
+   11. MEMORIES SECTION DARK MODE OVERRIDE
+   ========================================================= */
+
+/* 1. Main Outer Card Container ពេល Dark Mode */
+body.dark-mode .memories-outer-card,
+body.dark-mode #memories-section .calendar-outer-card {
+  background-color: #0f172a !important;
+  border-color: #1e293b !important;
+  color: #f8fafc !important;
+}
+
+/* 2. Inner Polaroid Photo Frame ពេល Dark Mode */
+body.dark-mode .memory-card-wrap,
+body.dark-mode .memories-inner-card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+/* 3. Option Choice Buttons ពេល Dark Mode */
+body.dark-mode .mem-opt-btn {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f8fafc !important;
+}
+
+body.dark-mode .mem-opt-btn:hover:not(:disabled) {
+  background-color: #334155 !important;
+  border-color: #38bdf8 !important; /* ពណ៌ Cyan/Sky ឱ្យដូច Theme ដើម */
+}
+
+/* 4. Letter Badge (A, B, C, D) ក្នុង Button ពេល Dark Mode */
+body.dark-mode .mem-opt-letter {
+  background-color: #0f172a !important;
+  color: #38bdf8 !important;
+}
+
+/* 5. Story Reveal Box ពេល Dark Mode */
+body.dark-mode .story-reveal-card {
+  background-color: #1e293b !important;
+  border-color: #334155 !important;
+  color: #f1f5f9 !important;
+}
+
+/* 6. Text Elements & Captions ពេល Dark Mode */
+body.dark-mode #memories-section h2,
+body.dark-mode #memories-section h3,
+body.dark-mode #memories-section .polaroid-caption {
+  color: #f8fafc !important;
+}
