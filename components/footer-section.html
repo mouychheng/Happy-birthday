@@ -1,51 +1,121 @@
 <!-- FOOTER CELEBRATION SECTION (components/footer-section.html) -->
-<div class="text-center py-8 px-4 max-w-2xl mx-auto select-none">
+<footer class="footer-section w-full pt-10 pb-12 px-4 mt-12 border-t border-sky-100/80 transition-colors duration-300">
   
-  <!-- អក្សរធំសរសេរអរគុណ (ពណ៌ខៀវដិតច្បាស់ពេលថ្ងៃ) -->
-  <h2 class="text-2xl sm:text-4xl font-extrabold mb-4" style="color: #0284c7;">
-    សូមអរគុណសម្រាប់ការចូលទស្សនា! 💖✨
-  </h2>
+  <div class="max-w-3xl mx-auto text-center space-y-6">
+    
+    <!-- 1. អក្សរធំសរសេរអរគុណ -->
+    <h2 class="footer-title text-2xl sm:text-3xl font-extrabold text-sky-600 transition-colors">
+      សូមអរគុណសម្រាប់ការចូលទស្សនា! 💖✨
+    </h2>
 
-  <!-- សាររៀបរាប់ (ពណ៌ខ្មៅ/ប្រផេះដិតច្បាស់ 100% ពេលថ្ងៃ) -->
-  <p class="text-base sm:text-lg font-medium leading-relaxed mb-6" style="color: #0f172a;">
-    សូមអរគុណយ៉ាងជ្រាលជ្រៅចំពោះបងប្អូន និងមិត្តភក្តិទាំងអស់ ដែលបានចំណាយពេលវេលាដ៏មានតម្លៃចូលមកទស្សនាគេហទំព័រមួយនេះ! 🌸 
-    រាល់ពាក្យជូនពរ ស្នាមញញឹម និងការស្រឡាញ់រាប់អានរបស់អ្នកទាំងអស់គ្នា គឺជាកាដូដ៏មានន័យ និងពិសេសបំផុតសម្រាប់ថ្ងៃខួបកំណើតនេះ។ 
-    សូមជូនពរឱ្យអ្នកទាំងអស់ជួបតែសេចក្តីសុខ សុភមង្គល និងជោគជ័យគ្រប់ភារកិច្ចផងដែរ! 🎂🎈✨
-  </p>
+    <!-- 2. សាររៀបរាប់ -->
+    <p class="footer-text text-slate-800 text-sm sm:text-base font-medium leading-relaxed max-w-2xl mx-auto transition-colors">
+      សូមអរគុណយ៉ាងជ្រាលជ្រៅចំពោះបងប្អូន និងមិត្តភក្តិទាំងអស់ ដែលបានចំណាយពេលវេលាដ៏មានតម្លៃចូលមកទស្សនាគេហទំព័រមួយនេះ! 🌸 
+      រាល់ពាក្យជូនពរ ស្នាមញញឹម និងការស្រឡាញ់រាប់អានរបស់អ្នកទាំងអស់គ្នា គឺជាកាដូដ៏មានន័យ និងពិសេសបំផុតសម្រាប់ថ្ងៃខួបកំណើតនេះ។ 
+      សូមជូនពរឱ្យអ្នកទាំងអស់ជួបតែសេចក្តីសុខ សុភមង្គល និងជោគជ័យគ្រប់ភារកិច្ចផងដែរ! 🎂🎈✨
+    </p>
 
-  <!-- ប៊ូតុងអបអរសាទរ -->
-  <button onclick="triggerGrandCelebration()"
-    class="px-8 py-3.5 rounded-full bg-gradient-to-r from-sky-500 via-pink-500 to-indigo-500 hover:opacity-95 text-white font-bold text-sm sm:text-base shadow-lg hover:shadow-xl hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer inline-flex items-center gap-2">
-    <span>🎉 អបអរសាទរថ្ងៃខួបកំណើត (Grand Celebration)</span>
-  </button>
+    <!-- 3. ប៊ូតុង Grand Celebration & ប៊ូតុងរត់ទៅកន្លែងសរសេរពាក្យជូនពរ -->
+    <div class="pt-2 flex flex-wrap items-center justify-center gap-3">
+      <button onclick="triggerGrandCelebration()"
+        class="px-6 py-3 rounded-full bg-gradient-to-r from-sky-400 via-indigo-400 to-pink-400 hover:opacity-90 text-white font-bold text-sm sm:text-base shadow-md hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer inline-flex items-center gap-2">
+        <span>🎉 អបអរសាទរថ្ងៃខួបកំណើត</span>
+      </button>
 
-</div>
+      <button onclick="scrollToWishSection()"
+        class="px-6 py-3 rounded-full bg-gradient-to-r from-pink-400 to-rose-400 hover:opacity-90 text-white font-bold text-sm sm:text-base shadow-md hover:scale-105 active:scale-95 transition-all duration-300 cursor-pointer inline-flex items-center gap-2">
+        <span>✍️ សរសេរពាក្យជូនពរ 💌</span>
+      </button>
+    </div>
+
+    <!-- 4. ផ្នែក «តោះរាប់អានគ្នា» (អក្សរនៅជួរលើ ឯ Icons នៅជួរក្រោម) -->
+    <div class="pt-4 flex flex-col items-center justify-center gap-3">
+      <!-- អក្សរនៅខាងលើ ចំកណ្តាល -->
+      <span class="footer-subtext text-base sm:text-lg text-slate-700 font-bold">
+        🫶 តោះមករាប់អានគ្នា មកធ្វើមិត្តថ្មីៗ និងចែករំលែករឿងល្អៗជាមួយគ្នា 💙✨
+      </span>
+
+      <!-- បញ្ជី Social Media Icons នៅជួរខាងក្រោម -->
+      <div class="flex flex-wrap justify-center items-center gap-2 sm:gap-4 text-sm font-semibold">
+        <a href="https://t.me/CHHENG55" target="_blank" class="footer-social-link text-slate-600 hover:text-blue-500 transition-colors p-1.5 rounded-lg hover:bg-blue-50 dark:hover:bg-slate-800 flex items-center gap-1.5" title="Telegram">
+          ✈️ <span>Telegram</span>
+        </a>
+        
+        <a href="https://web.facebook.com/profile.php?fb_profile_edit_entry_point=%7B%22click_point%22%3A%22edit_profile_button%22%2C%22feature%22%3A%22profile_header%22%7D&id=61589471625630&sk=about" target="_blank" class="footer-social-link text-slate-600 hover:text-sky-500 transition-colors p-1.5 rounded-lg hover:bg-sky-50 dark:hover:bg-slate-800 flex items-center gap-1.5" title="Facebook">
+          🌐 <span>Facebook</span>
+        </a>
+
+        <a href="https://www.tiktok.com/@c_h_h_e_n_g_7" target="_blank" class="footer-social-link text-slate-600 hover:text-slate-900 dark:hover:text-white transition-colors p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 flex items-center gap-1.5" title="TikTok">
+          🎵 <span>TikTok</span>
+        </a>
+
+        <a href="https://www.youtube.com/@chheng7" target="_blank" class="footer-social-link text-slate-600 hover:text-red-600 transition-colors p-1.5 rounded-lg hover:bg-red-50 dark:hover:bg-slate-800 flex items-center gap-1.5" title="YouTube">
+          <svg class="w-5 h-5 text-red-600 fill-current" viewBox="0 0 24 24">
+            <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+          </svg>
+          <span>YouTube</span>
+        </a>
+        
+        <a href="https://www.instagram.com/ching12102026?stkn=MmRveHZ6aWZpam12&utm_source=qr" target="_blank" class="footer-social-link text-slate-600 hover:text-pink-500 transition-colors p-1.5 rounded-lg hover:bg-pink-50 dark:hover:bg-slate-800 flex items-center gap-1.5" title="Instagram">
+          📸 <span>Instagram</span>
+        </a>
+
+        <a href="https://wa.me/qr/JPTZJQTAWPAMN1?s=r" target="_blank" class="footer-social-link text-slate-600 hover:text-emerald-500 transition-colors p-1.5 rounded-lg hover:bg-emerald-50 dark:hover:bg-slate-800 flex items-center gap-1.5" title="WhatsApp">
+          💬 <span>WhatsApp</span>
+        </a>
+      </div>
+    </div>
+
+    <!-- 5. បន្ទាត់ខណ្ឌស្ដើង -->
+    <div class="footer-divider border-t border-sky-100 my-4 transition-colors"></div>
+
+    <!-- 6. Copyright & Back to Top -->
+    <div class="flex flex-col sm:flex-row items-center justify-between gap-3 text-xs font-semibold pb-4">
+      <p class="footer-subtext text-slate-600">© 2026 Made with ❤️ for Birthday Celebration</p>
+      
+      <button onclick="window.scrollTo({top: 0, behavior: 'smooth'})" class="footer-subtext text-slate-600 hover:text-sky-600 transition-colors flex items-center gap-1 cursor-pointer">
+        ⬆️ ត្រឡប់ទៅលើវិញ (Back to Top)
+      </button>
+    </div>
+
+  </div>
+</footer>
 
 <script>
   function triggerGrandCelebration() {
-    // 1. ហៅប្រើ bannerCelebrate ប្រសិនបើមានក្នុង Window (ចេញពី banner-section.html)
-    if (typeof window.bannerCelebrate === 'function') {
-      window.bannerCelebrate();
-      return;
-    }
-
-    // 2. ករណីបម្រុងទុក ប្រសិនបើស្វែងរក bannerCelebrate មិនឃើញ
-    const audio = document.getElementById('hbdAudio');
-    if (audio && audio.paused) {
-      audio.play().catch(err => console.log("Audio play error:", err));
+    if (typeof playAudioAuto === 'function') {
+      playAudioAuto();
+    } else if (typeof toggleAudio === 'function') {
+      const audio = document.getElementById('hbdAudio');
+      if (audio && audio.paused) { toggleAudio(); }
     }
 
     if (typeof confetti === 'function') {
-      confetti({
-        particleCount: 150,
-        spread: 100,
-        origin: { y: 0.6 }
-      });
+      confetti({ particleCount: 150, spread: 100, origin: { y: 0.6 } });
     }
 
-    const banner = document.querySelector('.hero-title-text') || document.querySelector('main');
+    if (typeof window.bannerCelebrate === 'function') {
+      window.bannerCelebrate();
+    }
+
+    const banner = document.querySelector('.hero-title-text') || document.querySelector('main') || document.body;
     if (banner) {
       banner.scrollIntoView({ behavior: 'smooth' });
+    }
+  }
+
+  function scrollToWishSection() {
+    const wishTarget = document.getElementById('wish-section') || 
+                       document.querySelector('.wish-card') || 
+                       document.querySelector('input[placeholder*="ching"]')?.closest('div') ||
+                       document.querySelector('textarea')?.closest('div');
+
+    if (wishTarget) {
+      wishTarget.scrollIntoView({ behavior: 'smooth', block: 'center' });
+      const nameInput = wishTarget.querySelector('input');
+      if (nameInput) {
+        setTimeout(() => nameInput.focus(), 600);
+      }
     }
   }
 </script>

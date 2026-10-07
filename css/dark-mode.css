@@ -194,3 +194,50 @@ body.dark-mode #memories-section h3,
 body.dark-mode #memories-section .polaroid-caption {
   color: #f8fafc !important;
 }
+
+/* =========================================================
+   12. FOOTER SECTION DARK MODE OVERRIDE
+   ========================================================= */
+
+/* 1. Background និង Border របស់ Footer ពេលថ្ងៃ (Default) */
+.footer-section {
+  background-color: rgba(255, 255, 255, 0.7);
+}
+
+/* 2. Background និង Border ពេលបើក Dark Mode (ស៊ីដាច់ដល់បាត គ្មានកាកសំណល់ស) */
+body.dark-mode .footer-section {
+  background-color: #0b0f19 !important; /* ពណ៌ background ដើមរបស់ Dark Mode */
+  border-color: #1e293b !important;
+}
+
+body.dark-mode .footer-title {
+  color: #38bdf8 !important; /* ពណ៌ Sky-400 */
+}
+
+body.dark-mode .footer-text {
+  color: #cbd5e1 !important;
+}
+
+body.dark-mode .footer-subtext {
+  color: #94a3b8 !important;
+}
+
+body.dark-mode .footer-divider {
+  border-color: #1e293b !important;
+}
+/* បង្ខំឱ្យ body និង html គ្មាន padding/margin សល់នៅបាតក្រោម */
+html, body {
+  margin: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+/* ធ្វើឱ្យ Footer រត់ចុះទៅបាតក្រោមបង្អស់ */
+.footer-section {
+  margin-bottom: 0 !important;
+  background-color: rgba(255, 255, 255, 0.5);
+}
+
+body.dark-mode .footer-section {
+  background-color: #0b0f19 !important;
+  border-color: #1e293b !important;
+}
