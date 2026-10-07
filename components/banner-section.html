@@ -57,15 +57,17 @@
 
 <!-- 🎶 Floating Audio Control Widget (អណ្តែតជ្រុងខាងស្តាំ - ពណ៌ខៀវ) -->
 <div class="fixed bottom-5 right-5 z-50 flex items-center gap-2">
-  
+
   <!-- សារប្រាប់អ្នកប្រើប្រាស់ (Tooltip / Label) -->
-  <span id="musicLabel" class="hidden sm:inline-block bg-white/90 dark:bg-slate-800/90 text-sky-700 dark:text-sky-300 text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md backdrop-blur-md border border-sky-200 dark:border-slate-700 transition-all duration-300">
+  <span id="musicLabel"
+    class="hidden sm:inline-block bg-white/90 dark:bg-slate-800/90 text-sky-700 dark:text-sky-300 text-xs font-extrabold px-3 py-1.5 rounded-full shadow-md backdrop-blur-md border border-sky-200 dark:border-slate-700 transition-all duration-300">
     🎵 ចុចបើកចម្រៀង!
   </span>
 
   <!-- ប៊ូតុងតន្ត្រីអណ្តែត (ពណ៌ខៀវស្រទន់) -->
-  <button id="audioToggleBtn" onclick="toggleAudio()" class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-sky-400 to-indigo-500 text-white shadow-lg shadow-sky-500/30 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white dark:border-slate-800 group cursor-pointer">
-    
+  <button id="audioToggleBtn" onclick="toggleAudio()"
+    class="relative flex items-center justify-center w-12 h-12 rounded-full bg-gradient-to-r from-sky-400 to-indigo-500 text-white shadow-lg shadow-sky-500/30 hover:scale-110 active:scale-95 transition-all duration-300 border-2 border-white dark:border-slate-800 group cursor-pointer">
+
     <!-- Animation រលកពន្លឺពណ៌ខៀវពេលបើកចម្រៀង -->
     <span id="audioPing" class="absolute inset-0 rounded-full bg-sky-400 opacity-75 animate-ping hidden"></span>
 
@@ -79,9 +81,15 @@
   .music-spinning {
     animation: spin 3s linear infinite;
   }
+
   @keyframes spin {
-    from { transform: rotate(0deg); }
-    to { transform: rotate(360deg); }
+    from {
+      transform: rotate(0deg);
+    }
+
+    to {
+      transform: rotate(360deg);
+    }
   }
 </style>
 
@@ -207,7 +215,7 @@
 
 <script>
   // កូដការពារករណី function ត្រូវលោត error
-  window.toggleBannerMusic = function() {
+  window.toggleBannerMusic = function () {
     const audio = document.getElementById('hbdAudio');
     const icon = document.getElementById('bannerMusicIcon');
     const text = document.getElementById('bannerMusicText');
@@ -219,7 +227,7 @@
     }
   };
 
-  window.bannerCelebrate = function() {
+  window.bannerCelebrate = function () {
     const audio = document.getElementById('hbdAudio');
     if (audio && audio.paused) {
       window.toggleBannerMusic();

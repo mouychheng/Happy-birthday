@@ -37,77 +37,96 @@
 
   <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-4xl mx-auto">
     <!-- Card 1 -->
-    <div class="polaroid-card p-3 rounded-2xl transform -rotate-2 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
+    <div
+      class="polaroid-card p-3 rounded-2xl transform -rotate-2 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
       <div>
-        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer" onclick="openGalleryModal('gImg1', '✨ &quot;A beautiful moment&quot;')">
-          <img id="gImg1" src="assets/img1.jpg" alt="Memory 1" class="w-full h-full object-cover">
+        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer"
+          onclick="openGalleryModal('gImg1', '✨ &quot;សប្បាយចិត្តពេលទទួលបានវិញ្ញាបនបត្រ&quot;')">
+          <img id="gImg1" src="assets/img1.jpg" alt="រូបភាពទី ១" class="w-full h-full object-cover">
         </div>
         <div class="p-2 text-center">
-          <p class="polaroid-title text-xs font-bold cursor-pointer" onclick="openGalleryModal('gImg1', '✨ &quot;A beautiful moment&quot;')">✨ "A beautiful moment"</p>
+          <p class="polaroid-title text-xs font-bold cursor-pointer"
+            onclick="openGalleryModal('gImg1', '✨ &quot;សប្បាយចិត្តពេលទទួលបានវិញ្ញាបនបត្រ&quot;')">✨
+            "សប្បាយចិត្តពេលទទួលបានវិញ្ញាបនបត្រ"</p>
         </div>
       </div>
       <div class="text-center pb-1">
         <label class="inline-block text-[11px] text-sky-600 cursor-pointer hover:underline font-semibold">
-          📁 ប្ដូររូបទី១ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg1')">
+          📁 ប្ដូររូបភាពទី ១ <input type="file" class="hidden" accept="image/*"
+            onchange="changeGalleryImg(event, 'gImg1')">
         </label>
       </div>
     </div>
 
     <!-- Card 2 -->
-    <div class="polaroid-card p-3 rounded-2xl transform rotate-3 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
+    <div
+      class="polaroid-card p-3 rounded-2xl transform rotate-3 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
       <div>
-        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer" onclick="openGalleryModal('gImg2', '🌸 &quot;Good memories&quot;')">
-          <img id="gImg2" src="assets/img2.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 2" class="w-full h-full object-cover">
+        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer"
+          onclick="openGalleryModal('gImg2', '🌸 &quot;កើតចំខែភ្ជុំ ដាក់រូបទៅវត្តចឹងហើយ 😆&quot;')">
+          <img id="gImg2" src="assets/img2.jpg" onerror="this.src='assets/img1.jpg'" alt="រូបភាពទី ២"
+            class="w-full h-full object-cover">
         </div>
         <div class="p-2 text-center">
-          <p class="polaroid-title text-xs font-bold cursor-pointer" onclick="openGalleryModal('gImg2', '🌸 &quot;Good memories&quot;')">🌸 "Good memories"</p>
+          <p class="polaroid-title text-xs font-bold cursor-pointer"
+            onclick="openGalleryModal('gImg2', '🌸 &quot;កើតចំខែភ្ជុំ ដាក់រូបទៅវត្តចឹងហើយ 😆&quot;')">🌸 "កើតចំខែភ្ជុំ
+            ដាក់រូបទៅវត្តចឹងហើយ 😆"</p>
         </div>
       </div>
       <div class="text-center pb-1">
         <label class="inline-block text-[11px] text-sky-600 cursor-pointer hover:underline font-semibold">
-          📁 ប្ដូររូបទី២ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg2')">
+          📁 ប្ដូររូបភាពទី ២ <input type="file" class="hidden" accept="image/*"
+            onchange="changeGalleryImg(event, 'gImg2')">
         </label>
       </div>
     </div>
 
     <!-- Card 3 -->
-    <div class="polaroid-card p-3 rounded-2xl transform -rotate-1 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
+    <div
+      class="polaroid-card p-3 rounded-2xl transform -rotate-1 hover:rotate-0 hover:scale-105 shadow-md backdrop-blur-md flex flex-col justify-between">
       <div>
-        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer" onclick="openGalleryModal('gImg3', '💙 &quot;One of my favorite days&quot;')">
-          <img id="gImg3" src="assets/img3.jpg" onerror="this.src='assets/img1.jpg'" alt="Memory 3" class="w-full h-full object-cover">
+        <div class="relative overflow-hidden rounded-xl aspect-square bg-sky-100 cursor-pointer"
+          onclick="openGalleryModal('gImg3', '💙 &quot;រូបដើរលេងហ្នឹងណា 😁&quot;')">
+          <img id="gImg3" src="assets/img3.jpg" onerror="this.src='assets/img1.jpg'" alt="រូបភាពទី ៣"
+            class="w-full h-full object-cover">
         </div>
         <div class="p-2 text-center">
-          <p class="polaroid-title text-xs font-bold cursor-pointer" onclick="openGalleryModal('gImg3', '💙 &quot;One of my favorite days&quot;')">💙 "One of my favorite days"</p>
+          <p class="polaroid-title text-xs font-bold cursor-pointer"
+            onclick="openGalleryModal('gImg3', '💙 &quot;រូបដើរលេងហ្នឹងណា 😁&quot;')">💙 "រូបដើរលេងហ្នឹងណា 😁"</p>
         </div>
       </div>
       <div class="text-center pb-1">
         <label class="inline-block text-[11px] text-sky-600 cursor-pointer hover:underline font-semibold">
-          📁 ប្ដូររូបទី៣ <input type="file" class="hidden" accept="image/*" onchange="changeGalleryImg(event, 'gImg3')">
+          📁 ប្ដូររូបភាពទី ៣ <input type="file" class="hidden" accept="image/*"
+            onchange="changeGalleryImg(event, 'gImg3')">
         </label>
       </div>
     </div>
-  </div>
 
-  <!-- LIGHTBOX / FULLSCREEN MODAL -->
-  <div id="galleryModal" class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300" onclick="closeGalleryModal()">
-    <div class="relative max-w-3xl w-full bg-white rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20" onclick="event.stopPropagation()">
-      
-      <!-- Close Button -->
-      <button onclick="closeGalleryModal()" class="absolute -top-3 -right-3 sm:top-3 sm:right-3 bg-white text-slate-700 hover:text-pink-500 rounded-full p-2 shadow-lg w-9 h-9 flex items-center justify-center font-bold text-lg transition-transform hover:scale-110 border border-slate-200">
-        ✕
-      </button>
+    <!-- LIGHTBOX / FULLSCREEN MODAL -->
+    <div id="galleryModal"
+      class="fixed inset-0 z-50 hidden bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 transition-opacity duration-300"
+      onclick="closeGalleryModal()">
+      <div class="relative max-w-3xl w-full bg-white rounded-2xl p-3 sm:p-4 shadow-2xl border border-white/20"
+        onclick="event.stopPropagation()">
 
-      <!-- Full Image Container -->
-      <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-100">
-        <img id="modalImg" src="" alt="Full View" class="max-w-full max-h-[75vh] object-contain rounded-lg">
-      </div>
+        <!-- Close Button -->
+        <button onclick="closeGalleryModal()"
+          class="absolute -top-3 -right-3 sm:top-3 sm:right-3 bg-white text-slate-700 hover:text-pink-500 rounded-full p-2 shadow-lg w-9 h-9 flex items-center justify-center font-bold text-lg transition-transform hover:scale-110 border border-slate-200">
+          ✕
+        </button>
 
-      <!-- Caption Text -->
-      <div class="mt-3 text-center">
-        <p id="modalCaption" class="text-sm sm:text-base font-bold text-slate-800"></p>
+        <!-- Full Image Container -->
+        <div class="w-full max-h-[75vh] flex items-center justify-center overflow-hidden rounded-xl bg-slate-100">
+          <img id="modalImg" src="" alt="Full View" class="max-w-full max-h-[75vh] object-contain rounded-lg">
+        </div>
+
+        <!-- Caption Text -->
+        <div class="mt-3 text-center">
+          <p id="modalCaption" class="text-sm sm:text-base font-bold text-slate-800"></p>
+        </div>
       </div>
     </div>
-  </div>
 </section>
 
 <script>
@@ -124,7 +143,7 @@
     const imgSrc = document.getElementById(imgId).src;
     document.getElementById('modalImg').src = imgSrc;
     document.getElementById('modalCaption').innerText = caption;
-    
+
     const modal = document.getElementById('galleryModal');
     modal.classList.remove('hidden');
     document.body.style.overflow = 'hidden';
