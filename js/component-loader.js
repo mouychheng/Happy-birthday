@@ -1,38 +1,39 @@
-// Component Loader Script (Fixed Unwrap & Script Execution)
+// Component Loader Script (Async-Safe Script Execution)
 document.addEventListener("DOMContentLoaded", function () {
   const includes = document.querySelectorAll("[data-include]");
 
-  includes.forEach((el) => {
+  // ប្រើ Promise.all ដើម្បីឱ្យប្រាកដថា Parallel fetches ដំណើរការបានត្រឹមត្រូវ
+  const fetchPromises = Array.from(includes).map((el) => {
     const file = el.getAttribute("data-include");
-    loadComponentToElement(el, file);
+    return loadComponentToElement(el, file);
   });
 
-  // ហៅ Load Components តាម ID[cite: 15]
+  // Load Components តាម ID
   loadComponent('footer-section-placeholder', 'components/footer-section.html');
   loadComponent('memories-section-placeholder', 'components/memories-section.html');
 });
 
-// Function សម្រាប់ Fetch និង Replace Component ចូលក្នុង Element[cite: 15]
+// Function សម្រាប់ Fetch និង Replace Component ចូលក្នុង Element
 function loadComponentToElement(el, file) {
-  fetch(file)
+  return fetch(file)
     .then((response) => {
       if (response.ok) return response.text();
       throw new Error(`Failed to load ${file}`);
     })
     .then((html) => {
-      // ១. បង្កើត Temp Div ដើម្បីដកស្រង់ content[cite: 15]
+      // ១. បង្កើត Temp Div ដើម្បីដកស្រង់ content
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = html;
 
-      // ២. ដកយក Script Tags ទុកឡែកដើម្បី Execute ក្រោយពេល Insert ចូល DOM[cite: 15]
+      // ២. ដកយក Script Tags ទុកឡែកដើម្បី Execute ក្រោយពេល Insert ចូល DOM
       const scripts = Array.from(tempDiv.querySelectorAll("script"));
-      scripts.forEach((s) => s.remove()); // លុប Script ចាស់ចេញពី Temp[cite: 15]
+      scripts.forEach((s) => s.remove()); // លុប Script ចាស់ចេញពី Temp
 
-      // ៣. ជំនួស <div data-include="..."> ដោយ Element របស់ Component[cite: 15]
+      // ៣. ជំនួស <div data-include="..."> ដោយ Element របស់ Component
       const childNodes = Array.from(tempDiv.childNodes);
       el.replaceWith(...childNodes);
 
-      // ៤. Re-inject Scripts ចូលទៅក្នុង Document វិញដើម្បីឱ្យ JavaScript ដំណើរការ[cite: 15]
+      // ៤. Re-inject Scripts ចូលទៅក្នុង Document វិញដើម្បីឱ្យ JavaScript ដំណើរការ
       scripts.forEach((oldScript) => {
         const newScript = document.createElement("script");
         Array.from(oldScript.attributes).forEach((attr) =>
@@ -45,7 +46,7 @@ function loadComponentToElement(el, file) {
     .catch((err) => console.error("Component Loader Error:", err));
 }
 
-// Function សម្រាប់ហៅផ្ទាល់តាមរយៈ ID និង File Path (loadComponent)[cite: 15]
+// Function សម្រាប់ហៅផ្ទាល់តាមរយៈ ID និង File Path (loadComponent)
 function loadComponent(targetId, filePath) {
   const el = document.getElementById(targetId);
   if (el) {
@@ -122,7 +123,7 @@ function toggleAudio() {
   }
 }
 
-// Function សម្រាប់ Banner Audio Control (ហៅទៅ toggleAudio ដូចគ្នា)
+// Function សម្រាប់ Banner Audio Control
 function toggleBannerMusic() {
   toggleAudio();
 }

@@ -61,6 +61,31 @@ body.dark-mode ::-webkit-scrollbar-track {
 }
 
 /* =========================================================
+   4. FIX THEME TOGGLE BUTTON POSITION (កែតម្រូវប៊ូតុងបិទបើកម៉ូត)
+   ========================================================= */
+
+/* កំណត់ឱ្យប៊ូតុងនៅជាប់ជ្រុងខាងលើផ្នែកខាងស្តាំ (Top Right) រហូត */
+.theme-toggle-btn,
+#themeToggleBtn,
+#theme-toggle {
+  position: fixed !important;
+  top: 12px !important;
+  right: 12px !important;
+  z-index: 99999 !important; /* ឱ្យរវើកនៅលើគេបង្អស់ */
+}
+
+/* កែសម្រួលបន្ថែមសម្រាប់អេក្រង់ទូរស័ព្ទតូច (Responsive Design) */
+@media (max-width: 640px) {
+  .theme-toggle-btn,
+  #themeToggleBtn,
+  #theme-toggle {
+    top: 8px !important;
+    right: 8px !important;
+    transform: scale(0.85); /* រួញទំហំបន្តិចលើ Mobile ដើម្បីឱ្យមើលទៅស្អាតល្មម */
+  }
+}
+
+/* =========================================================
    FIX BUCKET LIST CARDS (រៀបចំ Border & ពណ៌អក្សរច្បាស់ៗ)
    ========================================================= */
 

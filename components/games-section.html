@@ -52,14 +52,44 @@
     .game-border-t { border-top: 1px solid #f1f5f9; }
 
     .modal-overlay { background-color: rgba(15, 23, 42, 0.6); }
-    .modal-box { background-color: #ffffff; color: #1e293b; border: 1px solid #fce7f3; }
-    .modal-close-btn { background-color: #f1f5f9; color: #64748b; }
-    .modal-close-btn:hover { background-color: #fce7f3; color: #db2777; }
+    .modal-box {
+      background-color: #ffffff;
+      color: #1e293b;
+      border: 1px solid #fce7f3;
+    }
 
-    /* Dark Mode */
-    body.dark-mode { background-color: #0f172a !important; color: #f8fafc !important; }
-    body.dark-mode .game-badge { background-color: rgba(131, 24, 67, 0.8) !important; color: #f472b6 !important; border-color: rgba(157, 23, 77, 0.8) !important; }
-    body.dark-mode .game-card { background-color: rgba(15, 23, 42, 0.9) !important; border-color: #1e293b !important; }
+    .modal-close-btn {
+      background-color: #f1f5f9;
+      color: #64748b;
+    }
+    .modal-close-btn:hover {
+      background-color: #fce7f3;
+      color: #db2777;
+    }
+
+    .game-input {
+      background-color: #ffffff;
+      color: #0f172a;
+      border-color: #cbd5e1;
+    }
+
+    /* Dark Mode Override */
+    body.dark-mode {
+      background-color: #0b0f19 !important;
+      color: #f8fafc !important;
+    }
+
+    body.dark-mode .game-badge {
+      background-color: rgba(131, 24, 67, 0.8) !important;
+      color: #f472b6 !important;
+      border-color: rgba(157, 23, 77, 0.8) !important;
+    }
+
+    body.dark-mode .game-card {
+      background-color: #1e293b !important;
+      border-color: #334155 !important;
+    }
+
     body.dark-mode .game-icon-bg-pink { background-color: rgba(131, 24, 67, 0.8) !important; color: #f472b6 !important; }
     body.dark-mode .game-icon-bg-purple { background-color: rgba(88, 28, 135, 0.8) !important; color: #c084fc !important; }
     body.dark-mode .game-icon-bg-amber { background-color: rgba(120, 53, 15, 0.8) !important; color: #fcd34d !important; }
@@ -74,11 +104,29 @@
 
     body.dark-mode .game-title { color: #f1f5f9 !important; }
     body.dark-mode .game-desc { color: #cbd5e1 !important; }
-    body.dark-mode .game-border-t { border-top-color: #1e293b !important; }
+    body.dark-mode .game-border-t { border-top-color: #334155 !important; }
+
     body.dark-mode .modal-overlay { background-color: rgba(2, 6, 23, 0.8) !important; }
-    body.dark-mode .modal-box { background-color: #0f172a !important; color: #f1f5f9 !important; border-color: #1e293b !important; }
-    body.dark-mode .modal-close-btn { background-color: #1e293b !important; color: #cbd5e1 !important; }
-    body.dark-mode .modal-close-btn:hover { background-color: rgba(131, 24, 67, 0.5) !important; color: #f472b6 !important; }
+    body.dark-mode .modal-box {
+      background-color: #0f172a !important;
+      color: #f1f5f9 !important;
+      border-color: #334155 !important;
+    }
+
+    body.dark-mode .modal-close-btn {
+      background-color: #1e293b !important;
+      color: #cbd5e1 !important;
+    }
+    body.dark-mode .modal-close-btn:hover {
+      background-color: rgba(131, 24, 67, 0.5) !important;
+      color: #f472b6 !important;
+    }
+
+    body.dark-mode .game-input {
+      background-color: #0f172a !important;
+      color: #f1f5f9 !important;
+      border-color: #334155 !important;
+    }
   </style>
 </head>
 
@@ -178,12 +226,9 @@
   </section>
 
   <!-- Modal Pop-up Container -->
-  <div id="gameModal"
-    class="modal-overlay fixed inset-0 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
-    <div
-      class="modal-box rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl p-4 sm:p-5 relative my-auto transition-colors">
-      <button onclick="closeGameModal()"
-        class="modal-close-btn absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center font-bold text-base z-20 cursor-pointer active:scale-90 transition-transform">
+  <div id="gameModal" class="modal-overlay fixed inset-0 backdrop-blur-sm z-50 hidden flex items-center justify-center p-3 sm:p-4">
+    <div class="modal-box rounded-3xl max-w-lg w-full max-h-[92vh] overflow-y-auto shadow-2xl p-4 sm:p-5 relative my-auto transition-colors">
+      <button onclick="closeGameModal()" class="modal-close-btn absolute top-3 right-3 w-8 h-8 rounded-full flex items-center justify-center font-bold text-base z-20 cursor-pointer active:scale-90 transition-transform">
         ✕
       </button>
       <div id="gameModalContent"></div>
@@ -191,136 +236,162 @@
   </div>
 
   <script>
-    // បញ្ជូល Dynamic Styles សម្រាប់ Flip Card
+    const TELEGRAM_USERNAME = 'CHHENG55';
+
+    // Dynamic Style Injection សម្រាប់ Flip Card
     if (!document.getElementById('responsive-card-styles')) {
       const style = document.createElement('style');
       style.id = 'responsive-card-styles';
       style.innerHTML = `
-      .card-perspective { perspective: 800px; }
-      .card-flipper {
-        position: relative;
-        width: 100%;
-        height: 100%;
-        transform-style: preserve-3d;
-        transition: transform 0.4s ease-out;
-      }
-      .card-flipper.flipped { transform: rotateY(180deg); }
-      .card-face {
-        position: absolute;
-        inset: 0;
-        width: 100%;
-        height: 100%;
-        backface-visibility: hidden;
-        -webkit-backface-visibility: hidden;
-        border-radius: 1rem;
-      }
-      .card-back-face { transform: rotateY(180deg); }
-      @keyframes boxShake {
-        0%, 100% { transform: rotate(0deg) scale(1); }
-        25% { transform: rotate(-8deg) scale(1.05); }
-        75% { transform: rotate(8deg) scale(1.05); }
-      }
-      .animate-box-shake { animation: boxShake 0.4s ease-in-out infinite; }
-    `;
+        .card-perspective { perspective: 800px; }
+        .card-flipper {
+          position: relative;
+          width: 100%;
+          height: 100%;
+          transform-style: preserve-3d;
+          transition: transform 0.4s ease-out;
+        }
+        .card-flipper.flipped { transform: rotateY(180deg); }
+        .card-face {
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          border-radius: 1rem;
+        }
+        .card-back-face { transform: rotateY(180deg); }
+        @keyframes boxShake {
+          0%, 100% { transform: rotate(0deg) scale(1); }
+          25% { transform: rotate(-8deg) scale(1.05); }
+          75% { transform: rotate(8deg) scale(1.05); }
+        }
+        .animate-box-shake { animation: boxShake 0.4s ease-in-out infinite; }
+      `;
       document.head.appendChild(style);
     }
 
-    // 1. Data សម្រាប់ Quiz
+    // Helper Function ផ្ញើសារទៅ Telegram
+    window.sendGameAnswerToTelegram = function (gameTitle, promptQuestion, inputId) {
+      const answerInput = document.getElementById(inputId);
+      const answerText = answerInput ? answerInput.value.trim() : '';
+
+      const formattedText = 
+`🎮 ══════════════════ 🎮
+  🎂 GAME ANSWER / CHALLENGE 🎂
+🎮 ══════════════════ 🎮
+
+📌 ហ្គេម៖ ${gameTitle}
+❓ សំណួរ/Challenge៖ 
+"${promptQuestion}"
+
+💬 ចម្លើយ/ការឆ្លើយតប៖
+----------------------------------------
+${answerText ? answerText : '(មិនបានសរសេរចម្លើយ - ផ្ញើតែសំណួរ)'}
+----------------------------------------
+
+✨ ផ្ញើចេញពី Happy Birthday Web App ✨`;
+
+      const telegramUrl = `https://t.me/${TELEGRAM_USERNAME}?text=${encodeURIComponent(formattedText)}`;
+      window.open(telegramUrl, '_blank');
+    };
+
     var quizData = [
       {
         question: "១. តើពណ៌ណាជាពណ៌ដែលខ្ញុំចូលចិត្តជាងគេ? 🎨",
         options: [
-          { text: "ពណ៌ក្រហម 🔴", correct: false },
-          { text: "ពណ៌ផ្ទៃមេឃ 🩵", correct: true },
-          { text: "ពណ៌ខៀវ 💙", correct: false },
-          { text: "ពណ៌ស្វាយ 💜", correct: false },
-          { text: "ពណ៌ស 🤍", correct: false },
-          { text: "ពណ៌ខ្មៅ 🖤", correct: false }
+          { text: "💖 ពណ៌ក្រហម 🔴", correct: false },
+          { text: "💖 ពណ៌ផ្ទៃមេឃ 🩵", correct: true },
+          { text: "💖 ពណ៌ខៀវ 💙", correct: false },
+          { text: "💖 ពណ៌ស្វាយ 💜", correct: false },
+          { text: "💖 ពណ៌ស 🤍", correct: false },
+          { text: "💖 ពណ៌ខ្មៅ 🖤", correct: false }
         ]
       },
       {
         question: "២. តើភេសជ្ជៈណាដែលខ្ញុំចូលចិត្តញ៉ាំជាងគេ? 🧋",
         options: [
-          { text: "តែក្រូចឆ្មារ 🍸", correct: false },
-          { text: "តែទឺកដោះគោ មានគុជ 🧋", correct: false },
-          { text: "កាហ្វេទឹកដោះគោ ☕", correct: false },
-          { text: "តែមេអំបៅ 🍹", correct: false },
-          { text: "ដូងក្រឡុក 🥥", correct: false },
-          { text: "ប័រក្រឡុក 🥑", correct: false },
-          { text: "ចូលចិត្តទាំងអស់ 😜", correct: true }
+          { text: "💖 តែក្រូចឆ្មារ 🍸", correct: false },
+          { text: "💖 តែទឺកដោះគោ មានគុជ 🧋", correct: false },
+          { text: "💖 កាហ្វេទឹកដោះគោ ☕", correct: false },
+          { text: "💖 តែមេអំបៅ 🍹", correct: false },
+          { text: "💖 ដូងក្រឡុក 🥥", correct: false },
+          { text: "💖 ប័រក្រឡុក 🥑", correct: false },
+          { text: "💖 ចូលចិត្តទាំងអស់ 😜", correct: true }
         ]
       },
       {
         question: "៣. តើពេលវេលាទំនេរ ខ្ញុំចូលចិត្តធ្វើអ្វីជាងគេ? 🎧",
         options: [
-          { text: "លេងទូរស័ព្ទ 📱", correct: true },
-          { text: "ស្តាប់ចម្រៀង 🎧", correct: true },
-          { text: "មើលរឿង 🎬", correct: false },
-          { text: "រត់ប្រណាំង marathon 🏃", correct: false },
-          { text: "ធ្វើការងារផ្ទះអត់សម្រាក 🧹", correct: false }
+          { text: "💖 លេងទូរស័ព្ទ 📱", correct: true },
+          { text: "💖 ស្តាប់ចម្រៀង 🎧", correct: true },
+          { text: "💖 មើលរឿង 🎬", correct: false },
+          { text: "💖 រត់ប្រណាំង marathon 🏃", correct: false },
+          { text: "💖 ធ្វើការងារផ្ទះអត់សម្រាក 🧹", correct: false }
         ]
       },
       {
         question: "៤. តើរដូវកាលណាដែលខ្ញុំចូលចិត្តជាងគេ? ❄️",
         options: [
-          { text: "រដូវក្តៅខ្លាំង ☀", correct: false },
-          { text: "រដូវត្រជាក់ / ធ្លាក់ខ្យល់ 🌬️", correct: true },
-          { text: "រដូវភ្លៀងធ្លាក់រាល់ថ្ងៃ 🌧️", correct: false },
-          { text: "មិនចូលចិត្តទេ 😌", correct: false }
+          { text: "💖 រដូវក្តៅខ្លាំង ☀", correct: false },
+          { text: "💖 រដូវត្រជាក់ / ធ្លាក់ខ្យល់ 🌬️", correct: true },
+          { text: "💖 រដូវភ្លៀងធ្លាក់រាល់ថ្ងៃ 🌧️", correct: false },
+          { text: "💖 មិនចូលចិត្តទេ 😌", correct: false }
         ]
       },
       {
         question: "៥. តើប្រភេទសត្វចិញ្ចឹមណាដែលខ្ញុំស្រឡាញ់ជាងគេ? 🐾",
         options: [
-          { text: "ឆ្មាតូចៗ និង ឆ្មាធំៗ 🐱", correct: false },
-          { text: "កូនឆ្កែ កាម៉ាប់ៗ 🐕", correct: true },
-          { text: "កូនជ្រូក 🐖", correct: true },
-          { text: "សត្វបក្សី 🦜", correct: false }
+          { text: "💖 ឆ្មាតូចៗ និង ឆ្មាធំៗ 🐱", correct: false },
+          { text: "💖 កូនឆ្កែ កាម៉ាប់ៗ 🐕", correct: true },
+          { text: "💖 កូនជ្រូក 🐖", correct: true },
+          { text: "💖 សត្វបក្សី 🦜", correct: false }
         ]
       },
       {
         question: "៦. តើនំចំណីណាដែលខ្ញុំចូលចិត្តញ៉ាំ? 🍿",
         options: [
-          { text: "នំបុ័ង 🍞", correct: false },
-          { text: "សាំងវិច 🥪", correct: false },
-          { text: "បឺហ្គ័រ 🍔", correct: false },
-          { text: "ការ៉េម 🍨🧁🍧", correct: false },
-          { text: "នំខេក 🍰", correct: false },
-          { text: "ចូលចិត្តទាំងអស់ 😋", correct: true }
+          { text: "💖 នំបុ័ង 🍞", correct: false },
+          { text: "💖 សាំងវិច 🥪", correct: false },
+          { text: "💖 បឺហ្គ័រ 🍔", correct: false },
+          { text: "💖 ការ៉េម 🍨🧁🍧", correct: false },
+          { text: "💖 នំខេក 🍰", correct: false },
+          { text: "💖 ចូលចិត្តទាំងអស់ 😋", correct: true }
         ]
       },
       {
         question: "៧. តើទីកន្លែងដើរលេងបែបណាដែលខ្ញុំចង់ទៅលំហែកាយ? 🏖",
         options: [
-          { text: "កន្លែងអ៊ូអរមនុស្សច្រើន 🏙", correct: false },
-          { text: "សមុទ្រ 🌊", correct: false },
-          { text: "ភ្នំបៃតងត្រជាក់ ទឹកជ្រោះ បឹង អូរ ទន្លេ ⛰️", correct: true },
-          { text: "នៅផ្ទះរហូតអត់ទៅណា 🏠", correct: false }
+          { text: "💖 កន្លែងអ៊ូអរមនុស្សច្រើន 🏙", correct: false },
+          { text: "💖 សមុទ្រ 🌊", correct: false },
+          { text: "💖 ភ្នំបៃតងត្រជាក់ ទឹកជ្រោះ បឹង អូរ ទន្លេ ⛰️", correct: true },
+          { text: "💖 នៅផ្ទះរហូតអត់ទៅណា 🏠", correct: false }
         ]
       },
       {
         question: "៨. តើទម្លាប់ពេលយប់របស់ខ្ញុំជាទូទៅបែបណា? 🌙",
         options: [
-          { text: "គេងលឿនណាស់ 💤", correct: false },
-          { text: "រំលងអធ្រាត្រទើបគេង 🦉", correct: true },
-          { text: "អត់ដែលគេងសោះ 😳", correct: false }
+          { text: "💖 គេងលឿនណាស់ 💤", correct: false },
+          { text: "💖 រំលងអធ្រាត្រទើបគេង 🦉", correct: true },
+          { text: "💖 អត់ដែលគេងសោះ 😳", correct: false }
         ]
       },
       {
         question: "៩. តើស្ទាយនៃការលេងខ្លួនរបស់ខ្ញុំបែបណា? 👗",
         options: [
-          { text: "សាមញ្ញៗ សុភាពៗ 🌸", correct: true },
-          { text: "បែបស៊ិចស៊ីខ្លាំង 💃", correct: false },
-          { text: "បែបរោករ៉ាក 😣", correct: false },
-          { text: "ស្ទាយបែបបុរាណ 🏛", correct: false }
+          { text: "💖 សាមញ្ញៗ សុភាពៗ 🌸", correct: true },
+          { text: "💖 បែបស៊ិចស៊ីខ្លាំង 💃", correct: false },
+          { text: "💖 បែបរោករ៉ាក 😣", correct: false },
+          { text: "💖 ស្ទាយបែបបុរាណ 🏛", correct: false }
         ]
       },
       {
         question: "១០. តើអ្វីដែលធ្វើឱ្យខ្ញុំមានសេចក្តីសុខបំផុតនៅថ្ងៃខួបកំណើត? 🎂",
         options: [
-          { text: "បានកាដូថ្លៃៗ 💎", correct: false },
-          { text: "ទទួលបានក្តីស្រឡាញ់ និងពាក្យជូនពរល្អៗពីអ្នកទាំងអស់គ្នា 💖✨", correct: true },
-          { text: "បានញ៉ាំនំខេកតែម្នាក់ឯង 🎂", correct: false }
+          { text: "💖 បានកាដូថ្លៃៗ 💎", correct: false },
+          { text: "💖 ទទួលបានក្តីស្រឡាញ់ និងពាក្យជូនពរល្អៗពីអ្នកទាំងអស់គ្នា 💖✨", correct: true },
+          { text: "💖 បានញ៉ាំនំខេកតែម្នាក់ឯង 🎂", correct: false }
         ]
       }
     ];
@@ -329,13 +400,11 @@
     var quizScore = 0;
     var currentWheelRotation = 0;
 
-    // Window Functions ដើម្បីការពារកុំឱ្យដាច់ Scope ពេល Dynamic Load
-    window.openGameModal = function(gameType) {
+    window.openGameModal = function (gameType) {
       const modal = document.getElementById('gameModal');
       if (!modal) return;
       modal.classList.remove('hidden');
 
-      // Clear Content ចាស់ចោលសិនជានិច្ច
       const content = document.getElementById('gameModalContent');
       if (content) content.innerHTML = '';
 
@@ -354,7 +423,7 @@
       }
     };
 
-    window.closeGameModal = function() {
+    window.closeGameModal = function () {
       const modal = document.getElementById('gameModal');
       if (modal) modal.classList.add('hidden');
     };
@@ -375,49 +444,49 @@
         }
 
         content.innerHTML = `
-        <div class="text-center py-2 space-y-2">
-          <div class="text-3xl sm:text-4xl animate-bounce">🎉 🏆 🎉</div>
-          <h3 class="text-base sm:text-lg font-bold text-sky-600">អបអរសាទរ! អ្នកបានឆ្លើយរួចរាល់ហើយ!</h3>
-          <p class="text-sm sm:text-base font-bold text-pink-600">អ្នកឆ្លើយត្រូវ ${quizScore} / ${quizData.length} សំណួរ!</p>
-          <p class="game-desc text-xs sm:text-sm font-semibold max-w-md mx-auto leading-relaxed">${feedbackText}</p>
-          <button onclick="openGameModal('quizGame')" class="mt-2 bg-gradient-to-r from-sky-400 to-pink-400 hover:opacity-90 active:scale-95 text-white text-xs sm:text-sm font-bold py-2 px-5 rounded-full shadow-md transition-all cursor-pointer">
-            🔄 លេងម្តងទៀត
-          </button>
-        </div>
-      `;
+          <div class="text-center py-2 space-y-2">
+            <div class="text-3xl sm:text-4xl animate-bounce">🎉 🏆 🎉</div>
+            <h3 class="text-base sm:text-lg font-bold text-sky-600 dark:text-sky-400">អបអរសាទរ! អ្នកបានឆ្លើយរួចរាល់ហើយ!</h3>
+            <p class="text-sm sm:text-base font-bold text-pink-600 dark:text-pink-400">អ្នកឆ្លើយត្រូវ ${quizScore} / ${quizData.length} សំណួរ!</p>
+            <p class="game-desc text-xs sm:text-sm font-semibold max-w-md mx-auto leading-relaxed">${feedbackText}</p>
+            <button onclick="openGameModal('quizGame')" class="mt-2 bg-gradient-to-r from-sky-400 to-pink-400 hover:opacity-90 active:scale-95 text-white text-xs sm:text-sm font-bold py-2 px-5 rounded-full shadow-md transition-all cursor-pointer">
+              🔄 លេងម្តងទៀត
+            </button>
+          </div>
+        `;
         if (typeof confetti === 'function') confetti({ particleCount: 80, spread: 60 });
         return;
       }
 
       const currentQuiz = quizData[currentQuestionIndex];
       let optionsHtml = currentQuiz.options.map((opt) => `
-      <button onclick="handleQuizAnswer(this, ${opt.correct})" class="quiz-opt-btn w-full text-left p-2.5 sm:p-3 rounded-xl game-card transition-all font-semibold game-title text-xs sm:text-sm flex justify-between items-center shadow-sm cursor-pointer active:scale-95">
-        <span>${opt.text}</span>
-      </button>
-    `).join('');
+        <button onclick="handleQuizAnswer(this, ${opt.correct})" class="quiz-opt-btn w-full text-left p-2.5 sm:p-3 rounded-xl game-card transition-all font-semibold game-title text-xs sm:text-sm flex justify-between items-center shadow-sm cursor-pointer active:scale-95">
+          <span>${opt.text}</span>
+        </button>
+      `).join('');
 
       content.innerHTML = `
-      <div class="space-y-2.5">
-        <div class="text-center">
-          <h2 class="text-base sm:text-lg font-bold text-sky-600">ហ្គេមទាយចំណង់ចំណូលចិត្ត 🎮✨</h2>
-          <p class="game-desc text-[11px] sm:text-xs">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
-        </div>
+        <div class="space-y-2.5">
+          <div class="text-center">
+            <h2 class="text-base sm:text-lg font-bold text-sky-600 dark:text-sky-400">ហ្គេមទាយចំណង់ចំណូលចិត្ត 🎮✨</h2>
+            <p class="game-desc text-[11px] sm:text-xs">តោះមកល្បងមើលថា តើអ្នកស្គាល់ និងដឹងពីចំណង់ចំណូលចិត្តខ្ញុំកម្រិតណា?</p>
+          </div>
 
-        <div class="p-3 sm:p-4 rounded-2xl border game-card-sky space-y-2">
-          <div class="flex justify-between items-center text-xs font-bold text-sky-600">
-            <span>សំណួរទី ${currentQuestionIndex + 1} / ${quizData.length}</span>
-            <span class="game-card px-2.5 py-0.5 rounded-full border text-xs">ពិន្ទុ៖ ${quizScore}</span>
-          </div>
-          <h3 class="font-bold text-xs sm:text-sm game-title leading-relaxed">${currentQuiz.question}</h3>
-          <div class="space-y-2 pt-1">
-            ${optionsHtml}
+          <div class="p-3 sm:p-4 rounded-2xl border game-card-sky space-y-2">
+            <div class="flex justify-between items-center text-xs font-bold text-sky-600 dark:text-sky-400">
+              <span>សំណួរទី ${currentQuestionIndex + 1} / ${quizData.length}</span>
+              <span class="game-card px-2.5 py-0.5 rounded-full border text-xs">ពិន្ទុ៖ ${quizScore}</span>
+            </div>
+            <h3 class="font-bold text-xs sm:text-sm game-title leading-relaxed">${currentQuiz.question}</h3>
+            <div class="space-y-2 pt-1">
+              ${optionsHtml}
+            </div>
           </div>
         </div>
-      </div>
-    `;
+      `;
     }
 
-    window.handleQuizAnswer = function(button, isCorrect) {
+    window.handleQuizAnswer = function (button, isCorrect) {
       const allButtons = document.querySelectorAll('.quiz-opt-btn');
       allButtons.forEach(btn => btn.disabled = true);
 
@@ -446,7 +515,7 @@
         { icon: "🧋", text: "ប៉ាវតែដោះគោម្ចាស់ខួប 1 កែវ! 😋" },
         { icon: "🎂", text: "ទិញនំខេកតូចមួយជូនម្ចាស់ខួប! 🍰" },
         { icon: "💌", text: "សរសេរសារជូនពរយ៉ាងវែង មានន័យហើយចេញពីចិត្ត 1 ជូនម្ចាស់ខួប! 💖" },
-        { icon: "🍕", text: "ប៉ាវម្ចាស់ខួបទៅញុាំអី 1 ដង! 🍕" },
+        { icon: "🍕", text: "ប៉ាវម្ចាស់ខួបទៅញុំាអី 1 ដង! 🍕" },
         { icon: "📸", text: "ថតរូបសែលហ្វីស្អាតៗ ជាមួយម្ចាស់ខួប 1 ប៉ុស្តិ៍! 📸" },
         { icon: "🎁", text: "ជូនកាដូ Surprise តូចមួយតាមចិត្តស្រឡាញ់! ✨" }
       ];
@@ -454,37 +523,37 @@
       const shuffled = [...giftChallenges].sort(() => Math.random() - 0.5);
       const content = document.getElementById('gameModalContent');
       content.innerHTML = `
-      <div class="text-center space-y-2.5">
-        <div>
-          <h3 class="font-bold text-base sm:text-lg text-purple-600">🃏 កាតផ្សងសំណាងកាដូ</h3>
-          <p class="game-desc text-xs mt-0.5">ចុចលើកាត 1 ដើម្បីមើលថាអ្នកត្រូវជួនអ្វីដល់ម្ចាស់ខួប!</p>
-        </div>
+        <div class="text-center space-y-2.5">
+          <div>
+            <h3 class="font-bold text-base sm:text-lg text-purple-600 dark:text-purple-400">🃏 កាតផ្សងសំណាងកាដូ</h3>
+            <p class="game-desc text-xs mt-0.5">ចុចលើកាត 1 ដើម្បីមើលថាអ្នកត្រូវជួនអ្វីដល់ម្ចាស់ខួប!</p>
+          </div>
 
-        <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 py-1 max-w-md mx-auto">
-          ${shuffled.map((item, i) => `
-            <div class="card-perspective h-28 sm:h-32 w-full cursor-pointer" onclick="revealCard(this, '${item.icon}', '${item.text}')">
-              <div class="card-flipper">
-                <div class="card-face bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center justify-center text-white border-2 border-white/30 shadow-md">
-                  <span class="text-2xl sm:text-3xl">🎁</span>
-                  <span class="text-[10px] font-bold opacity-90 mt-1">CARD 0${i + 1}</span>
-                </div>
-                <div class="card-face card-back-face game-card border-2 border-purple-400 flex flex-col items-center justify-center p-2 text-center shadow-md">
-                  <span class="card-icon text-3xl mb-1">${item.icon}</span>
-                  <span class="text-[9px] font-bold text-purple-600 uppercase tracking-wider">YOUR GIFT</span>
+          <div class="grid grid-cols-2 sm:grid-cols-3 gap-2.5 py-1 max-w-md mx-auto">
+            ${shuffled.map((item, i) => `
+              <div class="card-perspective h-28 sm:h-32 w-full cursor-pointer" onclick="revealCard(this, '${item.icon}', '${item.text.replace(/'/g, "\\'")}')">
+                <div class="card-flipper">
+                  <div class="card-face bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500 flex flex-col items-center justify-center text-white border-2 border-white/30 shadow-md">
+                    <span class="text-2xl sm:text-3xl">🎁</span>
+                    <span class="text-[10px] font-bold opacity-90 mt-1">CARD 0${i + 1}</span>
+                  </div>
+                  <div class="card-face card-back-face game-card border-2 border-purple-400 flex flex-col items-center justify-center p-2 text-center shadow-md">
+                    <span class="card-icon text-3xl mb-1">${item.icon}</span>
+                    <span class="text-[9px] font-bold text-purple-600 dark:text-purple-300 uppercase tracking-wider">YOUR GIFT</span>
+                  </div>
                 </div>
               </div>
-            </div>
-          `).join('')}
-        </div>
+            `).join('')}
+          </div>
 
-        <div id="cardResult" class="min-h-[44px] flex items-center justify-center p-2.5 rounded-xl game-card game-tag-purple text-xs sm:text-sm font-semibold transition-all shadow-sm">
-          👆 សូមចុចជ្រើសរើសកាត 1 ដើម្បីបើកមើល!
+          <div id="cardResult" class="min-h-[44px] flex items-center justify-center p-2.5 rounded-xl game-card game-tag-purple text-xs sm:text-sm font-semibold transition-all shadow-sm">
+            👆 សូមចុចជ្រើសរើសកាត 1 ដើម្បីបើកមើល!
+          </div>
         </div>
-      </div>
-    `;
+      `;
     }
 
-    window.revealCard = function(wrapper, icon, text) {
+    window.revealCard = function (wrapper, icon, text) {
       const flipper = wrapper.querySelector('.card-flipper');
       if (flipper.classList.contains('flipped')) return;
       flipper.classList.add('flipped');
@@ -501,55 +570,55 @@
     function renderLuckyWheel() {
       const content = document.getElementById('gameModalContent');
       content.innerHTML = `
-      <div class="text-center flex flex-col justify-between items-center space-y-4 py-2">
-        <div class="space-y-1">
-          <h3 class="font-bold text-base sm:text-lg text-amber-600">🎡 ទាយទម្លាប់ និងចរិតអាថ៌កំបាំង</h3>
-          <p class="game-desc text-xs">បង្វិលកងដើម្បីមើលថា តើទម្លាប់ប្លែកៗមួយណាត្រូវចំអ្នក!</p>
-        </div>
+        <div class="text-center flex flex-col justify-between items-center space-y-4 py-2">
+          <div class="space-y-1">
+            <h3 class="font-bold text-base sm:text-lg text-amber-600 dark:text-amber-400">🎡 ទាយទម្លាប់ និងចរិតអាថ៌កំបាំង</h3>
+            <p class="game-desc text-xs">បង្វិលកងដើម្បីមើលថា តើទម្លាប់ប្លែកៗមួយណាត្រូវចំអ្នក!</p>
+          </div>
 
-        <div class="relative w-40 h-40 sm:w-48 sm:h-48 my-2 flex items-center justify-center">
-          <div class="absolute -top-3 z-20 text-2xl sm:text-3xl text-rose-600">👇</div>
-          <div id="wheelCanvas" class="w-full h-full rounded-full border-4 border-amber-400 bg-gradient-to-tr from-amber-400 via-pink-400 to-purple-500 shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-[3000ms] cubic-bezier(0.15, 0.85, 0.35, 1.05)">
-            <div class="w-11 h-11 rounded-full game-card shadow-md border-2 border-amber-300 flex items-center justify-center z-10 text-xl">
-              🔍
+          <div class="relative w-40 h-40 sm:w-48 sm:h-48 my-2 flex items-center justify-center">
+            <div class="absolute -top-3 z-20 text-2xl sm:text-3xl text-rose-600">👇</div>
+            <div id="wheelCanvas" class="w-full h-full rounded-full border-4 border-amber-400 bg-gradient-to-tr from-amber-400 via-pink-400 to-purple-500 shadow-xl flex items-center justify-center relative overflow-hidden transition-transform duration-[3000ms] cubic-bezier(0.15, 0.85, 0.35, 1.05)">
+              <div class="w-11 h-11 rounded-full game-card shadow-md border-2 border-amber-300 flex items-center justify-center z-10 text-xl">
+                🔍
+              </div>
             </div>
           </div>
-        </div>
 
-        <div class="mb-2">
-          <button id="spinBtn" onclick="spinWheelAction()" class="bg-gradient-to-r from-amber-500 to-pink-500 active:scale-95 text-white text-xs sm:text-sm font-bold py-2.5 px-6 rounded-full shadow-md transition-all cursor-pointer">
-            ចុចបង្វិលទាយចរិត 🔄
-          </button>
-        </div>
+          <div class="mb-2">
+            <button id="spinBtn" onclick="spinWheelAction()" class="bg-gradient-to-r from-amber-500 to-pink-500 active:scale-95 text-white text-xs sm:text-sm font-bold py-2.5 px-6 rounded-full shadow-md transition-all cursor-pointer">
+              ចុចបង្វិលទាយចរិត 🔄
+            </button>
+          </div>
 
-        <div id="wheelResult" class="w-full mt-12 min-h-[48px] flex items-center justify-center p-4 rounded-xl game-card game-tag-amber text-xs sm:text-sm font-semibold transition-all shadow-sm">
-          ✨ ចុចបង្វិល ដើម្បីស្វែងរកចរិត/ទម្លាប់អាថ៌កំបាំង!
+          <div id="wheelResult" class="w-full mt-2 min-h-[48px] flex items-center justify-center p-4 rounded-xl game-card game-tag-amber text-xs sm:text-sm font-semibold transition-all shadow-sm">
+            ✨ ចុចបង្វិល ដើម្បីស្វែងរកចរិត/ទម្លាប់អាថ៌កំបាំង!
+          </div>
         </div>
-      </div>
-    `;
+      `;
     }
 
-    window.spinWheelAction = function() {
+    window.spinWheelAction = function () {
       const spinBtn = document.getElementById('spinBtn');
       const wheel = document.getElementById('wheelCanvas');
       const res = document.getElementById('wheelResult');
 
       const personalityTraits = [
         "😴 ជាមនុស្សចូលចិត្តគេងយប់ជ្រៅ មើលរឿង/លេងហ្គេមរហូត!",
-        "🧋 ជាមនុស្សញៀនសុីរហូត អត់មួយម៉ោងមិនបាន!",
+        "🧋 ជាមនុស្សញៀនស៊ីរហូត អត់មួយម៉ោងមិនបាន!",
         "🛍️ ជាមនុស្សឃើញអីស្អាតទិញភ្លាម មិនសូវគិតច្រើន!",
         "🤫 ជាមនុស្សស្ងាត់ៗតែចិត្តល្អ និងចេះបារម្ភពីអ្នកដទៃខ្លាំង!",
         "🍔 ជាមនុស្សមាត់ថាសម្រកទម្ងន់ តែដៃកាន់នំញ៉ាំរហូត!",
         "📸 ជាមនុស្សចូលចិត្តថតរូប/វីដេអូទុកជាអនុស្សាវរីយ៍!",
         "☕ ជាមនុស្សអត់កាហ្វេមិនបាន ព្រឹកឡើងត្រូវតែមានមួយកែវ!",
-        "🎧 ជាមនុស្សពាក់កាសជាប់រហូត ស្តាប់ចម្រៀងបង្កើតភាពសប្បាយខ្លួនឯង!",
-        "🚶‍♂️ ជាមនុស្សចូលចិត្តដើរលេង ដើរដើរមើលនេះមើលនោះ មិនចូលចិត្តនៅផ្ទះស្ងាត់ៗ!",
+        "🎧 ជាមនុស្សពាក់កាសជាប់រហូត ស្ដាប់ចម្រៀងបង្កើតភាពសប្បាយខ្លួនឯង!",
+        "🚶‍♂️ ជាមនុស្សចូលចិត្តដើរលេង ដើរមើលនេះមើលនោះ មិនចូលចិត្តនៅផ្ទះស្ងាត់ៗ!",
         "🏠 ជាមនុស្សចូលចិត្តនៅផ្ទះខ្លាំង ឱ្យតែទំនេរគឺសុំគេង និងមើលរឿង!",
         "🫠 ជាមនុស្សប្រាប់គេថាជិតដល់ហើយ តែការពិតទើបតែងូតទឹកស្រេច!",
         "📱 ជាមនុស្សចុចទូរស័ព្ទរហូត តែសារគេឆាតមកមិនតប!",
-        "🐱 ជាមនុស្សឃើញឆ្មា/ឆ្កែនៅតាមផ្លូវ ត្រូវតែឈប់អង្អែល ឬ ថតរូប!",
+        "🐱 ជាមនុស្សឃើញឆ្មា/ឆ្កែនៅតាមផ្លូវ ត្រូវតែឈប់អង្អែល ឬថតរូប!",
         "🫠 ជាមនុស្សចូលចិត្តតវ៉ាជាមួយម៉ោងរោទិ៍ 'សុំ 5 នាទីទៀត' រហូត!",
-        "🍜 ជាមនុស្សឱ្យតែយប់ឡើង គឺឃ្លានសុីនេះសុីនោះរហូត!",
+        "🍜 ជាមនុស្សឱ្យតែយប់ឡើង គឺឃ្លានស៊ីនេះស៊ីនោះរហូត!",
         "🎨 ជាមនុស្សចូលចិត្តស្រមើស្រមៃ និងមានគំនិតច្នៃប្រឌិតប្លែកៗ!",
         "💸 ជាមនុស្សប្រាប់គេថាអត់លុយ តែឱ្យតែគេបបួលដើរលេងទៅភ្លាម!",
         "🥱 ជាមនុស្សងងុយដេកពេញមួយថ្ងៃ ដល់យប់ឡើងភ្នែកភ្លឺដូចថ្ងៃ!",
@@ -571,7 +640,7 @@
 
       setTimeout(() => {
         const selected = personalityTraits[Math.floor(Math.random() * personalityTraits.length)];
-        res.className = "w-full mt-12 min-h-[48px] flex items-center justify-center p-4 rounded-xl bg-gradient-to-r from-amber-500 to-pink-500 text-white text-xs sm:text-sm font-bold shadow-md animate-pulse";
+        res.className = "w-full mt-2 min-h-[48px] flex items-center justify-center p-4 rounded-xl bg-gradient-to-r from-amber-500 to-pink-500 text-white text-xs sm:text-sm font-bold shadow-md animate-pulse";
         res.innerText = selected;
 
         if (typeof confetti === 'function') confetti({ particleCount: 50, spread: 60 });
@@ -587,55 +656,69 @@
         "ប្រាប់ចំណុចល្អ 3 យ៉ាងដែលអ្នកចូលចិត្តលើរូបខ្ញុំ!",
         "តើអនុស្សាវរីយ៍ដំបូងគេបង្អស់រវាងយើងទាំងពីរជាអ្វី?",
         "ប្រាប់ពាក្យ 1 ម៉ាត់ដែលពិពណ៌នាពីមិត្តភាព/ទំនាក់ទំនងយើង!",
-        "តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?"
+        "តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?",
+        "តើម្ហូប ឬ ភេសជ្ជៈអ្វី? ដែលអ្នកឃើញភ្លាម នឹកឃើញខ្ញុំភ្លែត?"
       ];
 
       const randomSecret = secrets[Math.floor(Math.random() * secrets.length)];
 
       const content = document.getElementById('gameModalContent');
       content.innerHTML = `
-      <div class="text-center space-y-2.5">
-        <div>
-          <h3 class="font-bold text-base sm:text-lg text-sky-600">🕵‍♂️ ហ្គេមឆ្លើយសំណួរ</h3>
-          <p class="game-desc text-xs mt-0.5">ចាប់យកសារ/សំណួរអាថ៌កំបាំងដើម្បីប្រាប់ ឬឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
-        </div>
+        <div class="text-center space-y-3">
+          <div>
+            <h3 class="font-bold text-base sm:text-lg text-sky-600 dark:text-sky-400">🕵‍♂️ ហ្គេមឆ្លើយសំណួរ</h3>
+            <p class="game-desc text-xs mt-0.5">ចាប់យកសារ/សំណួរអាថ៌កំបាំងដើម្បីប្រាប់ ឬឆ្លើយតបជាមួយម្ចាស់ខួប!</p>
+          </div>
 
-        <div id="quoteCard" class="p-4 sm:p-5 bg-gradient-to-br from-sky-500 via-indigo-500 to-blue-600 rounded-2xl text-white shadow-lg relative overflow-hidden transition-all duration-200">
-          <p id="quoteBox" class="text-xs sm:text-sm font-semibold leading-relaxed relative z-10 py-1">
-            ${randomSecret}
-          </p>
-        </div>
+          <div id="quoteCard" class="p-4 sm:p-5 bg-gradient-to-br from-sky-500 via-indigo-500 to-blue-600 rounded-2xl text-white shadow-lg relative overflow-hidden transition-all duration-200">
+            <p id="quoteBox" class="text-xs sm:text-sm font-semibold leading-relaxed relative z-10 py-1">
+              ${randomSecret}
+            </p>
+          </div>
 
-        <div>
-          <button onclick="generateNewQuote()" class="bg-gradient-to-r from-sky-500 to-indigo-500 active:scale-95 text-white text-xs sm:text-sm font-bold py-2 px-5 rounded-full shadow-md transition-all cursor-pointer">
-            ចាប់យកសារថ្មី 🔄
-          </button>
+          <div class="text-left space-y-1 pt-1">
+            <label class="text-xs font-bold game-title block">✍ ចម្លើយរបស់អ្នក (ឆ្លើយក៏បាន មិនឆ្លើយក៏បាន) ៖</label>
+            <textarea id="quoteAnswerInput" rows="2" placeholder="សរសេរចម្លើយរបស់អ្នកនៅទីនេះ..." 
+              class="game-input w-full p-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-sky-400 focus:outline-none transition-colors"></textarea>
+          </div>
+
+          <div class="flex flex-col sm:flex-row gap-2 pt-1">
+            <button onclick="generateNewQuote()" class="flex-1 bg-gradient-to-r from-sky-400 to-indigo-500 active:scale-95 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-md transition-all cursor-pointer">
+              🔄 ចាប់យកសារថ្មី
+            </button>
+            
+            <button onclick="sendGameAnswerToTelegram('ហ្គេមឆ្លើយសំណួរ 🕵‍♂️', document.getElementById('quoteBox').innerText, 'quoteAnswerInput')" 
+              class="flex-1 bg-gradient-to-r from-teal-400 to-emerald-500 active:scale-95 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5">
+              <span>✈️</span>
+              <span>ផ្ញើចូល Telegram</span>
+            </button>
+          </div>
         </div>
-      </div>
-    `;
+      `;
     }
 
-    window.generateNewQuote = function() {
+    window.generateNewQuote = function () {
       const secrets = [
         "តើតាំងពីស្គាល់គ្នា ខ្ញុំធ្លាប់ធ្វើអ្វីឱ្យអ្នកសើចខ្លាំងជាងគេ?",
         "ប្រាប់ចំណុចល្អ 3 យ៉ាងដែលអ្នកចូលចិត្តលើរូបខ្ញុំ!",
         "តើអនុស្សាវរីយ៍ដំបូងគេបង្អស់រវាងយើងទាំងពីរជាអ្វី?",
         "ប្រាប់ពាក្យ 1 ម៉ាត់ដែលពិពណ៌នាពីមិត្តភាព/ទំនាក់ទំនងយើង!",
         "តើមានរឿងអ្វីដែលអ្នកចង់ដើរលេងធ្វើជាមួយខ្ញុំនៅថ្ងៃមុខ?",
-        "តើម្ហូប ឬ ភេសជ្ជៈអ្វី?ដែលអ្នកឃើញភ្លាម នឹកឃើញខ្ញុំភ្លែត?"
+        "តើម្ហូប ឬ ភេសជ្ជៈអ្វី? ដែលអ្នកឃើញភ្លាម នឹកឃើញខ្ញុំភ្លែត?"
       ];
 
       const quoteBox = document.getElementById('quoteBox');
       const quoteCard = document.getElementById('quoteCard');
+      const input = document.getElementById('quoteAnswerInput');
 
       if (quoteCard) quoteCard.classList.add('opacity-50');
       setTimeout(() => {
         if (quoteBox) quoteBox.innerText = secrets[Math.floor(Math.random() * secrets.length)];
         if (quoteCard) quoteCard.classList.remove('opacity-50');
+        if (input) input.value = '';
       }, 150);
     };
 
-    // 5. Function renderMysteryBox (បានបំពេញពេញលេញ)
     function renderMysteryBox() {
       const truthOrDare = [
         { name: "🔥 DARE: ថតរូប Selfie បែប Funny / កំប្លែង 1 ប៉ុន្តែធ្វើឱ្យម្ចាស់ខួបសើច" },
@@ -651,34 +734,57 @@
 
       const content = document.getElementById('gameModalContent');
       content.innerHTML = `
-      <div class="text-center space-y-2.5">
-        <div>
-          <h3 class="font-bold text-base sm:text-lg text-rose-600">🔥 ប្រអប់ Challenge (Truth or Dare)</h3>
-          <p class="game-desc text-xs mt-0.5">ចុចជ្រើសរើសប្រអប់ Challenge 1 ខាងក្រោម!</p>
-        </div>
+        <div class="text-center space-y-3">
+          <div>
+            <h3 class="font-bold text-base sm:text-lg text-rose-600 dark:text-rose-400">🔥 ប្រអប់ Challenge (Truth or Dare)</h3>
+            <p class="game-desc text-xs mt-0.5">ចុចជ្រើសរើសប្រអប់ Challenge 1 ខាងក្រោម!</p>
+          </div>
 
-        <div class="grid grid-cols-3 gap-2.5 py-1 max-w-md mx-auto">
-          ${truthOrDare.slice(0, 6).map((item, i) => `
-            <div onclick="openBoxChallenge(this, '${item.name}')" class="game-card game-card-rose p-3 rounded-2xl cursor-pointer hover:border-rose-400 active:scale-95 transition-all text-center">
-              <div class="text-3xl mb-1 animate-box-shake">🎁</div>
-              <div class="text-[10px] font-bold text-rose-500">BOX 0${i + 1}</div>
-            </div>
-          `).join('')}
-        </div>
+          <div class="grid grid-cols-3 gap-2.5 py-1 max-w-md mx-auto">
+            ${truthOrDare.slice(0, 6).map((item, i) => `
+              <div onclick="openBoxChallenge(this, '${item.name.replace(/'/g, "\\'")}')" class="game-card game-card-rose p-3 rounded-2xl cursor-pointer hover:border-rose-400 active:scale-95 transition-all text-center">
+                <div class="text-3xl mb-1 animate-box-shake">🎁</div>
+                <div class="text-[10px] font-bold text-rose-500 dark:text-rose-400">BOX 0${i + 1}</div>
+              </div>
+            `).join('')}
+          </div>
 
-        <div id="mysteryResult" class="min-h-[48px] flex items-center justify-center p-3 rounded-xl game-card game-tag-rose text-xs sm:text-sm font-semibold transition-all shadow-sm">
-          📦 សូមចុចប្រអប់ 1 ខាងលើដើម្បីទទួល Challenge!
+          <div id="mysteryResult" class="min-h-[48px] flex items-center justify-center p-3 rounded-xl game-card game-tag-rose text-xs sm:text-sm font-semibold transition-all shadow-sm">
+            📦 សូមចុចប្រអប់ 1 ខាងលើដើម្បីទទួល Challenge!
+          </div>
+
+          <div id="challengeActionArea" class="hidden text-left space-y-2 pt-1">
+            <label class="text-xs font-bold game-title block">✍ ចម្លើយ ឬការឆ្លើយតបរបស់អ្នក (Optional) ៖</label>
+            <textarea id="challengeAnswerInput" rows="2" placeholder="សរសេរការឆ្លើយតបរបស់អ្នកនៅទីនេះ..." 
+              class="game-input w-full p-2.5 rounded-xl border text-xs font-medium focus:ring-2 focus:ring-rose-400 focus:outline-none transition-colors"></textarea>
+            
+            <button id="sendChallengeTgBtn" 
+              class="w-full bg-gradient-to-r from-rose-500 to-pink-500 active:scale-95 text-white text-xs font-bold py-2.5 px-4 rounded-xl shadow-md transition-all cursor-pointer flex items-center justify-center gap-1.5">
+              <span>✈️</span>
+              <span>ផ្ញើ Challenge & ចម្លើយចូល Telegram</span>
+            </button>
+          </div>
         </div>
-      </div>
-    `;
+      `;
     }
 
-    window.openBoxChallenge = function(element, challengeText) {
+    window.openBoxChallenge = function (element, challengeText) {
       const res = document.getElementById('mysteryResult');
+      const actionArea = document.getElementById('challengeActionArea');
+      const sendBtn = document.getElementById('sendChallengeTgBtn');
+
       if (!res) return;
 
       res.className = "min-h-[48px] flex items-center justify-center p-3 rounded-xl bg-gradient-to-r from-rose-500 to-pink-500 text-white text-xs sm:text-sm font-bold shadow-md transition-all";
       res.innerText = challengeText;
+
+      if (actionArea) actionArea.classList.remove('hidden');
+
+      if (sendBtn) {
+        sendBtn.onclick = function () {
+          window.sendGameAnswerToTelegram('ប្រអប់ Challenge 🔥', challengeText, 'challengeAnswerInput');
+        };
+      }
 
       if (typeof confetti === 'function') {
         confetti({ particleCount: 35, spread: 50, origin: { y: 0.6 } });

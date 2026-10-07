@@ -13,6 +13,12 @@
     href="https://fonts.googleapis.com/css2?family=Kantumruy+Pro:wght@300;400;500;600;700&family=Moul&family=Fredoka:wght@400;600;700&display=swap"
     rel="stylesheet">
   <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // កំណត់ Tailwind Config សម្រាប់ Dark Mode ជាមួយ Class
+    tailwind.config = {
+      darkMode: 'class',
+    }
+  </script>
   <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
 
   <!-- html2pdf.js Library -->
@@ -123,13 +129,21 @@
 
 <body class="text-slate-800 pb-20 selection:bg-pink-200 selection:text-pink-900 relative">
 
-  <!-- Floating Theme Toggle Buttons (ប៊ូតុងដូរ Mode ថ្ងៃ/យប់) -->
-  <div
-    class="fixed top-4 right-4 z-50 flex items-center bg-white/90 backdrop-blur-md p-1.5 rounded-full shadow-xl border-2 border-pink-300">
+  <!-- Floating Theme Toggle Switch (រចនាបទដូច Switch Facebook/Standard App) -->
+  <div class="fixed top-4 right-4 z-50">
     <button id="themeToggleBtn" onclick="toggleTheme()" aria-label="Toggle Theme"
-      class="flex items-center gap-2 px-4 py-2 rounded-full text-sm sm:text-base font-bold transition-all duration-300 bg-pink-100 text-pink-600 hover:bg-pink-200 hover:scale-105 active:scale-95 cursor-pointer shadow-sm">
-      <span id="themeIcon" class="text-lg">☀️️</span>
-      <span id="themeText">ថ្ងៃ</span>
+      class="relative inline-flex h-9 w-20 items-center rounded-full p-1 transition-colors duration-300 focus:outline-none shadow-lg cursor-pointer bg-slate-200 border border-slate-300 dark:bg-slate-800 dark:border-slate-700">
+      
+      <!-- រង្វង់មូល Switch Slider -->
+      <span id="toggleKnob"
+        class="inline-flex h-7 w-7 transform items-center justify-center rounded-full bg-white shadow-md transition-transform duration-300 translate-x-0 dark:translate-x-11">
+        <span id="themeIcon" class="text-sm">☀️</span>
+      </span>
+
+      <!-- អក្សរបង្ហាញ Mode -->
+      <span id="themeText" class="absolute right-2.5 text-xs font-bold text-slate-600 dark:left-3 dark:right-auto dark:text-slate-300 transition-all duration-300">
+        ថ្ងៃ
+      </span>
     </button>
   </div>
 
@@ -165,23 +179,22 @@
     <!-- 9. Bucket List Section (ដាក់ចូល index.html ផ្ទាល់ ស្អាតស្ទាត់) -->
     <section class="py-8 px-2 sm:px-4 w-full">
 
-    <!--​ 10. Memories Component -->
-<div id="memories-section-placeholder"></div>
+      <!--​ 10. Memories Component -->
+      <div id="memories-section-placeholder"></div>
 
-      
-     <!-- Header Title Section -->
-<div class="text-center mb-7 space-y-2">
-  <span
-    class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-100 dark:bg-pink-950/60 text-pink-700 dark:text-pink-300 text-xs sm:text-sm font-extrabold tracking-wider border border-pink-300 dark:border-pink-800 shadow-sm">
-    🎯 MY NEW AGE BUCKET LIST
-  </span>
-  <h2 class="bucket-header-title text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold tracking-tight">
-    គោលដៅ និងក្ដីស្រមៃក្នុងថ្ងៃអានាគត 🌸✨
-  </h2>
-  <p class="bucket-header-sub text-xs sm:text-sm font-medium max-w-md mx-auto">
-    របស់ដែលចង់បាន និងកន្លែងដែលចង់ទៅឱ្យបានសម្រេចក្នុងវ័យថ្មីនេះ!
-  </p>
-</div>
+      <!-- Header Title Section -->
+      <div class="text-center mb-7 space-y-2">
+        <span
+          class="inline-flex items-center gap-1.5 px-4 py-1.5 rounded-full bg-pink-100 dark:bg-pink-950/60 text-pink-700 dark:text-pink-300 text-xs sm:text-sm font-extrabold tracking-wider border border-pink-300 dark:border-pink-800 shadow-sm">
+          🎯 MY NEW AGE BUCKET LIST
+        </span>
+        <h2 class="bucket-header-title text-2xl sm:text-3xl md:text-4xl font-fredoka font-bold tracking-tight">
+          គោលដៅ និងក្ដីស្រមៃក្នុងថ្ងៃអានាគត 🌸✨
+        </h2>
+        <p class="bucket-header-sub text-xs sm:text-sm font-medium max-w-md mx-auto">
+          របស់ដែលចង់បាន និងកន្លែងដែលចង់ទៅឱ្យបានសម្រេចក្នុងវ័យថ្មីនេះ!
+        </p>
+      </div>
 
       <!-- Grid Cards ទាំង ១២ -->
       <div class="grid grid-cols-2 sm:grid-cols-3 gap-3.5 sm:gap-5 max-w-4xl mx-auto w-full">
@@ -572,6 +585,8 @@
       if (savedTheme === "dark") {
         document.body.classList.add("dark-mode");
         updateThemeUI(true);
+      } else {
+        updateThemeUI(false);
       }
     });
 
@@ -584,21 +599,23 @@
     function updateThemeUI(isDark) {
       const icon = document.getElementById('themeIcon');
       const text = document.getElementById('themeText');
-      const btn = document.getElementById('themeToggleBtn');
+      const knob = document.getElementById('toggleKnob');
 
       if (isDark) {
+        document.documentElement.classList.add('dark');
         if (icon) icon.innerText = '🌙';
         if (text) text.innerText = 'យប់';
-        if (btn) {
-          btn.classList.remove('bg-pink-100', 'text-pink-600');
-          btn.classList.add('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
+        if (knob) {
+          knob.classList.remove('translate-x-0');
+          knob.classList.add('translate-x-11');
         }
       } else {
+        document.documentElement.classList.remove('dark');
         if (icon) icon.innerText = '☀️';
         if (text) text.innerText = 'ថ្ងៃ';
-        if (btn) {
-          btn.classList.remove('bg-indigo-950', 'text-indigo-300', 'border', 'border-indigo-700');
-          btn.classList.add('bg-pink-100', 'text-pink-600');
+        if (knob) {
+          knob.classList.remove('translate-x-11');
+          knob.classList.add('translate-x-0');
         }
       }
     }
