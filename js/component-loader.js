@@ -2,13 +2,13 @@
 document.addEventListener("DOMContentLoaded", function () {
   const includes = document.querySelectorAll("[data-include]");
 
-  // ប្រើ Promise.all ដើម្បីឱ្យប្រាកដថា Parallel fetches ដំណើរការបានត្រឹមត្រូវ
+  // ប្រើ Promise.all ដំណើរការ parallel fetch
   const fetchPromises = Array.from(includes).map((el) => {
     const file = el.getAttribute("data-include");
     return loadComponentToElement(el, file);
   });
 
-  // Load Components តាម ID
+  // Load Components តាម ID (ប្រសិនបើមាន)
   loadComponent('footer-section-placeholder', 'components/footer-section.html');
   loadComponent('memories-section-placeholder', 'components/memories-section.html');
 });
@@ -21,48 +21,52 @@ function loadComponentToElement(el, file) {
       throw new Error(`Failed to load ${file}`);
     })
     .then((html) => {
-      // ១. បង្កើត Temp Div ដើម្បីដកស្រង់ content
       const tempDiv = document.createElement("div");
       tempDiv.innerHTML = html;
 
-      // ២. ដកយក Script Tags ទុកឡែកដើម្បី Execute ក្រោយពេល Insert ចូល DOM
+      // ១. ដកយក Script Tags ចេញ
       const scripts = Array.from(tempDiv.querySelectorAll("script"));
-      scripts.forEach((s) => s.remove()); // លុប Script ចាស់ចេញពី Temp
+      scripts.forEach((s) => s.remove());
 
-      // ៣. ជំនួស <div data-include="..."> ដោយ Element របស់ Component
+      // ២. ជំនួស Element ចាស់ដោយ Component HTML
       const childNodes = Array.from(tempDiv.childNodes);
       el.replaceWith(...childNodes);
 
-      // ៤. Re-inject Scripts ចូលទៅក្នុង Document វិញដើម្បីឱ្យ JavaScript ដំណើរការ
+      // ៣. Execute Scripts ឡើងវិញ
       scripts.forEach((oldScript) => {
-        const newScript = document.createElement("script");
-        Array.from(oldScript.attributes).forEach((attr) =>
-          newScript.setAttribute(attr.name, attr.value)
-        );
-        newScript.textContent = oldScript.textContent;
-        document.body.appendChild(newScript);
+        if (oldScript.src) {
+          // បើជា External Script ដូចជា Tailwind / Confetti
+          const newScript = document.createElement("script");
+          Array.from(oldScript.attributes).forEach((attr) => {
+            newScript.setAttribute(attr.name, attr.value);
+          });
+          document.head.appendChild(newScript);
+        } else {
+          // បើជា Inline Script ត្រូវប្រើ window.eval ដើម្បីរុញ Functions ចូល Global Scope
+          try {
+            window.eval(oldScript.textContent);
+          } catch (err) {
+            console.error("Error executing component inline script:", err);
+          }
+        }
       });
     })
     .catch((err) => console.error("Component Loader Error:", err));
 }
 
-// Function សម្រាប់ហៅផ្ទាល់តាមរយៈ ID និង File Path (loadComponent)
+// Function សម្រាប់ហៅផ្ទាល់តាម ID
 function loadComponent(targetId, filePath) {
   const el = document.getElementById(targetId);
   if (el) {
     loadComponentToElement(el, filePath);
-  } else {
-    console.warn(`Element with ID '${targetId}' not found.`);
   }
 }
 
 // =========================================================
-// 🎵 AUDIO CONTROL FUNCTIONS (Synchronized All Buttons)
+// 🎵 AUDIO CONTROL FUNCTIONS
 // =========================================================
 
-// Function សម្រាប់ Update UI របស់ប៊ូតុងតន្ត្រីទាំងអស់ក្នុងពេលតែមួយ
 function updateAudioUI(isPlaying) {
-  // 1. Floating Audio Control Widgets
   const icon = document.getElementById('musicIcon');
   const ping = document.getElementById('audioPing');
   const label = document.getElementById('musicLabel');
@@ -84,46 +88,33 @@ function updateAudioUI(isPlaying) {
   }
 }
 
-// Function បង្ខំបើកចម្រៀងអូតូ (ប្រើពេលចុចប៊ូតុង Grand Celebration)
 function playAudioAuto() {
   const audio = document.getElementById('hbdAudio');
-  if (!audio) {
-    console.error("រកមិនឃើញ Element #hbdAudio ទេ");
-    return;
-  }
+  if (!audio) return;
 
   if (audio.paused) {
     audio.play().then(() => {
       updateAudioUI(true);
-    }).catch(err => {
-      console.error("Audio playback error:", err);
-    });
+    }).catch(err => console.error("Audio playback error:", err));
   } else {
     updateAudioUI(true);
   }
 }
 
-// Function បើក/បិទចម្រៀង (Toggle)
 function toggleAudio() {
   const audio = document.getElementById('hbdAudio');
-  if (!audio) {
-    console.error("រកមិនឃើញ Element #hbdAudio ទេ");
-    return;
-  }
+  if (!audio) return;
 
   if (audio.paused) {
     audio.play().then(() => {
       updateAudioUI(true);
-    }).catch(err => {
-      console.error("Audio playback error:", err);
-    });
+    }).catch(err => console.error("Audio playback error:", err));
   } else {
     audio.pause();
     updateAudioUI(false);
   }
 }
 
-// Function សម្រាប់ Banner Audio Control
 function toggleBannerMusic() {
   toggleAudio();
 }
